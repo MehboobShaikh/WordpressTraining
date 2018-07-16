@@ -12,10 +12,6 @@ version: 1.0
 	get_header();
 
 	?>
-	
-	<nav class="site-nav">
-		<?php wp_nav_menu(); ?>
-	</nav>
 
 <?php
 	
@@ -35,7 +31,7 @@ version: 1.0
 							'title_li' => ''
 						);
 					
-						echo wp_list_pages($args);
+						wp_list_pages($args);
 					?>
 				</ul>
 
@@ -55,7 +51,7 @@ version: 1.0
 
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit tellus quis leo ultrices, at iaculis est efficitur.</p>
 
-					</div>
+					</div> <!--Template Part -->
 				
 					<div class="page-post-content">
 						<?php the_content(); ?>

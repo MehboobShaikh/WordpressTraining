@@ -3,10 +3,6 @@
 	get_header();
 
 	?>
-	
-	<nav class="site-nav">
-		<?php wp_nav_menu(); ?>
-	</nav>
 
 <?php
 	

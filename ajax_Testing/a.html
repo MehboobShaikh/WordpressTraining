@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+
+	<input type="text" id="a1"> +
+	<input type="text" id="b2">
+	<button id="button"> = </button>
+	<div id="result"></div>
+
+	<script type="text/javascript">
+		$('#button').click(function() {
+		    var val1 = $('#a1').val();
+		    var val2 = $('#b2').val();
+		    $.ajax({
+		        type: 'POST',
+		        url: 'b.php',
+		        data: { a1: val1, b2: val2 },
+		        success: function(response) {
+		            $('#result').html(response);
+		        }
+		    });
+		});
+
+	</script>
+
+</body>
+</html>

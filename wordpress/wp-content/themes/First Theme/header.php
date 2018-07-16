@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="/WP/wordpress/wp-content/themes/First%20Theme/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="/WP/wordpress/wp-content/themes/First%20Theme/style.css"> -->
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<meta name="viewport" content="width=device-width">
 		<title><?php bloginfo('name'); ?></title>
@@ -17,6 +17,15 @@
 		<h1><a href="<?php echo home_url(); ?>"> <?php bloginfo('name'); ?></a></h1>
 		<h5><?php bloginfo('description') ?></h5>
 	</header>	<!-- Site Header -->
+
+	<nav class="site-nav">
+		<?php
+			$args = array(
+				'menu' => 'main-menu'
+			);
+		?>
+		<?php wp_nav_menu($args); ?>
+	</nav>
 	
 
 	

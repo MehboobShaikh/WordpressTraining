@@ -9,8 +9,7 @@ Version: 1.0
 body {
 	font-family: Arial, san-serif,;
 	font-size: 1em;
-	color: #333;
-}
+	color: #333;}
 
 p {
 	line-height: 1.65em;
@@ -32,7 +31,7 @@ a:hover {
 .site-header h5 {
 	margin-bottom: 15px;
 	padding-left: 10px;
-	color: #AAA;
+	color: #AAA	;
 }
 /* 
 	Layout
@@ -62,10 +61,6 @@ a.post-link:hover {
 	color: #fd5151;
 }
 
-div.gallery{
-	border: 2px solid #999;
-	overflow: hidden;
-}
 
 img{
 	border: 2px solid #999;
@@ -82,6 +77,21 @@ img{
 	font-size: 13px;
 	font-weight: bold;
 }
+
+/*
+	Gallery / Images Layout
+*/
+
+div.gallery{
+	border: 2px solid #999;
+	overflow: hidden;
+}
+
+dl.gallery-item {
+	margin: 0;
+	padding: 0;
+}
+
 
 /*
 	Navigation
@@ -158,16 +168,16 @@ nav div ul li.current-menu-item a:visited{
 /* Post Page layout */
 
 article.page h2 {
-	font-family: Arial, san-serif;
+	font-family: san-serif;
 	font-size: 200%;
 }
 
 article.single h2 {
-	font-family: Arial, san-serif;
+	font-family: san-serif;
 	font-size: 300%;
 }
 
-footer {
+footer.site-footer {
 	clear: both;
 	text-align: center;
 	background-color: #dcfdff;
@@ -224,21 +234,21 @@ div.info-box p {
 
 /* Footer Menu */
 
-.site-footer div.menu ul {
+.site-footer div.menu-footer-menu-container ul {
 	margin: 0;
 	padding: 0;
 }
 
-.site-footer div.menu ul:before, .site-footer div.menu ul:after {
+.site-footer div.menu-footer-menu-container ul:before, .site-footer div.menu ul:after {
 	content: "";
 	display: table;
 }
 
-.site-footer div.menu ul {
+.site-footer div.menu-footer-menu-container ul {
 	clear: both;
 }
 
-.site-footer div.menu ul li {
+.site-footer div.menu-footer-menu-container ul li {
 	list-style: none;
 	overflow: hidden;
 	float: left;
@@ -301,4 +311,42 @@ span.parent-link a {
 
 .post-template-post-title a {
 	color: #4cbfd4;
+}
+
+/* Post Information */
+
+.post-info {
+	margin: 0;
+	padding: 0;
+	font-size: 80%;
+	color: #222;
+}
+
+.post-info:hover {
+	color: #555;
+}
+
+.post-info a:hover {
+	color: #0050a5;
+}
+
+.post-info a {
+	font-weight: bold;
+	font-size: 110%;
+	color: #006ec3;
+}
+p.post-info {
+	padding-bottom: 5px;
+}
+a.post-tags{
+	color: #333;
+	font-weight: bold;
+	font-size: 120%;
+	padding-right: 5px;
+	font-weight: normal;
+}
+
+iframe {
+	border-radius: 30px;
+	width: 100%;
 }

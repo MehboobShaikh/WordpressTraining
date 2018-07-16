@@ -3,17 +3,20 @@
 	// importing files like style.css
 
 	function firsttheme_resources(){
-		wp_enqueue_style('style',getstylesheet_uri());
+		wp_enqueue_style('style',get_template_directory_uri().'/style.css');
+		wp_enqueue_style('movie',get_template_directory_uri().'/movie.css');
 	}
 
-	add_action('wp_enqueue_script','firsttheme_resources');
+	add_action('wp_enqueue_scripts','firsttheme_resources');
 
-	// regitering menus primary and footer menus
+	// regitering new Menu
 
-	register_nav_menu(array(
-		'primary' => __( 'Primary Menu'),
-		'footer' => __( 'Footer Menu')
-	));
+
+	function firsttheme_register_new_menu(){
+		register_nav_menu('new-menu',__('Custom Menu'));
+	}
+
+	add_action('init','firsttheme_register_new_menu');
 
 	function get_top_ancestor_id(){
 		global $post;
