@@ -1,6 +1,6 @@
 <?php
 
-	// importing files like style.css
+	// importing files like style.css and javaScript files etc
 
 	function firsttheme_resources(){
 		wp_enqueue_style('style',get_template_directory_uri().'/style.css');
@@ -41,4 +41,19 @@
 	}
 
 
+	// Checking for Easing Slider plugin installed and Activated or not.
+/*
+	function showMessagesToAdmin(){
+		include_once(ABSPATH.'wp-admin/includes/plugin.php');
+
+		if(!is_plugin_active('easing-slider/easing-slider.php')){
+			echo '<div id="alert" class="error">';
+			echo '<p>Please install and activate Easing Slider plugin to use this site.</p>';
+			echo '</div>';
+		}
+	}
+
+	add_action('admin_notices','showMessagesToAdmin');
+
+*/
 ?>

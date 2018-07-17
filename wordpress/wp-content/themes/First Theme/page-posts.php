@@ -12,7 +12,7 @@ version: 1.0
 
 	<?php 
 	// the query
-		$wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
+		$wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1/*,'order'=>'desc'*/)); ?>
 	 
 	<?php if ( $wpb_all_query->have_posts() ) : ?>
 	 

@@ -26,6 +26,10 @@
 		?>
 		<?php wp_nav_menu($args); ?>
 	</nav>
+
+	<div class="theme_slider">
+		<?php //if ( function_exists( 'easingslider' ) && is_home()) { easingslider( 249 ); } ?>
+	</div>
 	
 
 	
