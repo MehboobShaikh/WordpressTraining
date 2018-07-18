@@ -350,3 +350,38 @@ iframe {
 	border-radius: 30px;
 	width: 100%;
 }
+
+/* News Part */
+
+h1.news-title{
+	color: #5c7d85;
+	font-family: Crimson Text;
+	letter-spacing: 0.05em;
+	line-height: 1.2em;
+	/*border-bottom: 2px dotted #006ec3;*/
+}
+
+div.news-detail h2{
+	margin-top: 10%;
+}
+div.news-detail p {
+	color: #333;
+	text-align: justify;
+}
+.news-consequences-impact{
+	font-family: Markazi Text;
+	font-size: 1.3em;
+	border: 1px solid #333;
+	padding: 0.5em;
+}
+
+.news-navigation {
+	margin-top: 20%;
+	margin-bottom: 20%;
+}
+
+p.news-story {
+	font-family: Artifika;
+	font-size: 1em;
+	margin-bottom: 2.5em;
+}

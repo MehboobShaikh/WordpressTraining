@@ -12,13 +12,13 @@ version: 1.0
 
 	<?php 
 	// the query
-		$wpb_all_query = new WP_Query(array('post_type'=>'news', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
+		$wp_myblog_query = new WP_Query(array('post_type'=>'news', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
 	 
-	<?php if ( $wpb_all_query->have_posts() ) : ?>
+	<?php if ( $wp_myblog_query->have_posts() ) : ?>
 	 
 	 
 	    <!-- the loop -->
-	    <?php while ($wpb_all_query->have_posts()) : $wpb_all_query->the_post(); ?>
+	    <?php while ($wp_myblog_query->have_posts()) : $wp_myblog_query->the_post(); ?>
 
 	        <article class="post post-template">
 
@@ -59,7 +59,7 @@ version: 1.0
 				</div>
 
 				<!-- If consequences display it -->
-				<div class="news-consequences-impact">
+				<div class="page-news-consequences-impact">
 					<p class="post-info"><?php
 						 // Get cast fields
 							if( get_field('news_consequences') == 'Yes' ){?>

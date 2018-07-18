@@ -3,8 +3,11 @@
 	// importing files like style.css and javaScript files etc
 
 	function firsttheme_resources(){
+		// Google font file 
+		wp_enqueue_style('font-style',get_template_directory_uri().'/font/font-style.css');
 		wp_enqueue_style('style',get_template_directory_uri().'/style.css');
 		wp_enqueue_style('movie',get_template_directory_uri().'/movie.css');
+		wp_enqueue_script('jssor-slider',get_template_directory_uri().'/jssor-slider.js');
 	}
 
 	add_action('wp_enqueue_scripts','firsttheme_resources');

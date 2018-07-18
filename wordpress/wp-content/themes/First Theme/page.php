@@ -36,7 +36,7 @@
 				<div class="page-post-content">
 					<?php the_content(); ?>
 				<div>
-					<?php echo   do_shortcode('[metaslider id="259"]'); ?>
+					<?php echo do_shortcode('[metaslider id="259"]'); ?>
 				</div>
 
 				</div>

@@ -12,13 +12,13 @@ version: 1.0
 
 	<?php 
 	// the query
-		$wpb_all_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1/*,'order'=>'desc'*/)); ?>
+		$wp_myblog_query = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1/*,'order'=>'desc'*/)); ?>
 	 
-	<?php if ( $wpb_all_query->have_posts() ) : ?>
+	<?php if ( $wp_myblog_query->have_posts() ) : ?>
 	 
 	 
 	    <!-- the loop -->
-	    <?php while ($wpb_all_query->have_posts()) : $wpb_all_query->the_post(); ?>
+	    <?php while ($wp_myblog_query->have_posts()) : $wp_myblog_query->the_post(); ?>
 
 	        <article class="post post-template">
 

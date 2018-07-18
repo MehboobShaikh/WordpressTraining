@@ -12,13 +12,13 @@ version: 1.0
 
 	<?php 
 	// the query
-		$wpb_all_query = new WP_Query(array('post_type'=>'movie', 'post_status'=>'publish', 'posts_per_page'=>-1)); ?>
+		$wp_myblog_query = new WP_Query(array('post_type'=>'movie', 'post_status'=>'publish','meta_key'=>'movie_release_date','orderby'=>'meta_value','order'=>'ASC', 'posts_per_page'=>-1)); ?>
 	 
-	<?php if ( $wpb_all_query->have_posts() ) : ?>
+	<?php if ( $wp_myblog_query->have_posts() ) : ?>
 	 
 	 
 	    <!-- the loop -->
-	    <?php while ($wpb_all_query->have_posts()) : $wpb_all_query->the_post(); ?>
+	    <?php while ($wp_myblog_query->have_posts()) : $wp_myblog_query->the_post(); ?>
 
 	        <article class="post post-template">
 

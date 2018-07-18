@@ -6,11 +6,6 @@
 <?php
 	
 	if(have_posts()) : ?>
-		
-
-
-<!-- The data is fetched from db here in this loop -->
-
 
 		<div id="main" class="main-content clearfix">
 			<?php while ( have_posts() ) : the_post(); ?>
