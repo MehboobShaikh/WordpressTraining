@@ -59,4 +59,8 @@
 	add_action('admin_notices','showMessagesToAdmin');
 
 */
+
+	/* for Ajax code */
+
+
 ?>

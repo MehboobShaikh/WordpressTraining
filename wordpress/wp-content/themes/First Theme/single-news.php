@@ -1,3 +1,9 @@
+<?php 
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // echo "<script>alert('".$_REQUEST['passindex']."');</script>";
+    echo $_REQUEST['passindex'];
+}else{
+?>
 <?php
 	
 	get_header();
@@ -79,5 +85,5 @@
 	endif;
 
 	get_footer();
-
+}
 ?>
