@@ -1,7 +1,38 @@
 <?php 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // echo "<script>alert('".$_REQUEST['passindex']."');</script>";
-    echo $_REQUEST['passindex'];
+    // echo $_REQUEST['passindex'];
+
+    // Fetching the data from DB goes here
+
+  	// custom query for post type news
+		// $wp_myblog_query = new WP_Query(array('post_type'=>'news', 'post_status'=>'publish', 'posts_per_page'=>-1));
+
+  	// if($_REQUEST['passindex']){
+	  	if(get_field('news_media_image')[$_REQUEST['passindex']]['media_image']['type'] == 'image'){
+	  		// echo var_dump(get_field('news_media_image')[$_REQUEST['passindex']]['media_image']['type']);	
+	  		$counter = 0;
+		  	while(have_rows('news_media_image')){
+		  		// echo "<script>console.log('". $_REQUEST['passindex'] . get_sub_field('image_description') ."')</script>";
+
+		  		if($_REQUEST['passindex'] == 0){
+		  			echo get_field('news_media_image')[0]['image_description'];
+		  			exit();
+		  		}
+
+		  		if(get_sub_field('image_description') && $counter == $_REQUEST['passindex']){
+		  			the_row();
+		  			echo get_sub_field('image_description');
+		  		}else{
+		  			the_row();
+		  		}
+		  		$counter += 1;
+		  	}
+		}else {
+			echo "no-image";
+		}
+  	// }
+
 }else{
 ?>
 <?php

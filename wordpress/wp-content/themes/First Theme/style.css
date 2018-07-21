@@ -313,6 +313,19 @@ span.parent-link a {
 	color: #4cbfd4;
 }
 
+/* Post Format Gallery */
+article.post-gallery {
+	padding-bottom: 5%;
+	background-color: transparent;
+	/*border: none;*/
+	color: #000;
+}
+
+article.post-gallery img {
+	/*width: 60%;*/
+	height: 90px;
+}
+
 /* Post Information */
 
 .post-info {
@@ -384,4 +397,18 @@ p.news-story {
 	font-family: Artifika;
 	font-size: 1em;
 	margin-bottom: 2.5em;
+}
+
+
+div.news-slide-description {
+	margin-top: 0.5%;
+	font-size: 125%;
+	background-color: #FFF5CB;
+	padding: 20px;
+	letter-spacing: .05em;
+	text-align: center;
+	line-height: 1.5em;
+	height: 50%;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, .1);
 }

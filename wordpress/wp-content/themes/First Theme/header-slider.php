@@ -106,7 +106,7 @@ a.control_next {
         }?>
   </ul>  
 </div>
-<div id="output">
+<div id="output" class="news-slide-description">
   
 </div>
 
@@ -118,96 +118,124 @@ a.control_next {
       var totalItems = ($('.item').length) - 1;
       console.log("Total Items"+totalItems);
       console.log("Current Index"+slideIndex);
-      // var furl = "<?php //echo get_admin_url().'admin-ajax.php'?>";
 
-/*  /var/www/html/WP/wordpress/wp-content/themes/First Theme/single-news.php */
+
+      // Initial Response from Ajax
+      $.ajax({
+              type: 'post',
+              // url: 'wordpress/wp-admin/admin-ajax.php',
+              data: { 'passindex' : slideIndex },
+              success: function (response){
+                if(response === 'no-image' || response === ''){
+                  $('#output').empty();
+                  $("#output").attr('class',response);
+                }else{
+                  $('#output').empty();
+                  $('#output').append('<q> '+response+' </q>');
+                  $("#output").attr('class', 'news-slide-description');
+                }
+              }
+            });
+
+
+    /*  /var/www/html/WP/wordpress/wp-content/themes/First Theme/single-news.php */
+           
+    /*$.post('wordpress/wp-admin/admin-ajax.php',{'action':'index_of_slider'},function(response){
+      alert('done');
+    });*/
+
 
       setInterval(function () {
-            
-            /*$.post('wordpress/wp-admin/admin-ajax.php',{'action':'index_of_slider'},function(response){
-              alert('done');
-            });*/
-
             moveRight();
-        }, 3000);
+        }, 555000);
 
 
+    
+      var slideCount = $('#slider ul li').length;
+      var slideWidth = $('#slider ul li').width();
+      var slideHeight = $('#slider ul li').height();
+      var sliderUlWidth = slideCount * slideWidth;
       
-        var slideCount = $('#slider ul li').length;
-        var slideWidth = $('#slider ul li').width();
-        var slideHeight = $('#slider ul li').height();
-        var sliderUlWidth = slideCount * slideWidth;
-        
-        $('#slider').css({ width: slideWidth, height: slideHeight });
-        
-        $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
-        
-        $('#slider ul li:last-child').prependTo('#slider ul');
+      $('#slider').css({ width: slideWidth, height: slideHeight });
+      
+      $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+      
+      $('#slider ul li:last-child').prependTo('#slider ul');
 
-        function moveLeft() {
-            $('#slider ul').animate({
-                left: + slideWidth
-            }, 300, function () {
-                $('#slider ul li:last-child').prependTo('#slider ul');
-                $('#slider ul').css('left', '');
-            });
-            if(slideIndex == 0){
-              slideIndex = totalItems;
-            }else{
-              slideIndex -= 1;
-            }
+      function moveLeft() {
+          $('#slider ul').animate({
+              left: + slideWidth
+          }, 300, function () {
+              $('#slider ul li:last-child').prependTo('#slider ul');
+              $('#slider ul').css('left', '');
+          });
+          if(slideIndex == 0){
+            slideIndex = totalItems;
+          }else{
+            slideIndex -= 1;
+          }
 
-            $.ajax({
-              type: 'post',
-              // url: 'wordpress/wp-admin/admin-ajax.php',
-              data: { 'passindex' : slideIndex },
-              success: function (response){
-                $('#output').empty();
-                $('#output').append(response);
-              }
-            });
-
-            // console.log(slideIndex);
-            
-
-            // slideIndex--;
-            // console.log(slideIndex);
-        };
-
-        function moveRight() {
-            $('#slider ul').animate({
-                left: - slideWidth
-            }, 300, function () {
-                $('#slider ul li:first-child').appendTo('#slider ul');
-                $('#slider ul').css('left', '');
-            });
-            if(slideIndex == totalItems){
-                slideIndex = 0;
-              }else{
-                slideIndex += 1;
-              }
-          // console.log(slideIndex);
-
+          // Respose from ajax when Slide Move to Left
           $.ajax({
-              type: 'post',
-              // url: 'wordpress/wp-admin/admin-ajax.php',
-              data: { 'passindex' : slideIndex },
-              success: function (response){
+            type: 'post',
+            // url: 'wordpress/wp-admin/admin-ajax.php',
+            data: { 'passindex' : slideIndex },
+            success: function (response){
+              if(response === 'no-image' || response === ''){
                 $('#output').empty();
-                $('#output').append(response);
+                $("#output").attr('class', response);
+              }else{
+                $('#output').empty();
+                $('#output').append('<q> '+response+' </q>');
+                $("#output").attr('class', 'news-slide-description');
               }
-            });
-          
+            }
+          });
+          // console.log(slideIndex);
+      };
 
-        };
+      function moveRight() {
+          $('#slider ul').animate({
+              left: - slideWidth
+          }, 300, function () {
+              $('#slider ul li:first-child').appendTo('#slider ul');
+              $('#slider ul').css('left', '');
+          });
+          if(slideIndex == totalItems){
+              slideIndex = 0;
+            }else{
+              slideIndex += 1;
+            }
+        // console.log(slideIndex);
 
-        $('a.control_prev').click(function () {
-            moveLeft();
-        });
 
-        $('a.control_next').click(function () {
-            moveRight();
-        });
+        // Respose from ajax when Slide Move to Left
+        $.ajax({
+            type: 'post',
+            // url: 'wordpress/wp-admin/admin-ajax.php',
+            data: { 'passindex' : slideIndex },
+            success: function (response){
+              if(response === 'no-image' || response === ''){
+                $('#output').empty();
+                $("#output").attr('class', response);
+              }else{
+                $('#output').empty();
+                $('#output').append('<q> '+response+' </q>');
+                $("#output").attr('class', 'news-slide-description');
+              }
+            }
+          });
+        
+
+      };
+
+      $('a.control_prev').click(function () {
+          moveLeft();
+      });
+
+      $('a.control_next').click(function () {
+          moveRight();
+      });
 
     });
    </script>

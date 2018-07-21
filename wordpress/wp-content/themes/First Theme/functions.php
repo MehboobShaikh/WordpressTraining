@@ -1,5 +1,15 @@
 <?php
 
+
+	//Recomended way for including google font in wordpress
+/*	
+	function my_google_font() {
+		wp_enqueue_style( 'my-google-font', 'http://fonts.googleapis.com/css?family=Raleway' );
+	}
+	add_action( 'wp_enqueue_scripts', 'my_google_font' );
+*/
+
+	
 	// importing files like style.css and javaScript files etc
 
 	function firsttheme_resources(){
@@ -60,7 +70,69 @@
 
 */
 
-	/* for Ajax code */
+	// Add Post Format Support
+	add_theme_support('post-formats',array(
+		'aside',
+		'gallery',
+		'link'
+	));
+
+	 // Custom Customizer
+
+	function firsttheme_customize_register($wp_customize){
+
+	//-------------------- Section for Background Color
+
+		$wp_customize->add_section('firsttheme_color',array(
+			'title' => __('Colors','firsttheme'),
+			'description' => 'Modify the theme colour'
+		));
+
+		$wp_customize->add_setting('background_color',array(
+			'default' => '#fff'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'background_color',array(
+			'label' => __('Change Background Color','firsttheme'),
+			'section' => 'firsttheme_color',
+			'setting' => 'background_color'
+		)));
+
+	//--------------------- Section for Copyright
+
+		$wp_customize->add_section('firsttheme_copyright',array(
+			'title' => __('Copyright','firsttheme'),
+			'description' => 'Edit Copyright of your site'
+		));
+
+		$wp_customize->add_setting('copyright',array(
+			'default' => '&copy; 2018 My Blog'
+		));
+
+		$wp_customize->add_control('copyright',array(
+			'label' => __('Enter Copyright of your site','firsttheme'),
+			'section' => 'firsttheme_copyright',
+			'setting' => 'copyright'
+		));
+
+	}
+
+	function firsttheme_css_customizer(){
+		?>
+
+		<style type="text/css">
+			body{
+				background-color: #<?php echo get_theme_mod('background_color'); ?>;
+			}
+		</style>
+
+		<?php
+	}
+
+
+	add_action('wp_head','firsttheme_css_customizer');
+
+	add_action('customize_register','firsttheme_customize_register');
 
 
 ?>

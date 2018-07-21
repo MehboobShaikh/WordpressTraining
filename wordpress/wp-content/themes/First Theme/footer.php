@@ -8,7 +8,7 @@
 	?>
 	<?php wp_nav_menu($args); ?>
 	
-	<p><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a> - &copy; <?php echo date('Y'); ?></p>
+	<a class="clearfix" style="margin-right: 10%;float: right;" href="<?php echo home_url(); ?>"><?php echo get_theme_mod('test'); ?></a>
 
 </footer>
 </div>
