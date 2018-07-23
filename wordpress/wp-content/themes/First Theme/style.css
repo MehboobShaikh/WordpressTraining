@@ -402,7 +402,8 @@ p.news-story {
 
 div.news-slide-description {
 	margin-top: 0.5%;
-	font-size: 125%;
+	font-family: Markazi Text;
+	font-size: 150%;
 	background-color: #FFF5CB;
 	padding: 20px;
 	letter-spacing: .05em;

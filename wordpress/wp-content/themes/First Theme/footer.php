@@ -8,7 +8,7 @@
 	?>
 	<?php wp_nav_menu($args); ?>
 	
-	<a class="clearfix" style="margin-right: 10%;float: right;" href="<?php echo home_url(); ?>"><?php echo get_theme_mod('test'); ?></a>
+	<a class="clearfix copyright" style="margin-right: 10%;float: right;" href="<?php echo home_url(); ?>"><?php echo get_theme_mod('copyright'); ?></a>
 
 </footer>
 </div>

@@ -14,8 +14,8 @@
 
 	<!-- Site Header -->
 	<header class="site-header">
-		<h1><a href="<?php echo home_url(); ?>"> <?php bloginfo('name'); ?></a></h1>
-		<h5><?php bloginfo('description') ?></h5>
+		<h1><a class="site-name" href="<?php echo home_url(); ?>"> <?php bloginfo('name'); ?></a></h1>
+		<h5 class="site-description"><?php bloginfo('description') ?></h5>
 	</header>	<!-- Site Header -->
 
 	<nav class="site-nav">
@@ -26,10 +26,6 @@
 		?>
 		<?php wp_nav_menu($args); ?>
 	</nav>
-
-	<div class="theme_slider">
-		<?php //if ( function_exists( 'easingslider' ) && is_home()) { easingslider( 249 ); } ?>
-	</div>
 	
 
 	

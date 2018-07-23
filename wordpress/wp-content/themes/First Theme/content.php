@@ -1,7 +1,7 @@
 <article class="post post-template">
 
 	<div class="post-template-post-title">
-		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+		<h2><a class="post-title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 		<p class="post-info"><?php the_time('jS F, Y'); ?> at <?php the_time('g:i a'); ?> | By <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php the_author();?></a> | Posted in
 		<?php
@@ -16,14 +16,13 @@
 				}
 
 				echo trim($output,$seprate_by);
-			}
-			
+			}		
 
 		?>
 		</p>
 	</div>
 
-	<div class="post-template-post-content">
+	<div class="post-template-post-content post-content">
 		<?php the_content(); ?>
 	</div>
 

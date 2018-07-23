@@ -69,7 +69,7 @@
 					<?php
 						if(get_field('news_media_option')[0] == 'Image' || get_field('news_media_option')[0] == 'Video'){
 							// Slider File is Called i.e header-slider
-							get_header('slider');?>
+							get_template_part('slider');?>
 							<h5 class="clearfix" style="float: right;"><?php echo 'Published by '.$news_channel; ?></h5>
 						<?php }
 					?>

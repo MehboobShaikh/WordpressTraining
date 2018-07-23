@@ -3,7 +3,15 @@
 	get_header();
 
 	?>
+
+<!-- <?php if(isset($_POST['submit'])){
+	echo $_POST['a'];
+}
+?> -->
+
 <?php
+
+
 	
 	if(have_posts()) : 
 		while(have_posts()) : the_post(); ?>
@@ -25,6 +33,8 @@
 		echo '<p>There is no Post Found</p>';
 
 	endif;
+
+	// get_template_part('form');
 
 	get_footer();
 

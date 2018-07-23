@@ -116,8 +116,8 @@ a.control_next {
   
       var slideIndex = jQuery('ul.active').index() +1;
       var totalItems = ($('.item').length) - 1;
-      console.log("Total Items"+totalItems);
-      console.log("Current Index"+slideIndex);
+      // console.log("Total Items"+totalItems);
+      // console.log("Current Index"+slideIndex);
 
 
       // Initial Response from Ajax
@@ -147,7 +147,7 @@ a.control_next {
 
       setInterval(function () {
             moveRight();
-        }, 555000);
+        }, 5000);
 
 
     

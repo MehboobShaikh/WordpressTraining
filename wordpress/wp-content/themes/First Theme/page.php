@@ -33,12 +33,8 @@
 					<h2><?php the_title(); ?></h2>
 				</div>
 
-				<div class="page-post-content">
+				<div class="page-post-content post-content">
 					<?php the_content(); ?>
-				<div>
-					<?php echo do_shortcode('[metaslider id="259"]'); ?>
-				</div>
-
 				</div>
 
 			</article>
