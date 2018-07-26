@@ -14,6 +14,9 @@
 
 	<!-- Site Header -->
 	<header class="site-header">
+		<div class="site-search">
+			<?php get_search_form(); ?>
+		</div>
 		<h1><a class="site-name" href="<?php echo home_url(); ?>"> <?php bloginfo('name'); ?></a></h1>
 		<h5 class="site-description"><?php bloginfo('description') ?></h5>
 	</header>	<!-- Site Header -->

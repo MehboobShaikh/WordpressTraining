@@ -86,7 +86,7 @@
 							if( get_field('news_consequences') == 'Yes' ){?>
 								<div class="news-consequences-impact">
 									<p class="post-info">
-									<h4>News Consequences Impact</h4>
+									<h3>News Consequences Impact</h3>
 									<p style="margin-left: 1.5em;"><q><?php echo get_field('news_consequences_impact'); ?></q></p>
 							</p>
 						</div>

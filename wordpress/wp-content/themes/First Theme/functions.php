@@ -1,3 +1,12 @@
+<!-- 
+
+PHP 			=> 	Underscore( _ )
+HTML / CSS 		=> 	Hyphen( - )
+WORDPRESS SLUGs => 	Hyphen( - )
+FILE NAME 		=> 	Hyphen( - )
+
+ -->
+
 <?php
 
 
@@ -70,14 +79,63 @@
 
 */
 
+	//=============================================== SUPPORT ==================================
+	
 	// Add Post Format Support
 	add_theme_support('post-formats',array(
 		'aside',
 		'gallery',
-		'link'
+		'link',
 	));
 
-	 // Custom Customizer
+	 // ====================================== WIDGET LOCATION =================================
+
+	function firsttheme_custom_widget(){
+		register_sidebar(array(
+			'name' => __('Sidebar','firsttheme'),
+			'id' => 'sidebar1',
+			'description' => 'Drop your widgets to appear on right side of the page',
+			'before_widget' => '<div class="widget-item">',
+			'after_widget' => '</div>',
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer Area 1','firsttheme'),
+			'id' => 'footer1',
+			'description' => 'Drop your widgets to appear in footer column 1 of the page',
+			'before_widget' => '<div class="widget-item">',
+			'after_widget' => '</div>',
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer Area 2','firsttheme'),
+			'id' => 'footer2',
+			'description' => 'Drop your widgets to appear in footer column 2 of the page',
+			'before_widget' => '<div class="widget-item">',
+			'after_widget' => '</div>',
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer Area 3','firsttheme'),
+			'id' => 'footer3',
+			'description' => 'Drop your widgets to appear in footer column 3 of the page',
+			'before_widget' => '<div class="widget-item">',
+			'after_widget' => '</div>',
+		));
+		
+		register_sidebar(array(
+			'name' => __('Footer Area 4','firsttheme'),
+			'id' => 'footer4',
+			'description' => 'Drop your widgets to appear in footer column 4 of the page',
+			'before_widget' => '<div class="widget-item">',
+			'after_widget' => '</div>',
+		));
+	}
+
+	add_action('widgets_init','firsttheme_custom_widget');
+
+
+	 // ======================================= CUSTOMIZER =====================================
 
 	function firsttheme_customize_register($wp_customize){
 
@@ -218,7 +276,7 @@
 		}
 
 
-	//---------------------------- Section for Copyright ----------------------------------
+	//----------------------------------- Section for Copyright -----------------------------------
 
 		$wp_customize->add_section('firsttheme_copyright',array(
 			'title' => __('Copyright','firsttheme'),
@@ -256,6 +314,9 @@
 		)));
 
 	}
+
+
+	// CSS Customizer Function
 
 	function firsttheme_css_customizer(){
 		$background_color = get_option('background_color');
@@ -295,6 +356,92 @@
 
 	//hook for registering Customizer
 	add_action('customize_register','firsttheme_customize_register');
+
+
+	// ================================== CUSTOM SETTING PAGE ===================================
+
+/*
+	=======================
+		OUTPUT FUNCTIONS
+	=======================
+*/	
+
+
+	// This function will return output page of custom setting
+	function firsttheme_custom_add_menu_page_settings(){
+		require_once(get_template_directory().'/inc/templates/settings-page.php');
+	}
+
+
+	// CUSTOM CSS
+	function firsttheme_add_sub_menu_page_css(){
+
+	}
+
+//+++++++++++++++++++++++++++++++++++++++++ REWRITE BELOW CODE ++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	//In this function we are registering and creating setting sections
+	function firsttheme_custom_setting(){
+
+
+		// Personal Setting Part
+
+		register_setting('firsttheme-settings-group','first_name');	//Schema
+
+		add_settings_section('firsttheme-settings-section',__('Settings Section','firsttheme'),'firsttheme_settings_section','firsttheme-menu-settings');
+
+		add_settings_field('settings-field-name',__('First Name','firsttheme'),'settings_field_name','firsttheme-menu-settings','firsttheme-settings-section');
+
+		// Social URL's Setting Part
+//========================================================Continue COde Here
+
+	}
+
+
+	function firsttheme_settings_section(){
+		echo "Customize Your Information Here";
+	}
+
+	function settings_field_name(){
+
+		$firstname = esc_attr(get_option('first_name'));
+
+		echo '<input type="text" value="' . $firstname . '" placeholder="Enter First Name" />';
+	}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+	// This function creates an Custom Menu Item on lefthand side of Dashboard
+	function firsttheme_custom_add_menu_item() {
+
+		//Page-Title, Menu-Title, Capability, slug, Callback-Function-Name, Icon-URL, Position-of-Item
+		// dashicons-admin-generic => It is Wordpress dash Icon
+		add_menu_page(__('First Theme Settings Options','firsttheme'),__('First Theme','firsttheme'),'manage_options','firsttheme-menu-settings','firsttheme_custom_add_menu_page_settings','dashicons-admin-generic');
+
+		// Creating Sub Menu Items
+		// 1) SYNTAX => Parent-Slug, Page-Title, Menu-Title, Capability, Slug, Function-Name
+	/*
+		NOTE:- To remove redundant name in menu item, as it repeats first item same as parent to remove this we use below SYNTAX
+	*/
+		// 2) SYNTAX => Parent-Slug, Same-Page-Title-as-Parent, Menu-Title, Capability, Parent-Slug, Parent-Function
+		add_submenu_page('firsttheme-menu-settings',__('First Theme Settings Options','firsttheme'),__('Settings','firsttheme'),'manage_options','firsttheme-menu-settings','firsttheme_custom_add_menu_page_settings');
+		// Using above code it will not display the Parent menu name as first child name
+
+
+
+		// For rest SubMenu Pages create using 1) SYNTAX
+		//SubMenu 1
+		add_submenu_page('firsttheme-menu',__('First Theme CSS Option','firsttheme'),__('Custom CSS','firsttheme'),'manage_options','firsttheme-menu-custom-css','firsttheme_add_sub_menu_page_css');
+
+
+		// Activate Custom Srttings
+		add_action('admin_init','firsttheme_custom_setting');
+
+	}
+
+	add_action('admin_menu','firsttheme_custom_add_menu_item');
+
 
 
 ?>

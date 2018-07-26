@@ -213,6 +213,65 @@ div.content-column {
 	float: right;
 }
 
+/* Index Page Columns */
+
+/* Main-Cloumn */
+.main-column {
+	width: 70%;
+	float: left;
+}
+
+/* Secondary Column */
+.secondary-column {
+	width: 25%;
+	float: right;
+}
+
+/* Footer Widgets Columns */
+div.footer-widgets {
+	box-sizing: border-box;
+	/*border-top: 1px dotted #333;*/
+}
+div.footer-widgets {
+	margin-top: 2em;
+}
+div.footer-widget-area {
+	width: 25%;
+	float: left;
+	padding-right: 1.5em;
+	box-sizing: border-box;
+}
+
+div.widget-item label {
+	position: absolute;
+	left: -9999px;
+}
+div.widget-item #s {
+	margin-top: 2em;
+	width: 60%;
+	vertical-align: top;
+	padding: 0.3em 0;
+}
+div.widget-item #searchsubmit {
+	margin-top: 2em;
+	width: 35%;
+	float: right;
+	border: none;
+	background-color: #006ec3;
+	color: #fff;
+	padding: 0.5em 0.1em;
+	vertical-align: top;
+}
+
+.footer-widget-area:before, .footer-widget-area:after {
+	content: "";
+	display: table;
+}
+
+.footer-widget-area:after {
+	clear: both;
+}
+
 /* Template Styling Info Box */
 
 div.info-box {
@@ -230,6 +289,32 @@ div.info-box h4 {
 
 div.info-box p {
 	font-size: 85%;
+}
+
+/* Site Search */
+
+div.site-search {
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+div.site-search label {
+	position: absolute;
+	left: -9999px;
+}
+
+div.site-search #searchsubmit {
+	border: none;
+	background-color: #006ec3;
+	color: #fff;
+	padding: 5px 10px;
+	vertical-align: top;
+}
+
+div.site-search #s {
+	vertical-align: top;
+	padding: 3px 0;
 }
 
 /* Footer Menu */
