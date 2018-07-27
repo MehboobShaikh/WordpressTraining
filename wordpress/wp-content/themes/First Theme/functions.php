@@ -19,6 +19,12 @@ FILE NAME 		=> 	Hyphen( - )
 */
 
 	
+
+	//Javascript files needed for Media Uploader
+
+	require get_template_directory().'/inc/enqueue.php';
+
+
 	// importing files like style.css and javaScript files etc
 
 	function firsttheme_resources(){
@@ -27,6 +33,11 @@ FILE NAME 		=> 	Hyphen( - )
 		wp_enqueue_style('style',get_template_directory_uri().'/style.css');
 		wp_enqueue_style('movie',get_template_directory_uri().'/movie.css');
 		wp_enqueue_script('jssor-slider',get_template_directory_uri().'/jssor-slider.js');
+
+		
+
+
+
 	}
 
 	add_action('wp_enqueue_scripts','firsttheme_resources');
@@ -315,7 +326,6 @@ FILE NAME 		=> 	Hyphen( - )
 
 	}
 
-
 	// CSS Customizer Function
 
 	function firsttheme_css_customizer(){
@@ -350,7 +360,6 @@ FILE NAME 		=> 	Hyphen( - )
 		<?php
 	}
 
-
 	//hook for css output i.e. Live Preview
 	add_action('wp_head','firsttheme_css_customizer');
 
@@ -359,57 +368,6 @@ FILE NAME 		=> 	Hyphen( - )
 
 
 	// ================================== CUSTOM SETTING PAGE ===================================
-
-/*
-	=======================
-		OUTPUT FUNCTIONS
-	=======================
-*/	
-
-
-	// This function will return output page of custom setting
-	function firsttheme_custom_add_menu_page_settings(){
-		require_once(get_template_directory().'/inc/templates/settings-page.php');
-	}
-
-
-	// CUSTOM CSS
-	function firsttheme_add_sub_menu_page_css(){
-
-	}
-
-//+++++++++++++++++++++++++++++++++++++++++ REWRITE BELOW CODE ++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	//In this function we are registering and creating setting sections
-	function firsttheme_custom_setting(){
-
-
-		// Personal Setting Part
-
-		register_setting('firsttheme-settings-group','first_name');	//Schema
-
-		add_settings_section('firsttheme-settings-section',__('Settings Section','firsttheme'),'firsttheme_settings_section','firsttheme-menu-settings');
-
-		add_settings_field('settings-field-name',__('First Name','firsttheme'),'settings_field_name','firsttheme-menu-settings','firsttheme-settings-section');
-
-		// Social URL's Setting Part
-//========================================================Continue COde Here
-
-	}
-
-
-	function firsttheme_settings_section(){
-		echo "Customize Your Information Here";
-	}
-
-	function settings_field_name(){
-
-		$firstname = esc_attr(get_option('first_name'));
-
-		echo '<input type="text" value="' . $firstname . '" placeholder="Enter First Name" />';
-	}
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 	// This function creates an Custom Menu Item on lefthand side of Dashboard
@@ -429,7 +387,6 @@ FILE NAME 		=> 	Hyphen( - )
 		// Using above code it will not display the Parent menu name as first child name
 
 
-
 		// For rest SubMenu Pages create using 1) SYNTAX
 		//SubMenu 1
 		add_submenu_page('firsttheme-menu',__('First Theme CSS Option','firsttheme'),__('Custom CSS','firsttheme'),'manage_options','firsttheme-menu-custom-css','firsttheme_add_sub_menu_page_css');
@@ -439,9 +396,115 @@ FILE NAME 		=> 	Hyphen( - )
 		add_action('admin_init','firsttheme_custom_setting');
 
 	}
-
 	add_action('admin_menu','firsttheme_custom_add_menu_item');
 
+
+/*	=======================
+		OUTPUT FUNCTIONS
+	=======================
+*/	
+
+
+	// This function will return output page of custom setting
+	function firsttheme_custom_add_menu_page_settings(){
+		require_once(get_template_directory().'/inc/templates/settings-page.php');
+	}
+
+
+	// CUSTOM CSS
+	function firsttheme_add_sub_menu_page_css(){
+
+	}
+
+//+++++++++++++++++++++++++++++++++++++++++ TAKE A LOOK ON CODE ++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+	//In this function we are registering and creating setting sections
+	function firsttheme_custom_setting(){
+
+
+		// Personal Setting Part
+		//Schema
+		register_setting('firsttheme-settings-group','first_name');	//firstname
+		register_setting('firsttheme-settings-group','last_name');	//lastname
+		register_setting('firsttheme-settings-group','profile_description');//Profile Description
+		register_setting('firsttheme-settings-group','twitter_url'/*,'firsttheme_sanitize_twitter_url'*/);//Twitter Url
+		register_setting('firsttheme-settings-group','google_plus_url');//Google plus Url
+		register_setting('firsttheme-settings-group','facebook_url');//Facebook Url
+		register_setting('firsttheme-settings-group','profile_img');//Profile Image
+
+
+		//sections
+		add_settings_section('firsttheme-settings-section',__('Settings Section','firsttheme'),'firsttheme_settings_section','firsttheme-menu-settings');//Setting Section
+
+
+		//Setting Fields
+		add_settings_field('settings-field-firstname',__('Full Name','firsttheme'),'settings_field_fullname','firsttheme-menu-settings','firsttheme-settings-section'); //Fullname field
+
+		add_settings_field('settings-field-description',__('Description','firsttheme'),'settings_field_description','firsttheme-menu-settings','firsttheme-settings-section'); //Description field
+
+		add_settings_field('settings-field-twitter',__('Twitter','firsttheme'),'settings_field_twitter','firsttheme-menu-settings','firsttheme-settings-section');//Twitter field
+
+		add_settings_field('settings-field-google-plus',__('Google +','firsttheme'),'settings_field_google_plus','firsttheme-menu-settings','firsttheme-settings-section');//Google+ field
+
+		add_settings_field('settings-field-facebook',__('Facebook','firsttheme'),'settings_field_facebook','firsttheme-menu-settings','firsttheme-settings-section');//Facebook field
+
+		add_settings_field('settings-field-profile-img',__('Profile Image','firsttheme'),'settings_field_profile_img','firsttheme-menu-settings','firsttheme-settings-section');//Profile Image field
+
+		// Social URL's Setting Part
+
+	}
+
+
+	function firsttheme_settings_section(){
+		echo "Customize Your Personal Details Here";	//Setting Section output
+	}
+
+	function settings_field_fullname(){
+
+		$firstname = esc_attr(get_option('first_name'));
+		$lastname = esc_attr(get_option('last_name'));
+
+		echo '<input type="text" name="first_name" value="' . $firstname . '" placeholder="Enter First Name" />';
+		echo '<input type="text" name="last_name" value="' . $lastname . '" placeholder="Enter Last Name" />';
+	}
+
+	function settings_field_description(){
+
+		$profile_description = esc_attr(get_option('profile_description'));
+
+		echo '<textarea name="profile_description" rows="5" cols="50" placeholder="Enter Short Description">'.$profile_description. '</textarea><p class="description">Enter 50-60 Character About your profile</p>';
+	}
+
+	function settings_field_twitter(){
+		$twitter_url = esc_attr(get_option('twitter_url'));
+		echo '<input type="text" name="twitter_url" value="' . $twitter_url . '" placeholder="Enter Twitter Url" /><p class="description">Do not Enter @ Symbol</p>';
+	}
+
+	// Sanitize Setting of Twitter Url
+
+	/*function firsttheme_sanitize_twitter_url( $input ){
+		$sanitize_output = sanitize_text_field($input);
+		$sanitize_output = str_replace('@', '', $sanitize_output);
+		return $sanitize_output;
+	}*/
+
+	function settings_field_google_plus(){
+		$google_plus_url = esc_attr(get_option('google_plus_url'));
+		echo '<input type="text" name="google_plus_url" value="' . $google_plus_url . '" placeholder="Enter Google Plus Url" /><p class="description">Eg. https://www.google.plus/xyz</p>';
+	}
+
+	function settings_field_facebook(){
+		$facebook_url = esc_attr(get_option('facebook_url'));
+		echo '<input type="text" name="facebook_url" value="' . $facebook_url . '" placeholder="Enter Facebook Url" /><p class="description">Eg. https://www.facebook.com/xyz</p>';
+	}
+
+	function settings_field_profile_img(){
+		$profile_img = get_option('profile_img');
+
+		echo '<input type="button" class="bitton button-secondary" value="Upload Profile Picture" id="upload-button" /><input type="hidden" id="profile_img" name="profile_img" value="'. $profile_img .'" />';
+	}
 
 
 ?>
