@@ -2,19 +2,11 @@
 	
 	get_header();
 
-	?>
-
-<!-- <?php if(isset($_POST['submit'])){
-	echo $_POST['a'];
-}
-?> -->
-
-<?php
-
-
 	
 	if(have_posts()) : 
-		while(have_posts()) : the_post(); ?>
+		while(have_posts()) : the_post(); 
+			setPostViews(get_the_ID());
+			?>
 		
 		<article class="post single">
 			<div class="single-post-title">
@@ -22,7 +14,10 @@
 			</div>
 
 			<div class="single-post-content">
-				<?php the_content(); ?>
+				<?php the_content();
+				//Gives the post views
+				// echo getPostViews(get_the_ID());
+				 ?>
 			</div>
 
 		</article>
