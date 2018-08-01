@@ -3,7 +3,7 @@
 		<form method="get">
 		<?php $categories = get_categories();
 
-		echo '<div class="post-filter-item"><input type="checkbox" value="All" >All</div>';
+		echo '<div class="post-filter-item"><input type="checkbox" value="All" checked>All</div>';
 			foreach($categories as $category){
 				if($category->name != 'Uncategorized'){
 					echo '<div class="post-filter-item"><input type="checkbox" value="'.$category->name.'" >' . $category->name . '</div>';
