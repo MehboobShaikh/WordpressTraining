@@ -78,7 +78,7 @@ version: 1.0
 	<?php else : ?>
 	    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 	<?php endif;
-	wp_reset_postdata();
+	// wp_reset_postdata();
 
 
 	get_footer();

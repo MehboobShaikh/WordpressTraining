@@ -1,9 +1,7 @@
 
-<!--     <script async="" src="//www.google-analytics.com/analytics.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 <style type="text/css">
-  /*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);   */
 
 #slider {
   position: relative;
@@ -65,8 +63,8 @@ a.control_next {
 
 </head>
 <div id="slider">
-  <a href="#" class="control_next">></a>
-  <a href="#" class="control_prev"><</a>
+  <a class="control_next">></a>
+  <a class="control_prev"><</a>
 
   <ul>
   <!-- Slide Images goes Here -->

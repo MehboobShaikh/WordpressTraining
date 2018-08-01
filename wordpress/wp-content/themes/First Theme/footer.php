@@ -34,7 +34,7 @@
 
 	<?php
 	$args = array(
-		'theme_location' => 'new-menu'
+		'theme_location' => 'footer'
 	);
 	?>
 	<?php wp_nav_menu($args); ?>
