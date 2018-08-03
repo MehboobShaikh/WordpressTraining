@@ -506,7 +506,7 @@ FILE NAME 		=> 	Hyphen( - )
 
 
 
-//===================================== POST VIEWS ========================================
+//=========================================== POST VIEWS =============================================
 
 	// function to display number of posts.
 
@@ -537,5 +537,11 @@ FILE NAME 		=> 	Hyphen( - )
 
 
 
+//====================================== FILTER USING AJAX ==============================================
 
+	add_action('filter_my_categories','filter_post_category_wise');
+
+	function filter_post_category_wise(){
+		get_template_part('filter-function');
+	}
 ?>

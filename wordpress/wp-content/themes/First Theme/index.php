@@ -1,4 +1,13 @@
-
+<?php if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['submit_filter'])){
+	$arrKeys = array_keys($_GET);
+	// var_dump($arrKeys);
+	$i = 0;
+	$filter = array();
+	while($i < (count($arrKeys)-1)){
+		array_push($filter, $_GET[$arrKeys[$i]]);
+		$i++;
+	}
+}?>
 <?php get_header(); ?>
 
 <div class="index-columns clearfix">

@@ -18,9 +18,9 @@
 			<?php dynamic_sidebar('sidebar1'); ?>
 		</div>
 
-		<div class="widget-item post-filter"><h2 class="widgettitle">Filter Post Here</h2>
 			<?php get_template_part('filterform'); ?>
-		</div>
+			<?php do_action('filter_my_categories'); ?>
+		
 
 
 	</div>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- <link rel="stylesheet" type="text/css" href="/WP/wordpress/wp-content/themes/First%20Theme/style.css"> -->
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<meta name="viewport" content="width=device-width">
 		<title><?php bloginfo('name'); ?></title>

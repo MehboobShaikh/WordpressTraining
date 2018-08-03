@@ -30,6 +30,7 @@
 			<article class="page">
 
 				<div class="page-post-title">
+					<?php the_permalink(); ?>
 					<h2><?php the_title(); ?></h2>
 				</div>
 
