@@ -1,20 +1,8 @@
-<?php if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['submit_filter'])){
-	$arrKeys = array_keys($_GET);
-	// var_dump($arrKeys);
-	$i = 0;
-	$filter = array();
-	while($i < (count($arrKeys)-1)){
-		array_push($filter, $_GET[$arrKeys[$i]]);
-		$i++;
-	}
-}?>
-<?php get_header(); ?>
-
-<div class="index-columns clearfix">
-
-	<div id="filtered_content" class="main-column"><?php
-		if(have_posts()) : 
-			while(have_posts()) : the_post(); ?>
+<?php
+	$wp_query = new WP_Query(array('post_type'=>'post'));
+	
+		if($wp_query->have_posts()) : 
+			while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 			
 			<article class="post page">
 
@@ -52,10 +40,3 @@
 			echo '<p>There is no Post Found</p>';
 
 		endif; ?>
-	</div>
-
-	<?php get_sidebar(); ?>
-	
-</div>
-
-<?php get_footer(); ?>

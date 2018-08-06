@@ -9,12 +9,12 @@
 		<?php	$i = 1;
 			foreach($categories as $category){
 				if($category->name != 'Uncategorized'){
-					echo '<div class="post-filter-item"><input name="filter_cat'.$i.'" type="checkbox" value="'.$category->name.'" >' . $category->name . '</div>';
+					echo '<div class="post-filter-item"><input class="filter" name="filter_cat[]" type="checkbox" value="'.$category->slug.'" >' . $category->name . '</div>';
 				}
 			$i++;
 			}
 				// echo '<div class="submit-filter-button"><input name="submit_filter" type="submit" value="Filter"></div>';
-				echo '<div class="testing"><input id="test" name="testing" type="text" value="Button"></div>';
+				// echo '<div class="testing"><input id="test" name="testing" type="text" value="Button"></div>';
 			?>
 		</div>
 

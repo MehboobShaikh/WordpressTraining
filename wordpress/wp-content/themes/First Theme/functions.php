@@ -544,4 +544,28 @@ FILE NAME 		=> 	Hyphen( - )
 	function filter_post_category_wise(){
 		get_template_part('filter-function');
 	}
+
+	//AJAX ACTION on FILTER
+
+	add_action('wp_ajax_filter_ajax_action','filter_ajax_action');
+	add_action('wp_ajax_nopriv_filter_ajax_action','filter_ajax_action');
+
+	function filter_ajax_action(){
+		require get_template_part('filter-content');
+	}
+
+
+
+//==================================== CUSTOM BUTTONS IN VISIUAL EDITOR ===================================
+
+	function add_style_select_buttons( $buttons ) {
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+// Register our callback to the appropriate filter
+add_filter( 'mce_buttons', 'add_style_select_buttons' );
+
+
+
+
 ?>
