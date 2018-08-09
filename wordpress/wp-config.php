@@ -40,6 +40,9 @@ define('DB_COLLATE', '');
 /** for direct installation of themes and plugins without using ftp*/
 define('FS_METHOD', 'direct');
 
+/* To Remove WooCommerce Completely Un Comment below line i.e WC_ blabla */
+// define( 'WC_REMOVE_ALL_DATA', true);define( 'WC_REMOVE_ALL_DATA', true);
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -57,6 +60,8 @@ define('AUTH_SALT',        'put your unique phrase here');
 define('SECURE_AUTH_SALT', 'put your unique phrase here');
 define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
+
+
 
 /**#@-*/
 

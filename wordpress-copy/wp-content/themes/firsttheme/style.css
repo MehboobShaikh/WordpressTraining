@@ -1,0 +1,559 @@
+/* 
+Theme Name: First Theme
+Author: Mehboob Shaikh
+Author URI: https://www.twitter.com/mehboob_siraj
+Version: 1.0
+ */
+
+
+body {
+	font-family: Arial, san-serif,;
+	font-size: 1em;
+	color: #333;
+}
+
+p {
+	line-height: 1.65em;
+}
+
+a {
+	color: #6c3e1e;
+	text-decoration: none;
+}
+a:hover {
+	color: #fd5151;
+}
+
+.site-header h1 , .site-header h5{
+	padding-top: 10px;
+	padding-left: 10px;
+	margin: 0;
+}
+.site-header h5 {
+	margin-bottom: 15px;
+	padding-left: 10px;
+	color: #AAA	;
+}
+/* 
+	Layout
+ */
+
+div.container {
+	max-width: 900px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+header {
+	margin: 0;
+	padding-bottom: 5px;
+	/*border-bottom: 2px solid #999;*/
+	background-color: #dcfdff;
+}
+
+
+a.post-link:link, a.post-link:visited {
+	color: #4cbfd4;
+	text-decoration: none;
+}
+
+a.post-link:hover {
+	color: #fd5151;
+}
+
+
+img{
+	border: 2px solid #999;
+}
+.post{
+	border-bottom: 2px dotted #999;
+}
+
+.post:last-of-type {
+	border-bottom: none;
+}
+
+.wp-caption-text {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/*
+	Gallery / Images Layout
+*/
+
+div.gallery{
+	border: 2px solid #999;
+	overflow: hidden;
+}
+
+dl.gallery-item {
+	margin: 0;
+	padding: 0;
+}
+
+
+/*
+	Navigation
+*/
+
+ .site-nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.site-nav ul:before, .site-nav ul:after {
+	content: "";
+	display: block;
+}
+
+.site-nav ul:after {
+	clear: both;
+	background-color: #999;
+}
+
+.site-nav ul {
+	*zoom: 1;
+}
+
+.site-nav ul li {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style: none;
+	float: left;
+	/*padding: 10px;*/
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    z-index: 1;
+}
+
+.sub-menu a:hover {
+	/*margin-top: 2px;*/
+	background-color: #999;
+}
+
+.menu-item-has-children:hover .sub-menu {
+    display: block;
+}
+
+nav div ul li a:link,
+nav div ul li a:visited {
+	display: block;
+	padding: 10px 18px;
+	border: 1px solid #BBB;
+}
+nav div ul li a {
+	margin-right: 5px;
+}
+nav div {
+	margin-top: 2px;
+	/*border-bottom: 1px solid #999;*/
+}
+.site-nav {
+	padding-bottom: 1px;
+	border-bottom: 1px solid #999;
+}
+
+nav div ul li.current-menu-item a:link,
+nav div ul li.current-menu-item a:visited{
+	background-color: #006ec3;
+	color: white;
+}
+
+/* Post Page layout */
+
+article.page h2 {
+	font-family: san-serif;
+	font-size: 200%;
+}
+
+article.single h2 {
+	font-family: san-serif;
+	font-size: 300%;
+}
+
+footer.site-footer {
+	clear: both;
+	text-align: center;
+	background-color: #dcfdff;
+	margin-top: 30px;
+	border-top: 2px solid #999;
+}
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+/*Introduction Page*/
+/* Two Column Page Title and Content */
+
+div.title-column {
+	width: 30%;
+	float: left;
+	color: #4cbfd4;
+}
+
+div.content-column {
+	/*margin-left: 5%;*/
+	width: 65%;
+	float: right;
+}
+
+/* Index Page Columns */
+
+/* Main-Cloumn */
+.main-column {
+	width: 70%;
+	float: left;
+}
+
+/* Secondary Column */
+.secondary-column {
+	width: 25%;
+	float: right;
+}
+
+/* Footer Widgets Columns */
+div.footer-widgets {
+	box-sizing: border-box;
+	/*border-top: 1px dotted #333;*/
+}
+div.footer-widgets {
+	margin-top: 2em;
+}
+div.footer-widget-area {
+	width: 25%;
+	float: left;
+	padding-right: 1.5em;
+	box-sizing: border-box;
+}
+
+div.widget-item label {
+	position: absolute;
+	left: -9999px;
+}
+div.widget-item #s {
+	margin-top: 2em;
+	width: 60%;
+	vertical-align: top;
+	padding: 0.3em 0;
+}
+div.widget-item #searchsubmit {
+	margin-top: 2em;
+	width: 35%;
+	float: right;
+	border: none;
+	background-color: #006ec3;
+	color: #fff;
+	padding: 0.5em 0.1em;
+	vertical-align: top;
+}
+
+.footer-widget-area:before, .footer-widget-area:after {
+	content: "";
+	display: table;
+}
+
+.footer-widget-area:after {
+	clear: both;
+}
+
+/* Template Styling Info Box */
+
+div.info-box {
+	width: 30%;
+	float: right;
+	/*Top Right Bottom Left*/
+	margin: 0 10px 30px 0;
+	padding: 20px;
+	background-color: #EEE;
+}
+
+div.info-box h4 {
+	margin-bottom: 6px;
+}
+
+div.info-box p {
+	font-size: 85%;
+}
+
+/* Site Search */
+
+div.site-search {
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+div.site-search label {
+	position: absolute;
+	left: -9999px;
+}
+
+div.site-search #searchsubmit {
+	border: none;
+	background-color: #006ec3;
+	color: #fff;
+	padding: 5px 10px;
+	vertical-align: top;
+}
+
+div.site-search #s {
+	vertical-align: top;
+	padding: 3px 0;
+}
+
+/* Footer Menu */
+
+.site-footer div.menu-footer-menu-container ul {
+	margin: 0;
+	padding: 0;
+}
+
+.site-footer div.menu-footer-menu-container ul:before, .site-footer div.menu ul:after {
+	content: "";
+	display: table;
+}
+
+.site-footer div.menu-footer-menu-container ul {
+	clear: both;
+}
+
+.site-footer div.menu-footer-menu-container ul li {
+	list-style: none;
+	overflow: hidden;
+	float: left;
+	padding: 5px;
+}
+
+.children {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    z-index: 1;
+}
+/* 
+.page_item_has_children:hover .children {
+    display: block;
+	padding: 3px;
+	background-color: transparent;
+} */
+
+.page-post-content ul li {
+	padding: 5px;
+}
+
+/* Template Part Children Link */
+
+.children-links a:link,
+.children-links a:visited {
+	text-decoration: none;
+}
+
+span.parent-link a {
+	color: #006ec3;
+	padding-right: 10px;
+}
+
+.children-links li{
+	float: left;
+	margin-left: 5px;
+	padding-left: 15px;
+	text-decoration: none;
+	list-style: none;
+}
+.children-links li:first-of-type {
+	border-left: 2px solid #000;
+}
+.parent-link {
+	font-weight: bold;
+	float: left;
+}
+
+.parent-link a:link,
+.parent-link a:visited {
+	color: #006ec3;
+}
+
+.post-template {
+	margin: 0;
+	padding: 0;
+}
+
+.post-template-post-title a {
+	color: #4cbfd4;
+}
+
+/* Post Format Gallery */
+article.post-gallery {
+	padding-bottom: 5%;
+	background-color: transparent;
+	/*border: none;*/
+	color: #000;
+}
+
+article.post-gallery img {
+	/*width: 60%;*/
+	height: 90px;
+}
+
+/* Post Information */
+
+.post-info {
+	margin: 0;
+	padding: 0;
+	font-size: 80%;
+	color: #222;
+}
+
+.post-info:hover {
+	color: #555;
+}
+
+.post-info a:hover {
+	color: #0050a5;
+}
+
+.post-info a {
+	font-weight: bold;
+	font-size: 110%;
+	color: #006ec3;
+}
+p.post-info {
+	padding-bottom: 5px;
+}
+a.post-tags{
+	color: #333;
+	font-weight: bold;
+	font-size: 120%;
+	padding-right: 5px;
+	font-weight: normal;
+}
+
+iframe {
+	border-radius: 30px;
+	width: 100%;
+}
+
+/* News Part */
+
+h1.news-title{
+	color: #5c7d85;
+	font-family: Crimson Text;
+	letter-spacing: 0.05em;
+	line-height: 1.2em;
+	/*border-bottom: 2px dotted #006ec3;*/
+}
+
+div.news-detail h2{
+	margin-top: 10%;
+}
+div.news-detail p {
+	color: #333;
+	text-align: justify;
+}
+.news-consequences-impact{
+	font-family: Markazi Text;
+	font-size: 1.3em;
+	border: 1px solid #333;
+	padding: 0.5em;
+}
+
+.news-navigation {
+	margin-top: 20%;
+	margin-bottom: 20%;
+}
+
+p.news-story {
+	font-family: Artifika;
+	font-size: 1em;
+	margin-bottom: 2.5em;
+}
+
+
+div.news-slide-description {
+	margin-top: 0.5%;
+	font-family: Markazi Text;
+	font-size: 150%;
+	background-color: #FFF5CB;
+	padding: 20px;
+	letter-spacing: .05em;
+	text-align: center;
+	line-height: 1.5em;
+	height: 50%;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, .1);
+}
+
+
+/* Sidebar */
+
+div.widget-item {
+	border-top: 1px solid #333;
+}
+
+div.widget-item h2 {
+	color: #999;
+}
+div.sidebar-profile {
+	margin-top: 10%;
+}
+div.profile h3{
+	line-height: 1px;
+}
+div.profile {
+	border-radius: 2px;
+	background-color: #444;
+	padding-bottom: 5%;
+}
+
+div.widget-item h2, div.widget-item li {
+	text-indent: 5%;
+	list-style: none;
+}
+
+div.profile, div.profile a {
+	padding-right: 5%;
+	color: #999;
+	text-align: center;
+}
+img.profile-img {
+	border: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 5%;
+	border-radius: 100%;
+}
+
+div.profile a.google:hover {
+	color: #a50000;
+}
+
+div.profile a.twitter:hover {
+	color: #3539b1;
+}
+
+div.profile a.facebook:hover {
+	color: #0006c3;
+}
+
+
+
+
+

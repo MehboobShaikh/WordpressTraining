@@ -1,0 +1,39 @@
+/* 
+
+Theme Name: First Theme Child
+Author: Mehboob Shaikh
+Author URI: https://www.twitter.com/mehboob_siraj
+Template: firsttheme
+Version: 1.0
+
+ */
+
+ article.child-theme-single {
+ 	background-color: #c2d0733b;
+ 	box-sizing: border-box;
+ 	border: 0;
+ 	border-radius: 12px;
+ 	padding-bottom: 1%;
+ }
+ div.ct-single-post-title {
+ 	padding-left: 2%;
+ }
+ div.ct-single-post-content {
+ 	overflow: hidden;
+ 	padding-left: 5%;
+ 	margin-right: 2%;
+ }
+
+ div.ct-single-post-title h2 {
+	color: #0060a5;
+ }
+
+ #left {
+ 	width: 47%;
+ 	float: left;
+ }
+
+ #right {
+ 	width: 47%;
+ 	float: right;
+ }
