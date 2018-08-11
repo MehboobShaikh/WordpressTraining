@@ -1,0 +1,8 @@
+[
+    {
+        "title": "Font Size",
+        "type": "item",
+        "selector": "p",
+        "styles": "font-size:\\'%value"
+    }
+]

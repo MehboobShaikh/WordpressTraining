@@ -563,7 +563,7 @@ FILE NAME 		=> 	Hyphen( - )
     return $buttons;
 }
 // Register our callback to the appropriate filter
-add_filter( 'mce_buttons', 'add_style_select_buttons' );
+// add_filter( 'mce_buttons', 'add_style_select_buttons' );
 
 
 
@@ -576,5 +576,55 @@ add_filter( 'mce_buttons', 'add_style_select_buttons' );
 	//80 percent in below example
 	// add_filter( 'jpeg_quality', create_function( '', 'return 80;' ) );
 
+
+//======================================== WISIBIK EDITOR ==============================================
+
+function wpb_mce_buttons_2($buttons) {
+    array_unshift($buttons, 'styleselect');
+    return $buttons;
+}
+add_filter('mce_buttons_2', 'wpb_mce_buttons_2');
+
+
+
+
+function my_mce_before_init_insert_formats( $init_array ) {  
+
+	$style_formats = array(
+		array(  
+            'title' => 'Content Block',  
+            'block' => 'span',  
+            'classes' => 'content-block',
+            'wrapper' => true,
+             
+        ),  
+        array(  
+            'title' => 'Blue Button',  
+            'block' => 'span',  
+            'classes' => 'blue-button',
+            'wrapper' => true,
+        ),
+        array(  
+            'title' => 'Red Button',  
+            'block' => 'span',  
+            'classes' => 'red-button',
+            'wrapper' => true,
+        ),
+    );
+
+    $init_array['style_formats'] = json_encode( $style_formats );
+
+    return $init_array;  
+   
+} 
+// Attach callback to 'tiny_mce_before_init' 
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
+
+
+
+function my_theme_add_editor_styles() {
+    add_editor_style( 'editor-style.css' );
+}
+add_action( 'init', 'my_theme_add_editor_styles' );
 
 ?>

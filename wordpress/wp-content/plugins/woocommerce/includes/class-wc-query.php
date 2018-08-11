@@ -403,8 +403,10 @@ class WC_Query {
 
 		// Store reference to this query.
 		self::$product_query = $q;
+		// echo "<h1>SMS".var_dump($q)."</h1>";
+		// $a=10;
 
-		do_action( 'woocommerce_product_query', $q, $this );
+		do_action( 'woocommerce_product_query', $q, $this);
 	}
 
 	/**

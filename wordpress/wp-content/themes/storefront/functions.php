@@ -10,6 +10,7 @@
  */
 $theme              = wp_get_theme( 'storefront' );
 $storefront_version = $theme['Version'];
+global $br;
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -78,20 +79,35 @@ add_action('woocommerce_login_form_end','add_input_field');
 
 
 
+function get_brand_name(){
+		if(is_user_logged_in()){
+			session_start();
+			return $_SESSION['brand'];
+		}
+		else{
+			return '';
+		}
+
+}
+
+
 function wc_custom_user_redirect( $redirect, $user ) {
 
-	
+	// global $br;
 	$role = $user->roles[0];
+	// $brand_name = set_or_get_brand_name($_POST['brand']);//set brand name
 	// $dashboard = admin_url();
 	$shop = get_permalink( wc_get_page_id( 'shop' ) );
 	if( $role == 'administrator' ) {
 		//Redirect administrators to the shop page
 		$redirect = $shop;
+		session_start();
+		$_SESSION['brand'] = $_POST['brand'];
 	}
 	return $redirect;
 }
 
-// add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
+add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
 
 /*
 function set_columns($columns){
@@ -113,3 +129,24 @@ $args = array(
 
 // add_filter('woocommerce_product_object_query_args','chnge_query_shop');
 
+
+
+function dynamic_query($q){
+	// global $br;
+	// var_dump($br);
+	$q->set('meta_key','product_brand');
+	$q->set('meta_value',get_brand_name());
+	// echo "<h1>SMS".var_dump(get_brand_name())."</h1>";
+	// echo "<h1>SMS".var_dump($b)."</h1>";
+	// var_dump($_SESSION['brand']);
+
+}
+add_action('woocommerce_product_query','dynamic_query');
+
+
+
+function end_the_session(){
+	session_unset();
+	session_destroy();
+}
+add_action('wp_logout','end_the_session');
