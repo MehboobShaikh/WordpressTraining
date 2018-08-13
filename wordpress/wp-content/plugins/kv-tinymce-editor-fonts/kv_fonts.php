@@ -157,7 +157,8 @@ add_action('admin_menu', 'kv_admin_submenu_kv_fonts');
 
 
 function kv_add_font_family_size($buttons) {
-?> <label for="font-size">Font-Size<input type="text" id="font-size-cng" placeholder="Enter font size in px"></label><script>
+?> <label for="font-size">Font-Size<input type="text" id="font-size-cng" value="" placeholder="Enter font size in px"></label><script>
+		
 jQuery("#font-size-cng").blur(function(){
 // 	var temp_id = "#";
 // 	var temp_id = "#" + $("div").find('[aria-checked=true]')[0].id + "-text";
@@ -173,24 +174,38 @@ jQuery("#font-size-cng").blur(function(){
 // 	jQuery("#font-size-cng").val(text);
 // 	
 // 	
-	var getSelected = function(){
-    var t = '';
-    if(window.getSelection) {
-        t = window.getSelection();
-    } else if(document.getSelection) {
-        t = document.getSelection();
-    } else if(document.selection) {
-        t = document.selection.createRange().text;
-    }
-    return t;
-}
-
-$("body").select(function(eventObject) {
-	eventObject.preventDefault();
-//     alert(getSelected().toString());
-		$("#font-size-cng").val(getSelected().toString());
-});
+// 	var iframe = document.getElementById("content_ifr");
+// 	var selectedText = iframe.contentWindow.getSelection();
+// 	if(selectedText){
+// 		var valu = ''
+// 	valu = $(this).val();
 	
+// 	var container = $(selectedText.anchorNode.parentNode);
+//     var wrappedText = '<span style="font-size:'+valu+'px">' + selectedText + '</span>'
+//     container.html(container.html().replace(selectedText, wrappedText));
+// 	}
+	
+    var valu = $(this).val();
+	var iframe = document.getElementById("content_ifr");
+	var selectedText = iframe.contentWindow.getSelection();
+	
+//     span.style.color = "green";
+//     
+//     <span id="_mce_caret" data-mce-bogus="1" data-mce-type="format-caret"><span style="font-size: 32px;" data-mce-style="font-size: 32px;">&#65279;</span></span>
+    
+		
+    
+    if (selectedText!='') {
+		var span = document.createElement("span");
+		span.style.fontSize = ""+valu+"px";
+        var sel = selectedText;
+        if (sel.rangeCount) {
+            var range = sel.getRangeAt(0).cloneRange();
+            range.surroundContents(span);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    }
 	
 	
 });
