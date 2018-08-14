@@ -1,0 +1,58 @@
+.c-slide {
+  width: 750px;
+  margin: 10px auto;
+}
+.slider-nav {
+  .slick-slide {
+    display: block;
+    height: 150px;
+    text-align: center;
+    color: white;
+  }
+  &.slick-initialized .slick-slide {
+    display: inline-block;
+  }
+}
+.slider-thumbs {
+  display: none;
+  &.slick-initialized {
+    display: block;
+    text-align: center;
+    & .slick-track {
+      position: relative;
+      text-align: center;
+    }
+    .slick-slide {
+      display: inline-block;
+      float: none;
+      border: 1px solid white;
+      margin: 10px 10px;
+    }
+    .slick-slide {
+      height: auto;
+      max-width: 100%;
+      outline: none;
+    }
+    .slick-current {
+      border: 2px solid blue;
+    }
+  }
+}
+.pre {
+  width: 25px !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  margin: auto;
+}
+.next {
+  width: 25px !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  margin: auto;
+}

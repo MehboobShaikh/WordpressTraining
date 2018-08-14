@@ -19,7 +19,7 @@
 					<?php
 						$args = array(
 							'child_of' => get_top_ancestor_id(),
-							'title_li' => ''
+							'title_li' => '',
 						);
 					
 						wp_list_pages($args);

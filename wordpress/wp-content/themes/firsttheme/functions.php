@@ -627,4 +627,41 @@ function my_theme_add_editor_styles() {
 }
 add_action( 'init', 'my_theme_add_editor_styles' );
 
+
+
+//==================================== CUSTOM TAXONOMY ===============================================
+
+
+function create_custom_taxonomy(){
+	//For News
+	register_taxonomy(
+		'news-category',
+		'news',
+		array(
+			'label' => __('News Categories','firsttheme'),
+			'rewrite' => array( 'slug' => 'news-category' ),
+            'hierarchical' => true,
+            'show_admin_column' => true,
+		)
+	);
+
+	//For Movies
+	register_taxonomy(
+		'movies-category',
+		'movies',
+		array(
+			'label' => __('Movie Categories','firsttheme'),
+			'rewrite' => array('slug' => 'movies-category'),
+			'hierarchical' => true,
+		)
+	);
+}
+
+add_action('init','create_custom_taxonomy');
+
+
+
+
+
+
 ?>

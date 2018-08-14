@@ -1,6 +1,0 @@
-#Authentication
-#Authentication
-AuthType Basic
-AuthName "Login Here to Access"
-AuthUserFile .htpasswd
-require valid-user
