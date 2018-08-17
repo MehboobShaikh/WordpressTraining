@@ -50,7 +50,7 @@ function welcome_css() {
 
 add_action( 'admin_head', 'welcome_css' );
 
-//========================================= EDIT Howdy in ADMIN BAR =============================================
+//======================================= EDIT Howdy in ADMIN BAR ========================================
 
 	function change_howdy_message($text) {
 	$text = str_replace('Howdy', 'Hi', $text);
