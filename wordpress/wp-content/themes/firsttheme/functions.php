@@ -31,6 +31,7 @@ FILE NAME 		=> 	Hyphen( - )
 		// Google font file 
 		wp_enqueue_style('font-style',get_template_directory_uri().'/font/font-style.css');
 		wp_enqueue_style('firsttheme-style',get_template_directory_uri().'/style.css');
+		
 		// wp_enqueue_style('movie',get_template_directory_uri().'/movie.css');
 		//jquery is included
 		wp_enqueue_script('jquery');
@@ -660,8 +661,39 @@ function create_custom_taxonomy(){
 add_action('init','create_custom_taxonomy');
 
 
+// =========== DISABLE EDITOR ON CHILD PAGES OF PARENT WHOSE TITLE AS -> PAGE USING ACF <- ===========
 
 
+function hide_editor() {
+  // Get the Post ID.
+  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+  if( !isset( $post_id ) ) return;
+  
+  $post_parent_id = wp_get_post_parent_id( $post_id );
+  if( !isset( $post_parent_id ) ) return;
 
+  // Hide the editor on the parent page titled 'Page Using Acf'
+  $page_parent_title = get_the_title($post_parent_id);
+  if($page_parent_title == 'Page Using Acf'){ 
+    remove_post_type_support('page', 'editor');
+  }
+}
+
+add_action( 'admin_init', 'hide_editor' );
+
+// ======================================= SLICK SLIDER ============================================
+	
+function add_scripts_for_slick_slider(){
+	wp_enqueue_style('slick-slider-one','https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css');
+	wp_enqueue_style('slick-slider-two','https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css');
+	wp_enqueue_script('slick-slider-script-one','https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js');
+}
+add_action('wp_enqueue_scripts','add_scripts_for_slick_slider');
+
+
+function add_my_js_for_slick_slider(){
+	wp_enqueue_script('my-slick-slider-script',get_template_directory_uri().'/js/slick-slider.js');
+}
+add_action('wp_footer','add_my_js_for_slick_slider');
 
 ?>

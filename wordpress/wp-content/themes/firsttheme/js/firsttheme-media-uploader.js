@@ -18,6 +18,7 @@ jQuery(document).ready(function($){
 		});
 
 		mediaUploader.on('select',function(){
+			// console.log(mediaUploader.state().get('selection').first().toJSON());
 			attachment = mediaUploader.state().get('selection').first().toJSON();
 			$('#profile_img').val(attachment.url);
 		});

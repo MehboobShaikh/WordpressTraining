@@ -42,8 +42,8 @@
 	<a class="clearfix copyright" style="margin-right: 10%;float: right;" href="<?php echo home_url(); ?>"><?php echo get_theme_mod('copyright'); ?></a>
 
 </footer>
+<?php wp_footer(); ?>
 </div>
 
-<?php wp_footer(); ?>
 </body>
 </html>
