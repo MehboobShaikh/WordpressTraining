@@ -96,6 +96,13 @@ FILE NAME 		=> 	Hyphen( - )
 		'gallery',
 		'link',
 	));
+	// Post Thumbnails
+	add_theme_support('post-thumbnails');
+	// Custom Sizes of Image
+	add_image_size('large', 700, '', true); // Large Thumbnail
+    add_image_size('medium', 250, '', true); // Medium Thumbnail
+    add_image_size('small', 120, '', true); // Small Thumbnail
+    add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
 	 // ====================================== WIDGET LOCATION =================================
 
@@ -548,10 +555,10 @@ FILE NAME 		=> 	Hyphen( - )
 
 	//AJAX ACTION on FILTER
 
-	add_action('wp_ajax_filter_ajax_action','filter_ajax_action');
-	add_action('wp_ajax_nopriv_filter_ajax_action','filter_ajax_action');
+	add_action('wp_ajax_filter_ajax_action','filter_post_ajax_action');
+	add_action('wp_ajax_nopriv_filter_ajax_action','filter_post_ajax_action');
 
-	function filter_ajax_action(){
+	function filter_post_ajax_action(){
 		require get_template_part('filter-content');
 	}
 

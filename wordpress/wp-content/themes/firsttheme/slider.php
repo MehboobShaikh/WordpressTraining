@@ -60,8 +60,7 @@ a.control_next {
 }
 
     </style>
-
-</head>
+    
 <div id="slider">
   <a class="control_next">></a>
   <a class="control_prev"><</a>
@@ -75,7 +74,16 @@ a.control_next {
 
                 if(get_sub_field('media_image')){
                     $media_image = get_sub_field('media_image');
-                    //echo var_dump($media_image['url']);?>
+
+                  /*
+                  *  //passing php variable to javascript usin JSON 
+                  *  echo "<script>";
+                  *  echo 'var medimg = ' . json_encode($media_image, JSON_PRETTY_PRINT) . ';';
+                  *  echo "</script>";
+                  *  echo "<script>console.log(medimg);</script>";
+                  */
+
+                    // echo var_dump($media_image['url']);?>
     <li class="item"><img src="<?php echo $media_image['url']; ?>"></li>
     <!-- <li class="item"><img src="<?php echo get_template_directory_uri().'/img/032.jpg' ?>"></li> -->
     <!-- <li class="item"><img src="<?php echo get_template_directory_uri().'/img/033.jpg' ?>"></li> -->

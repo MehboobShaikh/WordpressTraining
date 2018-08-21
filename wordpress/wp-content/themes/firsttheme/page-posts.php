@@ -20,6 +20,7 @@ version: 1.0
 	    <!-- the loop -->
 	    <?php while ($wp_myblog_query->have_posts()) : $wp_myblog_query->the_post(); ?>
 
+	        <?php //echo get_post_format(); ?>
 	        <?php get_template_part('content',get_post_format()); ?>
 
 	    <?php endwhile; ?>

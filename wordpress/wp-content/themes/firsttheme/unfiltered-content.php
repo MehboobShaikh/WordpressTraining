@@ -1,6 +1,6 @@
 <?php
 	$wp_query = new WP_Query(array('post_type'=>'post'));
-	
+	// $post
 		if($wp_query->have_posts()) : 
 			while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 			
@@ -34,7 +34,7 @@
 
 			</article>
 
-		<?php endwhile;
+		<?php endwhile; wp_reset_postdata();
 
 		else :
 			echo '<p>There is no Post Found</p>';

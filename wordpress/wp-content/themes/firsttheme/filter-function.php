@@ -13,6 +13,7 @@ $('.filter').click( function(){
 	// for creating category parameters join & separated them by the comma and pass it as a single string 
     var cat_parameters;
     cat_parameters = chkArray.join(',');
+    // console.log(typeof(cat_parameters));
 
     // console.log($(this).val());
 
