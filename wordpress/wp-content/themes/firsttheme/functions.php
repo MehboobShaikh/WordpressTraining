@@ -637,7 +637,7 @@ add_action( 'init', 'my_theme_add_editor_styles' );
 
 
 
-//==================================== CUSTOM TAXONOMY ===============================================
+//========================================= CREATE CUSTOM TAXONOMY ======================================
 
 
 function create_custom_taxonomy(){
@@ -668,7 +668,7 @@ function create_custom_taxonomy(){
 add_action('init','create_custom_taxonomy');
 
 
-// =========== DISABLE EDITOR ON CHILD PAGES OF PARENT WHOSE TITLE AS -> PAGE USING ACF <- ===========
+// =========== DISABLE EDITOR ON CHILD PAGES WHOSE PARENT TITLE AS -> PAGE USING ACF <- ===========
 
 
 function hide_editor() {
@@ -703,4 +703,182 @@ function add_my_js_for_slick_slider(){
 }
 add_action('wp_footer','add_my_js_for_slick_slider');
 
+
+
+
+
+
+
+// ========================== ADD DROPDOWN IN ADMIN FOR CUSTOMIZE FILTERING ===========================
+
+/*POSTS
+===============
+	GUI PART
+===============
+*/
+
+//defining the filter that will be used so we can select posts by 'author'
+function create_dropdown_for_author_list_in_admin(){
+
+    //execute only on the 'post' content type
+    global $post_type;
+    if($post_type == 'post'){
+
+        //get a listing of all users that are 'author'
+        $user_args = array(
+            'show_option_all'   => 'All Users',
+            'orderby'           => 'display_name',
+            'order'             => 'ASC',
+            'name'              => 'aurthor_admin_filter',
+            'include_selected'  => true
+        );
+
+        //determine if we have selected a user to be filtered by already
+        if(isset($_GET['aurthor_admin_filter'])){
+            //set the selected value to the value of the author   ID is Received
+            $user_args['selected'] = (int)sanitize_text_field($_GET['aurthor_admin_filter']);
+        }
+
+        //display the users as a drop down
+        wp_dropdown_users($user_args);
+        //below code is for tags
+        // wp_dropdown_categories(array('taxonomy'=> 'post_tag','hide_empty' => 0, 'name' => 'my_tags'));
+    }
+
+}
+add_action('restrict_manage_posts','create_dropdown_for_author_list_in_admin');
+
+
+/*POSTS
+=====================
+	FILTERING PART
+=====================
+*/
+
+
+//restrict the posts by an author filter
+function filter_dropdown_for_author_list_in_admin($query){
+
+    global $post_type, $pagenow; 
+
+    //if we are currently on the edit screen of the post type given below
+    if($pagenow == 'edit.php' && $post_type == 'post'){
+
+        if(isset($_GET['aurthor_admin_filter'])){	//variable received from GUI we have named up side
+
+            //set the query variable for 'author' to the desired value
+            $author_id = sanitize_text_field($_GET['aurthor_admin_filter']);
+
+            //if the author is not 0 (meaning all)
+            if($author_id != 0){
+                $query->query_vars['author'] = $author_id;
+            }
+
+        }
+    }
+}
+
+add_action('pre_get_posts','filter_dropdown_for_author_list_in_admin');
+
+
+
+
+
+/*CUSTOM-POST-TYPE { NEWS }
+===============
+	GUI PART
+===============
+*/
+
+//defining the filter that will be used so we can select posts by News Categories
+function create_dropdown_for_news_category_in_admin(){
+
+    //execute only on the 'post' content type given below i.e. News
+    global $post_type;
+    if($post_type == 'news'){
+
+        //get a listing of all news categories
+        $news_args = array(
+            'show_option_all'   => 'All News',
+            'orderby'			=> 'Name',
+            'order'             => 'ASC',
+            'name'              => 'news_admin_filter',
+            'taxonomy'			=> 'news-category',
+            'include_selected'  => true
+        );
+
+        //determine if we have selected a News Category to be filtered by already
+        if(isset($_GET['news_admin_filter'])){
+            //set the selected value to the value of the News Category
+            $news_args['selected'] = sanitize_text_field($_GET['news_admin_filter']);
+        }
+
+        //display the News Catogories as a drop down
+        wp_dropdown_categories($news_args);
+    }
+
+}
+add_action('restrict_manage_posts','create_dropdown_for_news_category_in_admin');
+
+
+/*CUSTOM-POST-TYPE
+=====================
+	FILTERING PART
+=====================
+*/
+
+//restrict the posts by the chosen news category/taxonomy
+function add_news_filter_to_posts($query){
+
+    global $post_type, $pagenow;
+
+    //if we are currently on the edit screen of the post type news
+    if($pagenow == 'edit.php' && $post_type == 'news'){
+        if(isset($_GET['news_admin_filter'])){
+
+            //get the desired news category
+            $news_category = sanitize_text_field($_GET['news_admin_filter']);
+            //if the news category is not 0 (which means all)
+            if($news_category != 0){
+            	// var_dump($news_category);
+                $query->query_vars['tax_query'] = array(
+                    array(
+                        'taxonomy'  => 'news-category',
+                        'field'     => 'ID',
+                        'terms'     => array($news_category)
+                    )
+                );
+
+            }
+        }
+    }   
+}
+add_action('pre_get_posts','add_news_filter_to_posts');
+
+
+
+
+
+// =============================== REMOVING FILTERS FROM ADMIN ======================
+
+
+add_action( 'load-edit.php', 'no_category_dropdown' );
+function no_category_dropdown() {
+
+    //below filter removes CTEGORY WISE
+    // add_filter( 'wp_dropdown_cats', '__return_false' );
+
+    //below filter removes BULK ACTIONS
+    // add_filter( 'bulk_actions-' . 'edit-post', '__return_empty_array' );
+
+    //below filter removes ALL DATES
+    // add_filter('months_dropdown_results', '__return_empty_array');
+}
+
+
+
+
+
+
 ?>
+
