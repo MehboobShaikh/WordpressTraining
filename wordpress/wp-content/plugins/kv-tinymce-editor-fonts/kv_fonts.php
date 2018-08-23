@@ -157,7 +157,9 @@ add_action('admin_menu', 'kv_admin_submenu_kv_fonts');
 
 
 function kv_add_font_family_size($buttons) {
-?> <label for="font-size">Font-Size<input type="text" id="font-size-cng" value="" placeholder="Enter font size in px"></label><script>
+?> 
+<!-- <label for="font-size">Font-Size<input type="text" id="font-size-cng" value="" placeholder="Enter font size in px"></label> -->
+<!-- <script>
 		
 jQuery("#font-size-cng").blur(function(){
 // 	var temp_id = "#";
@@ -209,7 +211,8 @@ jQuery("#font-size-cng").blur(function(){
 	
 	
 });
-</script> <?php
+</script> -->
+<?php
 	 $buttons[] = 'fontselect';
 	 $buttons[] = 'fontsizeselect';
 	 

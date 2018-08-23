@@ -228,42 +228,7 @@ class Core {
 		/*
 		 * Array of configuration settings.
 		 */
-		$config = apply_filters( 'wp_mail_smtp_core_recommendations_config', array(
-			'id'           => 'wp-mail-smtp',          // Unique ID for hashing notices for multiple instances of TGMPA.
-			'menu'         => 'wp-mail-smtp-install-plugins', // Menu slug.
-			'parent_slug'  => 'plugins.php',            // Parent menu slug.
-			'capability'   => 'manage_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-			'has_notices'  => true,                    // Show admin notices or not.
-			'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-			'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-			'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-			'message'      => '',                      // Message to output right before the plugins table.
-			'strings'      => array(
-				/* translators: 1: plugin name(s). */
-				'notice_can_install_recommended'  => _n_noop(
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'wp-mail-smtp'
-				),
-				/* translators: 1: plugin name(s). */
-				'notice_can_activate_recommended' => _n_noop(
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'Thanks for installing WP Mail SMTP. We also recommend using %1$s. It\'s the best drag & drop form builder, has over 1 million active installs, and over 2000+ 5 star ratings.',
-					'wp-mail-smtp'
-				),
-				'install_link'                    => _n_noop(
-					'Install WPForms Now',
-					'Begin installing plugins',
-					'wp-mail-smtp'
-				),
-				'activate_link'                   => _n_noop(
-					'Activate WPForms',
-					'Begin activating plugins',
-					'wp-mail-smtp'
-				),
-				'nag_type'                        => 'notice-info',
-			),
-		) );
+		
 
 		\WPMailSMTP\tgmpa( (array) $plugins, (array) $config );
 	}

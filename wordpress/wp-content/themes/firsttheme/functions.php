@@ -759,10 +759,10 @@ add_action('restrict_manage_posts','create_dropdown_for_author_list_in_admin');
 //restrict the posts by an author filter
 function filter_dropdown_for_author_list_in_admin($query){
 
-    global $post_type, $pagenow; 
+    global $post_type, $current_page; 
 
     //if we are currently on the edit screen of the post type given below
-    if($pagenow == 'edit.php' && $post_type == 'post'){
+    if($current_page == 'edit.php' && $post_type == 'post'){
 
         if(isset($_GET['aurthor_admin_filter'])){	//variable received from GUI we have named up side
 
@@ -830,10 +830,10 @@ add_action('restrict_manage_posts','create_dropdown_for_news_category_in_admin')
 //restrict the posts by the chosen news category/taxonomy
 function add_news_filter_to_posts($query){
 
-    global $post_type, $pagenow;
+    global $post_type, $current_page;
 
     //if we are currently on the edit screen of the post type news
-    if($pagenow == 'edit.php' && $post_type == 'news'){
+    if($current_page == 'edit.php' && $post_type == 'news'){
         if(isset($_GET['news_admin_filter'])){
 
             //get the desired news category
@@ -859,7 +859,7 @@ add_action('pre_get_posts','add_news_filter_to_posts');
 
 
 
-// =============================== REMOVING FILTERS FROM ADMIN ======================
+// ================================== REMOVING FILTERS FROM ADMIN ===================================
 
 
 add_action( 'load-edit.php', 'no_category_dropdown' );
@@ -874,6 +874,61 @@ function no_category_dropdown() {
     //below filter removes ALL DATES
     // add_filter('months_dropdown_results', '__return_empty_array');
 }
+
+
+
+// ====================================== CREATE OPTION PAGE ========================================
+
+
+
+if( function_exists('acf_add_options_page') ) {
+
+$args = array(
+	'page_title' => 'Options',
+	'menu_title' => 'My Options',
+	'menu_slug' => 'firsttheme-options',
+	'capability' => 'edit_posts',
+	// 'parent_slug' => '',
+	// 'icon_url' => false,
+	'redirect' => false,
+	'update_button'		=> __('Save', 'acf'),
+	'updated_message'	=> __("Options Saved", 'acf'),
+);
+
+acf_add_options_page( $args );
+// acf_add_options_page('Theme Settings');
+}
+
+if( function_exists('acf_add_options_page') ) {
+	// OPTION PAGE THEME SETTING
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'post_id'		=> 'theme_settings_1',
+		'update_button'		=> __('Save Options', 'acf'),
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	// SUB PAGE HEADER
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Header Settings',
+		'menu_title'	=> 'Header',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	// SUB PAGE FOOTER
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Footer Settings',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+}
+
+
+
+
+
 
 
 

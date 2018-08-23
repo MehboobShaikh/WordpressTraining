@@ -20,27 +20,29 @@
         	// check if the nested repeater field has rows of data
         	if( get_sub_field('display_images') ): ?>
 
-        		<div class="school-slider">
-				  <div class="slider slider-for-school">
 
-			 	<?php // echo '<ul>';
-			 	// var_dump( get_sub_field('school_images') );
+				<!-- SLIDER CONTAINER -->
+        		<!-- <div class="school-slider"> -->
+        			
+				<!-- SLIDER STARTS -->
+					<div class="slider slider-for-school">
 
-			 	// loop through the rows of data
-			    while ( have_rows('school_images') ) : the_row(); ?>
+				 	<?php // echo '<ul>';
+				 	// var_dump( get_sub_field('school_images') );
 
-					<?php // var_dump(get_sub_field('image_description')); ?>
-					<!-- SLIDER DIV -->
+				 	// loop through the rows of data
+				    while ( have_rows('school_images') ) : the_row(); ?>
 
-					<div class="school-images"> 
-						<img src="<?php echo get_sub_field('image')['url']; ?>">
-						<span class="school-images-description"><?php echo get_sub_field('image_description'); ?></span>
+						<?php // var_dump(get_sub_field('image_description')); ?>
+
+						<div class="school-images"> 
+							<img src="<?php echo get_sub_field('image')['url']; ?>">
+							<span class="school-images-description"><?php echo get_sub_field('image_description'); ?></span>
+						</div>
+
+						<?php endwhile; ?>
 					</div>
-
-
-				<?php endwhile; ?>
-
-				</div></div>
+				<!-- </div> -->
 
 				<?php // echo '</ul>';
 

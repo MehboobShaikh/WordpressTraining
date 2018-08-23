@@ -19,7 +19,7 @@ function welcome_message() {
 	return $msg;
 }
 
-// This just echoes the chosen line, we'll position it later
+
 function w_message() {
 	$chosen = welcome_message();
 	echo "<div class='user-details notice notice-success'><h4>User Detail</h4><p id='msg'>$chosen</p></div>";

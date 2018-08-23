@@ -14,7 +14,7 @@
 			</div>
 
 			<div class="single-post-content">
-				<?php the_content();
+				<?php //the_content();
 
 				$post_object = get_field('post_object_demo');
 				if($post_object){
@@ -31,6 +31,12 @@
 					}
 					wp_reset_postdata();
 				}
+
+				// Below if is for retriving values from OPTION PAGE
+				if(get_field('developer_name','option')){
+					echo get_field('developer_name','option');
+				}
+
 				//Gives the post views
 				// echo getPostViews(get_the_ID());
 				 ?>

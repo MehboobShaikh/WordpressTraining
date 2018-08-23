@@ -405,7 +405,7 @@ class TGM_Plugin_Activation {
 			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'tgmpa' ),
 		);
 
-		do_action( 'wpms_tgmpa_register' );
+		//do_action( 'wpms_tgmpa_register' );
 
 		/* After this point, the plugins should be registered and the configuration set. */
 
