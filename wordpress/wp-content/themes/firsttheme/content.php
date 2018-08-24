@@ -14,7 +14,7 @@
 				foreach($tags as $tag){
 					$output .= '<a class="post-tags" href="' . get_tag_link($tag->term_id) . '"> #' .$tag->name. '</a> ';
 				}
-
+				// var_dump($output);
 				echo trim($output,$seprate_by);
 			}		
 

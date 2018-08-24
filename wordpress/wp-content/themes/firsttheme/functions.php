@@ -388,13 +388,13 @@ FILE NAME 		=> 	Hyphen( - )
 		NOTE:- To remove redundant name in menu item, as it repeats first item same as parent to remove this we use below SYNTAX
 	*/
 		// 2) SYNTAX => Parent-Slug, Same-Page-Title-as-Parent, Menu-Title, Capability, Parent-Slug, Parent-Function
-		add_submenu_page('firsttheme-menu-settings',__('First Theme Settings Options','firsttheme'),__('Settings','firsttheme'),'manage_options','firsttheme-menu-settings','firsttheme_custom_add_menu_page_settings');
+		// add_submenu_page('firsttheme-menu-settings',__('First Theme Settings Options','firsttheme'),__('Settings','firsttheme'),'manage_options','firsttheme-menu-settings','firsttheme_custom_add_menu_page_settings');
 		// Using above code it will not display the Parent menu name as first child name
 
 
 		// For rest SubMenu Pages create using 1) SYNTAX
 		//SubMenu 1
-		add_submenu_page('firsttheme-menu',__('First Theme CSS Option','firsttheme'),__('Custom CSS','firsttheme'),'manage_options','firsttheme-menu-custom-css','firsttheme_add_sub_menu_page_css');
+		// add_submenu_page('firsttheme-menu',__('First Theme CSS Option','firsttheme'),__('Custom CSS','firsttheme'),'manage_options','firsttheme-menu-custom-css','firsttheme_add_sub_menu_page_css');
 
 
 		// Activate Custom Srttings
@@ -412,13 +412,14 @@ FILE NAME 		=> 	Hyphen( - )
 
 	// This function will return output page of custom setting
 	function firsttheme_custom_add_menu_page_settings(){
+		// var_dump(get_current_screen());
 		require_once(get_template_directory().'/inc/templates/settings-page.php');
 	}
 
 
 	// CUSTOM CSS
 	function firsttheme_add_sub_menu_page_css(){
-
+		// var_dump(get_current_screen());
 	}
 
 //+++++++++++++++++++++++++++++++++++++++++ TAKE A LOOK ON CODE ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -550,7 +551,8 @@ FILE NAME 		=> 	Hyphen( - )
 	add_action('filter_my_categories','filter_post_category_wise');
 
 	function filter_post_category_wise(){
-		get_template_part('filter-function');
+		// get_template_part('filter-function');
+		require_once 'filter-function.php';
 	}
 
 	//AJAX ACTION on FILTER
@@ -559,7 +561,8 @@ FILE NAME 		=> 	Hyphen( - )
 	add_action('wp_ajax_nopriv_filter_ajax_action','filter_post_ajax_action');
 
 	function filter_post_ajax_action(){
-		require get_template_part('filter-content');
+		// require get_template_part('filter-content');
+		require 'filter-content.php';
 	}
 
 
@@ -880,7 +883,7 @@ function no_category_dropdown() {
 // ====================================== CREATE OPTION PAGE ========================================
 
 
-
+/*
 if( function_exists('acf_add_options_page') ) {
 
 $args = array(
@@ -898,13 +901,13 @@ $args = array(
 acf_add_options_page( $args );
 // acf_add_options_page('Theme Settings');
 }
-
+*/
 if( function_exists('acf_add_options_page') ) {
 	// OPTION PAGE THEME SETTING
 	acf_add_options_page(array(
-		'page_title' 	=> 'Theme General Settings',
-		'menu_title'	=> 'Theme Settings',
-		'menu_slug' 	=> 'theme-general-settings',
+		'page_title' 	=> 'First Theme Settings',
+		'menu_title'	=> 'My Settings',
+		'menu_slug' 	=> 'firsttheme-settings',
 		'post_id'		=> 'theme_settings_1',
 		'update_button'		=> __('Save Options', 'acf'),
 		'capability'	=> 'edit_posts',
@@ -912,15 +915,15 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	// SUB PAGE HEADER
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Header Settings',
+		'page_title' 	=> 'First Theme Header Settings',
 		'menu_title'	=> 'Header',
-		'parent_slug'	=> 'theme-general-settings',
+		'parent_slug'	=> 'firsttheme-settings',
 	));
 	// SUB PAGE FOOTER
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Footer Settings',
+		'page_title' 	=> 'First Theme Footer Settings',
 		'menu_title'	=> 'Footer',
-		'parent_slug'	=> 'theme-general-settings',
+		'parent_slug'	=> 'firsttheme-settings',
 	));
 	
 }

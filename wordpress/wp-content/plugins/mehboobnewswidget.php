@@ -9,6 +9,8 @@ Author URI: https://www.twitter.com/mehboob_siraj
 */
 
 function mehboob_news_widget(){ 
+	$currenr_screen = get_current_screen();
+	if($currenr_screen->id == 'dashboard'){
 	// wp_enqueue_script('jquery-my','https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
 	//echo "<div class='user-details notice notice-success'><h4>User Detail</h4><p id='msg'>$chosen</p></div>";?>
 
@@ -66,7 +68,7 @@ function mehboob_news_widget(){
 					            	console.log(typeof(news_content));
 					            	// jQuery('span.mehboob_single_news_title').empty();
 					            	$(function(){
-					            		jQuery("#mehboob_single_news_title").text(news_title);
+					            		jQuery("#mehboob_single_news_title").text(news_title.replace(/[^a-zA-Z ]/g, ""));
 					            		jQuery("#mehboob_single_news_title").attr('href',news_link);
 					            		jQuery("#mehboob_single_news_content").html(news_content);
 					            		jQuery("#mehboob_single_news_date").text(news_date);
@@ -92,7 +94,7 @@ function mehboob_news_widget(){
 	</div>
 
 	<?php
-}
+}}
 add_action( 'admin_head', 'mehboob_news_widget',99 );
 
 function mehboob_news_widget_css(){ ?>

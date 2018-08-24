@@ -33,8 +33,8 @@
 				}
 
 				// Below if is for retriving values from OPTION PAGE
-				if(get_field('developer_name','option')){
-					echo get_field('developer_name','option');
+				if(get_field('developer_name','theme_settings_1')){
+					echo get_field('developer_name','theme_settings_1');
 				}
 
 				//Gives the post views

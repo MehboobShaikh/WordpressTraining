@@ -24,5 +24,4 @@ $('.filter').click( function(){
     });
 });
 
-
 </script>
