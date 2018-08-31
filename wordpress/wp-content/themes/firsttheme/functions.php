@@ -99,7 +99,7 @@ FILE NAME 		=> 	Hyphen( - )
 	// Post Thumbnails
 	add_theme_support('post-thumbnails');
 	// Custom Sizes of Image
-	add_image_size('large', 700, '', true); // Large Thumbnail
+		add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
     add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
@@ -762,10 +762,10 @@ add_action('restrict_manage_posts','create_dropdown_for_author_list_in_admin');
 //restrict the posts by an author filter
 function filter_dropdown_for_author_list_in_admin($query){
 
-    global $post_type, $current_page; 
+    global $post_type, $pagenow; 
 
     //if we are currently on the edit screen of the post type given below
-    if($current_page == 'edit.php' && $post_type == 'post'){
+    if($pagenow == 'edit.php' && $post_type == 'post'){
 
         if(isset($_GET['aurthor_admin_filter'])){	//variable received from GUI we have named up side
 
@@ -803,10 +803,10 @@ function create_dropdown_for_news_category_in_admin(){
         //get a listing of all news categories
         $news_args = array(
             'show_option_all'   => 'All News',
-            'orderby'			=> 'Name',
+            'orderby'						=> 'Name',
             'order'             => 'ASC',
             'name'              => 'news_admin_filter',
-            'taxonomy'			=> 'news-category',
+            'taxonomy'					=> 'news-category',
             'include_selected'  => true
         );
 
@@ -833,10 +833,10 @@ add_action('restrict_manage_posts','create_dropdown_for_news_category_in_admin')
 //restrict the posts by the chosen news category/taxonomy
 function add_news_filter_to_posts($query){
 
-    global $post_type, $current_page;
+    global $post_type, $pagenow;
 
     //if we are currently on the edit screen of the post type news
-    if($current_page == 'edit.php' && $post_type == 'news'){
+    if($pagenow == 'edit.php' && $post_type == 'news'){
         if(isset($_GET['news_admin_filter'])){
 
             //get the desired news category
