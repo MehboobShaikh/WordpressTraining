@@ -75,7 +75,7 @@ sub { bottom: -.25em; }
 /* ================= Common ====================== */
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 ul {
@@ -143,6 +143,45 @@ nav.primary-nav {
   background-color: #297579;
 }
 
+/* =========== Hamburger ========== */
+
+
+nav.primary-nav > a {
+  display: none;
+}
+
+ul.responsive-menu {
+  width: 100%;
+  display: block !important;
+  animation: 0.5s hamburger;
+}
+@keyframes hamburger{
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+ul.responsive-menu > li {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.responsive-menu > li > a {
+  display: block;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+.responsive-menu > li a:hover, .responsive-menu > li:hover {
+  background-color: #297579;
+}
+
+
+
 /* ============================== Banner Section ================================= */
 
 div.banner {
@@ -164,7 +203,7 @@ div.banner {
 
 .banner section {
   width: 50%;
-  margin-top: 10%;
+  margin-top: 20%;
   margin-left: 25%;
   position: absolute;
 }
@@ -174,7 +213,7 @@ div.banner {
 }
 
 .banner h2 a {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .banner h2 a sup {
@@ -187,7 +226,7 @@ section.banner-info h3 {
   color: #fff;
   font-family: monospace, sans-serif;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -201,13 +240,14 @@ section.banner-info p {
 
 section.banner-info > a {
   padding: 10px 20px;
-  margin: calc(7% - 10px) calc(41% - 20px);
-  margin-right: 0;
-  display: inline-block;
+  /*margin: calc(7% - 10px) calc(41% - 20px);*/
+  margin: 15px 35%;
+  display: block;
+  background-color: #3daeac;
   color: #fff;
   font-family: sans-serif;
   font-size: 12px;
-  background-color: #3daeac;
+  text-align: center;
 }
 
 div.down-arrow {
@@ -587,8 +627,8 @@ div.testimonial-author span.firstname {
 
 
 .about > .wrapper > p {
-  width: 30%;
-  padding-right: 20%;
+  width: 40%;
+  padding-right: 10%;
   float: right;
   color: #999;
   font-family: sans-serif;
@@ -642,7 +682,7 @@ div.contact-info > span > span {
 }
 
 div.contact-form {
-  width: 65%;
+  width: 60%;
   margin-top: 40px;
   float: right;
 }
@@ -661,7 +701,7 @@ div.contact-form form textarea {
 }
 
 div.contact-form form input[type=submit] {
-  width: 18%;
+  width: 25%;
   padding: 12px 0;
   display: block;
   background-color: #40b7b4;
@@ -766,6 +806,206 @@ div.copyright span {
 div.copyright span a {
   color: #40b7b4;
 }
+
+
+
+/* =================================== Transitions ======================================== */
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+header {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  /* animation: 1s ease-out 0s 1 slideInFromLeft; */
+  animation: 1s slideInFromLeft;
+}
+
+
+@keyframes bannerInfoTransition {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+section.banner-info {
+  animation: 1.5s bannerInfoTransition;
+}
+
+
+
+@keyframes downArrowTransition {
+  0% {
+    margin:0;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+div.down-arrow{
+  animation: 1.5s downArrowTransition;
+}
+
+@keyframes transitionServices {
+  from {
+    /*display: none;*/
+    transform: translateY(-100%);
+  }
+  to {
+    display: block;
+    transform: translateY(0);
+  }
+}
+section.service ,ul.emergency {
+  display: none;
+}
+section.transition-service {
+  background-color: #fff;
+  display: block;
+  animation: 1s transitionServices;
+}
+ul.transition-emergency {
+  display: block;
+  animation: 1s transitionServices;
+}
+
+/* =================================== @Media Queries ======================================== */
+
+@media (max-width: 880px){
+  div.our-service,div.main-article {
+    width: 45%;
+  }
+  ul.services {
+    width: 55%;
+  }
+  ul.services > li, ul.sub-articles > li {
+    width: 95%;
+    display: block;
+  }
+
+  ul.sub-articles {
+    width: 55%;
+    margin-right: 0;
+  }
+  div.right-article{
+    width: 75%;
+  }
+}
+
+@media (max-width: 700px){
+  ul.emergency > li {
+    width: auto;
+    padding-bottom: 30px;
+    display: block;
+    border-right: none;
+    border-bottom: 2px solid #fff;
+  }
+  ul.emergency li:last-child {
+    width: auto;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  ul.doctor-cards > li {
+    width: fit-content;
+    margin-right: 5%;
+    margin-bottom: 30px;
+  }
+  ul.doctor-cards > li:last-child {
+    margin-right: 5%;
+  }
+
+  ul.testimonial-list > li {
+    width: 100%;
+    margin-bottom: 30px;
+    display: block;
+  }
+  div.contact-info , div.contact-form {
+    width: 100%;
+    float: none;
+  }
+  div.contact-form form input[type=submit] {
+    width: 25%;
+  }
+  ul.footer-list > li {
+    width: 100%;
+    margin-bottom: 30px;
+    display: block;
+  }
+  .about > .wrapper > h2 {
+    width: auto;
+    padding-left: 10%;
+    float: none;
+  }
+  .about > .wrapper > p {
+    width: auto;
+    padding-right: 0;
+    margin-top: 30px;
+    float: none;
+  }
+  section.banner-info > a {
+    margin: 15px 0;
+    display: block;
+    text-align: center;
+  }
+
+
+  /* ================== Hamburger =============*/
+
+  nav.primary-nav {
+    width: 100%;
+  }
+  nav.primary-nav ul {
+    display: none;
+  }
+  
+  nav > a {
+    position: absolute;
+    top: 25px;
+    right: 5%;
+    display: block !important;
+    color: #fff;
+    font-size: 20px;
+    float: right;
+  }
+
+
+
+}
+
+@media (max-width: 500px){
+  div.our-service, div.main-article, ul.services, ul.sub-articles {
+    width: 100%;
+  }
+  ul.services, ul.sub-articles {
+    margin-top: 30px;
+    padding-top: 0;
+  }
+  div.contact-form form input[type=submit]{
+    width: 30%;
+  }
+  section.banner-info > a {
+    width: 80%;
+    margin: 15px 0;
+    display: block;
+    text-align: center;
+  }
+  .banner section {
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 25%;
+  }
+}
+
+
+
+
+
 
 
 

@@ -13,20 +13,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>	
 	<header>
 		<div class="wrapper cf">
 			<!-- <h1><a href="#" title=""><img src="#" alt="MediLab Logo"></a></h1> -->
 			<h1><a href="#" title="">Medilab <sup class="plus">+</sup></a></h1>
-			<nav class="primary-nav">
-				<ul class="menu-pages">
+			<nav class="primary-nav" id="primary-nav">
+				<ul class="menu-pages" id="menu-pages">
 					<li><a href="#home" title="Home">Home</a></li>
 					<li><a href="#services" title="Services">Services</a></li>
 					<li><a href="#about" title="About">About</a></li>
 					<li><a href="#testimonial" title="Testimonial">Testimonial</a></li>
 					<li><a href="#contact" title="Contact">Contact</a></li>
 				</ul>
+				<a href="javascript:void(0);" class="icon"><i class="fa fa-bars"></i></a>
 			</nav>
 		</div>
 	</header>
@@ -89,7 +92,7 @@
 		</section>
 
 		<!-- Emergency Section -->
-		<ul class="emergency">
+		<ul class="emergency" id="emergency">
 			<li>
 				<article>
 					<h3>Emergency Case</h3>
@@ -332,21 +335,6 @@
 	</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("a").on('click', function(event) {
-    	console.log(event.target.alt);
-    if (this.hash !== "") {
-      event.preventDefault();
-      var hash = this.hash;
-      $('html').animate({
-        scrollTop: $(hash).offset().top
-      }, 800,function(){
-        window.location.hash = hash;
-      });
-    } 
-  });
-});
-</script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
