@@ -1,0 +1,15 @@
+{
+    "name": "root/phppro",
+    "description": "This is dummy test composer",
+    "type": "project",
+    "require": {
+        "johnpbloch/wordpress": "4.9.8"
+    },
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "MehboobShaikh",
+            "email": "mehboobs@prdxn.com"
+        }
+    ]
+}

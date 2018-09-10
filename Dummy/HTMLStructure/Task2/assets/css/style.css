@@ -1,0 +1,774 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Force scrollbar */
+html { overflow-y: scroll; }
+
+/* Align radios and text inputs with their label */
+
+input[type='radio'] { vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label,
+input[type='button'],
+input[type='submit'],
+button {
+  cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+em { font-style: italic; }
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+sub,
+sup {
+  vertical-align: baseline;
+  position: relative;
+  font-size: 55%;
+  line-height: 0;
+}
+
+sup { top: -.7em; }
+
+sub { bottom: -.25em; }
+
+/* 1.2. Clear Fix
+   ========================================================================== */
+
+.cf:before,
+.cf:after {
+  display: table;
+  content: " ";
+}
+
+.cf:after { clear: both; }
+
+.cf { *zoom: 1; }
+
+/* ================= Common ====================== */
+
+a {
+	text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+
+/* ==================================== Header Section ================================== */
+
+
+header {
+  width: 100%;
+  position: fixed;
+  background-color: #316974;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+header > .wrapper {
+  width: 90%;
+  margin: 0 5%;
+  padding: 20px 0;
+}
+
+h1 {
+  display: inline-block;
+}
+
+h1 a, .banner h2 a {
+  position: relative;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 30px;
+}
+
+h1 a sup, .banner h2 a sup {
+  margin: 5% 100%;
+  position: absolute;
+  top: 0;
+  color: #f00;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+nav.primary-nav {
+  float: right;
+  margin-top: 10px;
+}
+
+.menu-pages > li {
+  display: inline-block;
+}
+
+.menu-pages li > a {
+  padding: 20px 15px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.menu-pages li a:hover {
+  background-color: #297579;
+}
+
+/* ============================== Banner Section ================================= */
+
+div.banner {
+  height: 650px;
+  width: 100%;
+  background-image: url(https://via.placeholder.com/1300x700);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.banner>.wrapper {
+  position: relative;
+  height: 576px;
+  width: 100%;
+  padding-top: 75px;
+  /*background-color: #316974;*/
+  background-color: rgba(49, 105, 116, 0.5);
+}
+
+.banner section {
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+  position: absolute;
+}
+
+.banner h2 {
+  text-align: center;
+}
+
+.banner h2 a {
+  font-size: 50px;
+}
+
+.banner h2 a sup {
+  margin: 5% 0;
+  font-size: 30px;
+}
+
+section.banner-info h3 {
+  margin: 5% 0;
+  color: #fff;
+  font-family: monospace, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+section.banner-info p {
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+section.banner-info > a {
+  padding: 10px 20px;
+  margin: calc(7% - 10px) calc(41% - 20px);
+  margin-right: 0;
+  display: inline-block;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 12px;
+  background-color: #3daeac;
+}
+
+div.down-arrow {
+  margin-left: 50%;
+  position: absolute;
+  bottom: 5%;
+}
+
+
+/* ==================================== Main Section Starts ================================= */
+
+main {
+  /*width: 90%;*/
+  /*margin: 0 5%;*/
+}
+
+
+
+/* ======================= Our Service Section ====================== */
+
+.service > .wrapper{
+  width: 90%;
+  padding: 70px 5%;
+}
+
+div.our-service {
+  width: 30%;
+  float: left;
+}
+
+main h2 {
+  /*padding-bottom: 25px;*/
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+ main h2::after {
+  margin-top: 10px;
+  display: block;
+  content: '';
+  width: 5.5%;
+  height: 2px;
+  background: #f6b24b;
+  /*transition: width 0.3s;*/
+}
+
+.our-service h2::after {
+  width: 19%;
+}
+
+.our-service > p {
+  padding-top: 20px;
+  color: #777;
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  line-height: 1.2em;
+}
+
+ul.services {
+  width: 70%;
+  /*padding-left: 5%;*/
+  float: right;
+}
+
+ul.services > li {
+  width: 45%;
+  padding-left: 25px;
+  display: inline-block;
+}
+
+ul.services li figure img {
+  height: 50px;
+  width: 50px;
+}
+
+span.service-heading {
+  padding: 20px 0;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.services > li p {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  color: #777;
+}
+
+
+
+/* ======================= Emergency Section ====================== */
+
+
+ul.emergency {
+  width: 90%;
+  margin: 20px 5%;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: #41b9b5;
+}
+
+ul.emergency > li {
+  width: 30%;
+  border-right: 1px solid white;
+  padding-left: 30px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+ul.emergency li:last-child {
+  border-right: 0;
+  width: 20%;
+}
+
+.emergency h3 {
+  padding: 20px 0;
+  color: #fff;
+  font-size: 25px;
+}
+
+.emergency > li p {
+  padding-right: 10px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.2em;
+}
+
+
+.emergency > li a {
+  margin-top: 20px;
+  padding: 5px 10px;
+  display: inline-block;
+  font-size: 15px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.emergency table {
+  width: 100%;
+  /*border-top: 1px solid #fff;*/
+  /*border-right: 1px solid #000;*/
+  /*border-bottom: 1px solid #000;*/
+  /*border-left: 1px solid #000;*/
+  color: #fff;
+  font-size: 15px;
+}
+
+
+/* ======================= Articles Section ====================== */
+
+.articles > .wrapper {
+  width: 90%;
+  padding: 70px 5%;
+}
+
+div.main-article {
+  width: 30%;
+  float: left;
+}
+
+.main-article h2 {
+  line-height: 1.3em;
+
+}
+
+.main-article h2::after {
+  width: 19%;
+}
+
+.main-article > p {
+  padding-top: 20px;
+  color: #777;
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  line-height: 1.2em;
+}
+
+.main-article > a {
+  margin-top: 20px;
+  display: inline-block;
+  color: #41b9b5;
+}
+
+ul.sub-articles {
+  width: 60%;
+  margin-right: 10%;
+  padding-top: 20px;
+  float: right;
+}
+ul.sub-articles > li {
+  width: 80%;
+  padding-bottom: 30px;
+}
+
+.sub-articles figure {
+  width: 15%;
+  float: left;
+}
+
+.sub-articles figure img {
+  width: 35px; 
+
+}
+
+.right-article {
+  width: 80%;
+  float: right;
+}
+
+.right-article h3 {
+  padding-bottom: 20px;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.right-article p {
+  padding-top: 5px;
+  color: #777;
+  line-height: 1.2em;
+}
+
+
+
+/* ======================= Doctors Section ====================== */
+
+.doctors > .wrapper {
+  width: 90%;
+  padding: 70px 5%;
+}
+
+ul.doctor-cards {
+  width: 100%;
+  margin-top: 20px;
+}
+
+ul.doctor-cards > li {
+  width: calc(23.4% - 5px);
+  margin-right: 2%;
+  display: inline-block;
+  vertical-align: top;
+  border : 1px solid #ccc;
+}
+
+ul.doctor-cards > li:last-child {
+  margin-right: 0;
+}
+
+ul.doctor-cards figure img {
+  width: 98%;
+  padding: 1% 1%;
+}
+
+ul.doctor-cards span {
+  padding-top: 15px;
+  padding-left: 10px;
+  display: block;
+}
+
+ul.doctor-cards span.name {
+  font-weight: bold;
+  font-size: 22px;
+  color: #0f0f0fe0;
+}
+ul.doctor-cards span.role {
+  color: #272727;
+}
+
+ul.doctors-social {
+  width: 100%;
+}
+
+ul.doctors-social > li {
+  display: inline-block;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-bottom: 15px;
+}
+
+ul.doctors-social > li img {
+  width: 15px;
+}
+
+
+/* ======================= Testimonial Section ====================== */
+
+.testimonial > .wrapper {
+  width: 90%;
+  padding: 50px 5%;
+  background-color: #ededee;
+}
+
+ul.testimonial-list {
+  padding-top: 20px;
+}
+
+ul.testimonial-list > li {
+  width: calc(31% - 5px);
+  margin-right: 3%;
+  display: inline-block;
+}
+
+ul.testimonial-list > li:last-child {
+  margin-right: 0;
+}
+
+ul.testimonial-list > li p{
+  padding: 20px 30px;
+  position: relative;
+  border-radius: 2px;
+  background-color: #fff;
+  color: #777;
+}
+ul.testimonial-list > li p:after {
+  position: absolute;
+  content:"";
+  left: 45px;
+  top: 98%;
+/*   border-top: 10px solid transparent; */
+  border-right: 13px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 25px solid #fff;
+}
+
+div.testimonial-author {
+  margin-top: 20px;
+}
+
+div.testimonial-author figure {
+  float: left;
+}
+
+ul.testimonial-list > li figure img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+
+div.testimonial-author span {
+  margin-left: 20%;
+  display: block;
+  font-family: monospace, sans-serif;
+  font-size: 20px;
+}
+  
+div.testimonial-author span.firstname {
+  font-weight: bold;
+}
+
+
+/* ======================= Testimonial Section ====================== */
+
+.about > .wrapper {
+  width: 90%;
+  padding: 50px 5%;
+  /*padding-bottom: 15%;*/
+  background-color: #2d3332;
+}
+
+.about > .wrapper > h2 {
+  width: 24%;
+  /*padding: 3% 0;*/
+  padding-right: 10%;
+  padding-left: 15%;
+  float: left;
+  color: #fff;
+}
+.about > .wrapper > h2::after {
+  display: none;
+}
+
+.about > .wrapper > h2 span {
+  font-size: 16px;
+}
+
+
+.about > .wrapper > p {
+  width: 30%;
+  padding-right: 20%;
+  float: right;
+  color: #999;
+  font-family: sans-serif;
+  /*line-height: 1.5em;*/
+}
+
+.about > .wrapper > p > span {
+  margin-top: 10px;
+  display: block;
+  color: #41bbb6;
+  text-align: right;
+  font-style: italic;
+}
+
+
+/* ======================= Contact Section ====================== */
+
+.contact-us > .wrapper {
+  width: 90%;
+  padding: 50px 5%;
+}
+
+div.contact-info {
+  width: 30%;
+  margin-top: 40px;
+  float:left;
+}
+
+div.contact-info h3 , div.contact-form h3{
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
+div.contact-info > span {
+  margin-bottom: 30px;
+  display: block;
+  color: #777;
+}
+
+div.contact-info > span i > img {
+  width: 25px;
+  padding-right: 15px;
+  float: left;
+}
+
+div.contact-info > span > span {
+  width: calc(75% - 25px);
+  padding-right: 15%;
+  float: right;
+  text-align: left;
+}
+
+div.contact-form {
+  width: 65%;
+  margin-top: 40px;
+  float: right;
+}
+
+
+div.contact-form form input[type=text],
+div.contact-form form input[type=email],
+div.contact-form form input[type=submit],
+div.contact-form form textarea {
+  width: calc(100% - 21px);
+  margin-bottom: 20px;
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  display: block;
+}
+
+div.contact-form form input[type=submit] {
+  width: 18%;
+  padding: 12px 0;
+  display: block;
+  background-color: #40b7b4;
+  border: none;
+  color: #fff;
+}
+
+
+/* ======================= Footer Section ====================== */
+
+footer > div.wrapper:first-child {
+  width: 90%;
+  padding: 50px 5%;
+  padding-bottom: 0;
+  background-color: #2e5c69;
+  border-bottom: 1px solid #47707b;
+}
+
+ul.footer-list {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+ul.footer-list > li {
+  width: calc(30% - 5px);
+  padding-right: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+ul.footer-list > li:last-child {
+  padding-right: 0;
+}
+
+ul.footer-list h4 {
+  margin-bottom: 40px;
+  font-size: 18px;
+  color: #fff;
+}
+
+ul.footer-list > li > p {
+  padding-right: 20px;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+ul.footer-social > li {
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+ul.footer-social img {
+  height: 15px;
+  width: 15px;
+  padding: 15px 15px;
+}
+
+ul.footer-links {
+  padding-left: 15%;
+  color: #fff;
+  list-style: disc;
+}
+
+ul.footer-links a {
+  color: #fff;
+}
+
+ul.footer-social {
+  padding-left: 15%;
+}
+
+ul.footer-social img[alt='facebook'] {
+  background-color: #00f;
+}
+ul.footer-social img[alt='google plus'] {
+  background-color: #f00;
+}
+ul.footer-social img[alt='linkedin'] {
+  background-color: #2c4150;
+}
+ul.footer-social img[alt='twitter'] {
+  background-color: #409ad7;
+}
+
+
+footer > div.wrapper:last-child {
+  width: 90%;
+  padding: 20px 5%;
+  background-color: #2e5c69;
+}
+
+div.copyright {
+  color: #fff;
+  font-size: 17px;
+  text-align: center;
+}
+
+div.copyright span {
+  display: block;
+}
+
+div.copyright span a {
+  color: #40b7b4;
+}
+
+
+
+
+
+

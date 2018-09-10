@@ -1,0 +1,386 @@
+//Responsive Wrapper
+@include responsive(1024) {
+  .wrapper { width: 92%; }
+}
+
+@include responsive(767) {
+  .wrapper { width: 90%; }
+}
+
+// Main Heading Style
+.sjb-page h1 { margin: 24px 0 24px 24px; }
+
+.sjb-job-details {
+  padding: 77px 0 0;
+  @include responsive(1024) { padding: 50px 0 0; }
+  @include responsive(768) { padding: 77px 0 0; }
+
+  .careers_list-view {
+
+   h2 {
+    margin: 54px 0 14px 0;
+    color: $fcolor;
+    @include fonts (700,40px,$bolder-font);
+    @include moz-hack { font-weight: 500; }
+    letter-spacing: -0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    @include responsive(768) {
+      margin: 30px 0 14px 0;
+    }
+    @include responsive(767) {
+      font-size: 26px;
+      line-height: 29px;
+    }
+  }
+
+  div {
+    font-size: 18px;
+    @include responsive(768) { font-size: 14px; }
+    p {
+      line-height: 25px;
+      strong { font-family: 400; }
+      @include responsive(1024) { margin-bottom: 22px }
+      @include responsive(767) {
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  ul {
+   padding-left: 45px;
+   margin-bottom: 30px;
+
+   li {
+    color: $fcolor;
+    @include fonts (300,18px,$font);
+    line-height: 29px;
+    list-style-type: disc;
+    list-style-position: outside;
+    @include responsive(767) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+    @include responsive(480) {
+      font-size: 17px;
+      line-height: 24px;
+    }
+  }
+}
+}
+#jobpost_form_status { 
+  margin-top: 20px;
+  @include responsive(1024) { margin-top: 0; }
+  }
+}
+
+.sjb-container .career_job-requirement,
+.sjb-container .jobpost-form {
+    .form-group {
+      label {
+        display: inline-block;
+        p { 
+          display: inline-block;
+          vertical-align: top;
+          font: 18px/29px "Open Sans";
+        }
+      }
+    }
+    @include responsive(1024) { margin: 20px 0 22px 0; }
+}
+
+.sjb-page h3 {
+  margin: 20px 0 3px 0;
+  color: $fcolor;
+  @include fonts (bolder,18px,$bolder-font);
+  line-height: 29px;
+  @include responsive(767) { margin: 10px 0; }
+
+}
+
+.career-features table {
+  width: 50%;
+  color: $fcolor;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  border: 1px solid #d3d3d3;
+  border-collapse: collapse;
+  border-spacing: 0;
+  @include responsive(1024) { line-height: 20px; }
+  @include responsive(767) { width: 100%; }
+  @include responsive(480) { font-size: 0; }
+  th,td {
+    border: 1px solid #d3d3d3;
+    padding: 4px 14px;
+    vertical-align: middle;
+  @include responsive(767) { padding: 4px; }
+  @include responsive(480) {
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  }
+
+  th {
+    background-color: #ebebeb;
+    font-family: $bolder-font;
+    font-weight: 700;
+    @include moz-hack { font-weight: 500; }
+    text-align: left;
+    @include responsive(767) { width: 20%; }
+  }
+  td { @include responsive(767) { width: 60%; } }
+}
+
+.sjb-form-group {
+  padding-bottom: 20px;
+  margin-bottom: 5px;
+  position: relative;
+
+  label {
+    color: $fcolor;
+    @include fonts (300,18px,$font);
+    line-height: 29px;
+    text-align: left;
+    @include vendor-prefixes(word-break , break-word);
+  }
+}
+
+.sjb-form-control {
+  width: 47.5%;
+  height: 36px;
+  padding: 6px 12px;
+  display: block;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: $white;
+  background-image: none;
+  border: 1px solid #ccc;
+  @include vendor-prefixes(border-radius , 4px);
+  @include vendor-prefixes(box-shadow , inset 0 1px 1px rgba(0, 0, 0, .075));
+  @include vendor-prefixes(transition, box-shadow ease-in-out .15s);
+  @include vendor-prefixes(transition, box-color ease-in-out .15s);
+}
+
+select {
+  width: 220px;
+  height: 40px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+}
+
+.sjb-page label { display: block; }
+
+.sjb-label-control span {
+  color: red;
+  font-size: 16px;
+}
+
+#jobapp_residence ,
+#jobapp_qualification {
+  width: 220px;
+  @include vendor-prefixes( appearance, none );
+}
+
+.sjb-page label {
+  color: $fcolor;
+  @include fonts (300,18px,$font);
+  line-height: 29px;
+  text-align: left;
+  word-break: break-word;
+  @include responsive(768) {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.sjb-page  {
+  .form-control {
+    display: block;
+    width: 50%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 14px;
+    @include responsive (768) { width: 50%; }
+    @include responsive (767) { width: 100%; }
+    &:focus {
+      border-color: #66afe9;
+      outline: 0;
+      @include vendor-prefixes(box-shadow, #{"inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)"});
+    }
+  }
+
+  .form-group {
+    label[for="applicant_resume"] { margin-bottom: 0; }
+    .file {
+      .form-control {
+        height: 30px;
+        padding: 0;
+      }
+      p { line-height: 14px; }
+    }
+    &:last-of-type { margin: 30px 0 15px; }
+  }
+
+  .file {
+    span,
+    div { display: none; }
+    input[type="file"] { opacity: 1 !important; }
+  }
+
+  .form-group {
+    .app-submit {
+      @include button();
+      margin-bottom: 60px;
+      @include responsive(1024) {
+        &:hover {
+        background: #00a1f1;
+        color: $white;
+      }
+      &:hover:after {
+        background: url(assets/images/arrow.png) no-repeat;
+      }
+    }
+      @include responsive(767) {
+        padding: 11px 14px 8px 27px;
+        margin: 10px 0 20px 0;
+        font-size: 15px;
+        &:after { vertical-align: -9px; }
+      }
+    }
+    .sjb-invalid-email { display: none; }
+
+    .sjb-invalid-attachment,
+    p {
+      color: #f00;
+      font-family: $font;
+      font-size: 14px;
+    }
+  }
+  .required { color: red; }
+}
+
+
+.form-group .form-control.sjb-datepicker {
+  max-width: 120px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.form-group .calendar {
+  padding: 9px 11px;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #eee;
+}
+
+.select {
+  width: 220px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: $white;
+  font-size: 16px;
+}
+
+.select-styled {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $white;
+  @include vendor-prefixes(transition, all 0.2s ease-in);
+
+  color: #555;
+
+  &:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-color: #555 transparent transparent transparent;
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
+  right: 10px;
+  }
+}
+
+.active {
+    background-color: $white;
+    &:after {
+    top: 50%;
+    margin-top: -12px;
+    border-color: transparent transparent #555 transparent;
+  }
+}
+
+
+.select-options {
+    padding: 0;
+    margin: 0;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    list-style: none;
+    background-color: $white;
+
+    li {
+    margin: 0;
+    padding: 12px 0;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    text-indent: 15px;
+    @include vendor-prefixes(transition, all 0.15s ease-in);
+    color: #555;
+  }
+}
+
+
+.file .sjb-attachment {
+  box-shadow: none;
+  padding-left: 0;
+  border: 0;
+}
+
+/*================================================================================
+Styling for Datepicker Active State
+==================================================================================*/
+
+.sjb-page .ui-widget-content .ui-state-active {
+  background: #007fff;
+}
+
+
+
+
+/*================================================================================
+Work Page Styling
+==================================================================================*/
+.work-template-default {
+  .hero_work--title {
+    padding: 14% 0;
+  }
+}

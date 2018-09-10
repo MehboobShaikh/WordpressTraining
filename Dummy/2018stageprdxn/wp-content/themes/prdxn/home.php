@@ -1,0 +1,232 @@
+<?php
+/**
+ * The template for displaying pages
+ *
+ * Template Name: Home
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that
+ * other "pages" on your WordPress site will use a different template.
+ *
+ * @package WordPress
+ * @subpackage prdxn
+ * @since prdxn 1.0
+ */
+
+get_header();
+
+# All page variable listed here
+$casestudy_cta = get_field("casestudy_post_cta", get_page_by_path( 'works' ));
+$work_cta = get_field("work_cta", get_page_by_path( 'works' ));
+$hero_video = get_field("hero_video");
+$hero_title = get_field('hero_title');
+$hero_subtitle = get_field('hero_subtitle');
+$home_carousel = get_field('home_carousel');
+$hero_video_mp4 = get_field("hero_video_mp4");
+$hero_video_ogg = get_field("hero_video_ogg");
+$hero_video_webm = get_field("hero_video_webm");
+$home_medium_feedblock = get_field("home_medium_feedblock");
+$contact_us_url = get_field("contact_us");
+
+if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+  $banner_image = get_the_post_thumbnail_url();
+} else {
+  $banner_image = get_template_directory_uri() . '/assets/images/Agile.jpg';
+}
+?>
+<!-- main started -->
+<main>
+    <!-- Loader image for work before displays whole content -->
+  <div class="loader">
+    <img src="<?php echo get_template_directory_uri() . '/assets/images/logo_prdxn.png' ?>" alt="<?php echo get_bloginfo('name')?>">
+  </div>
+  <!-- Hero section started -->
+  <div class="home_hero-section" style="background: url('<?php echo $banner_image; ?>')center center; background-size: cover;">
+
+    <div class="bgvideo">
+
+      <input type="hidden" class="hero_video_mp4" value="<?php echo $hero_video_mp4 ?>"/>
+      <input type="hidden" class="hero_video_ogg" value="<?php echo $hero_video_ogg ?>"/>
+      <input type="hidden" class="hero_video_webm" value="<?php echo $hero_video_webm ?>"/>
+      <?php //echo $hero_video; ?>
+    </div>
+    <div class="home_hero-overlay">
+      <div class="home_hero-content">
+        <h2><?php echo $hero_title; ?></h2>
+        <h3><?php echo $hero_subtitle; ?></h3>
+      </div>
+      <a href="<?php echo $contact_us_url;?>" class="cta" target="_blank">how can we help you?</a>
+      <div class="home_hero-seebelow"></div>
+    </div>
+  </div>
+  <!-- Hero section end -->
+  <!-- Home content started -->
+  <div class="home_content">
+    <div class="wrapper">
+      <!-- Work case_study blocks structure started here -->
+      <div class="home_content-work-casestudy">
+        <?php
+        $args = array(
+          'post_type' => array( 'work', 'case_study' ),
+          // 'meta_key'      => 'post_order',
+          'orderby'     => 'meta_value_num',
+          'posts_per_page' => -1,
+          'order' => 'ASC',
+          );
+        $work_case_sposts = get_posts( $args );
+        $featured_post_arr = [];
+        $work_arr = [];
+        $casestudy_arr = [];
+        foreach ( $work_case_sposts as $post ) : setup_postdata( $post );
+                # Variables of the posts
+        $featured_post = get_field('feature_post_on_home', get_the_ID());
+        $post_type = get_post_type();
+        
+        if(is_array($featured_post) && $featured_post[0] == 'yes') :
+          if($post_type == 'work'){
+            array_push($work_arr,$post);
+          }elseif($post_type == 'case_study'){
+            array_push($casestudy_arr,$post);
+          }
+          // var_dump($casestudy_arr[0]->ID);
+
+          array_push($featured_post_arr, $post);
+        endif;
+        endforeach;
+        wp_reset_postdata();
+        ?>
+
+        <!--  Case Study Block Goes Here -->
+
+        <?php
+        function caseStudySortByMenuOrder($a,$b){
+          return strcmp($a->menu_order,$b->menu_order);
+        }
+        usort($casestudy_arr,'caseStudySortByMenuOrder');
+        ?>
+        
+        <?php foreach($casestudy_arr as $casestudy){ ?>
+          <div class="casestudy-block">
+            <a href="<?php echo get_the_permalink($casestudy->ID); ?>">
+              <?php echo get_the_post_thumbnail($casestudy->ID,'featuredImageCropped');; ?>
+              <div class="work-case-overlay">
+                <div>
+                  <span class="work_case_overlay-title">Case Study</span>
+                  <p><?php echo get_the_title($casestudy->ID); ?></p>
+                  <span class="cta"><?php echo $casestudy_cta; ?></span>
+                </div>
+              </div>
+            </a>
+          </div>
+        <?php } ?>
+        
+      </div>
+      <!-- Work case_study blocks structure started here -->
+      <!-- Testimonials slider started here -->
+      <div class="home_testimonial-slider">
+        <?php if( $home_carousel ): ?>
+          <ul class="slides">
+
+            <?php
+            $args = array(
+              'orderby' => array( 'post_date' => 'DESC')
+              );
+            $query = new WP_Query( $args );
+            foreach ( $home_carousel as $post ):
+              setup_postdata($post);
+
+                      # Posts variables listed here
+            $id = get_the_ID();
+            $post_thumbnail = get_the_post_thumbnail($id,'thumbnail');
+            $post_content = get_the_content($id);
+            $testimonials_author = get_field('testimonials_author', $id) 
+            ?>
+             
+
+            <li>
+              <div class="testimonials__image">
+                <?php
+                 echo $post_thumbnail; 
+                 ?>
+              </div>
+              <div class="home_slider--content">
+                <div class="testimonial__description">
+                  <?php echo $post_content; ?>
+                </div>
+                <span></span>
+                <p><?php echo $testimonials_author; ?></p>
+              </div>
+            </li>
+
+            <?php
+            endforeach;
+            wp_reset_postdata(); ?>
+          </ul>
+        <?php endif; ?>
+      </div>
+      <!-- Testimonials Slider End -->
+      <!-- Work Blocks Goes Here -->
+      <div class="home_content-work-casestudy">
+        <?php
+        // var_dump($work_arr);
+        function workSortByMenuOrder($a,$b){
+          return strcmp($a->menu_order,$b->menu_order);
+        }
+        usort($work_arr,'workSortByMenuOrder');
+        // var_dump($work_arr);
+        ?>
+
+        <?php foreach( $work_arr as $work ){ ?>
+
+          <div class="work-block">
+            <a href="<?php the_permalink($work->ID); ?>">
+              <?php echo get_the_post_thumbnail($work->ID); ?>
+              <div class="work-case-overlay">
+                <div>
+                  <span class="work_case_overlay-title">Work</span>
+                  <p><?php echo get_the_title($work->ID); ?></p>
+                  <span class="cta"><?php echo $work_cta; ?></span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        <?php } ?>
+      </div>
+    </div><!-- Wrapper end here -->
+
+      <!-- Our client logo -->
+     <div class="our_client_logo">
+      <div class="wrapper cf">
+        <h3 class="client-title">Our Clients</h3>
+        <div class="logo">
+        <?php
+      $args_client = array(
+          'post_type' => 'slick-sllider',
+          'order' => 'ASC'
+      );
+
+      $client_query = new WP_Query($args_client);
+      while ($client_query->have_posts()): $client_query->the_post();
+      echo '<div class="img-section">'; the_post_thumbnail(); echo '</div>';
+      endwhile;
+      wp_reset_postdata();
+      ?>
+
+      </div>
+    </div>
+    </div><!-- End Our client logo section -->
+
+    
+    <div class="home_recent-medium-post">
+      <div class="wrapper">
+          <h3><?php echo get_field('block_heading'); ?></h3>
+          <?php echo do_shortcode(get_field('add_shortcode')); ?>
+      </div>
+    </div>
+  </div><!-- home content end here -->
+</main><!-- .content-area -->
+
+<!-- var_dump("Hi SMS"); -->
+
+<?php get_footer(); ?>

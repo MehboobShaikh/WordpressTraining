@@ -1,0 +1,333 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Force scrollbar */
+html { overflow-y: scroll; }
+
+/* Align radios and text inputs with their label */
+
+input[type='radio'] { vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label,
+input[type='button'],
+input[type='submit'],
+button {
+  cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+em { font-style: italic; }
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+sub,
+sup {
+  vertical-align: baseline;
+  position: relative;
+  font-size: 55%;
+  line-height: 0;
+}
+
+sup { top: -.7em; }
+
+sub { bottom: -.25em; }
+
+/* 1.2. Clear Fix
+   ========================================================================== */
+
+.cf:before,
+.cf:after {
+  display: table;
+  content: " ";
+}
+
+.cf:after { clear: both; }
+
+.cf { *zoom: 1; }
+
+/* ================= Common ====================== */
+
+a {
+	text-decoration: none;
+}
+
+
+/* =============== Header Section ================ */
+
+header {
+	width: 100%;
+	padding: 5px 0 5px 0;
+	position: fixed;
+	z-index: 1;
+	background: #fff;
+}
+
+header>.wrapper {
+	width: 98%;
+	margin: 0 auto;
+}
+
+h1 {
+	margin-top: 10px;
+	display: inline-block;
+}
+
+h1 a {
+	padding-left: 15px;
+	color: #000;
+	font-family: sans-serif;
+	font-size: 14px;
+	letter-spacing: 5px;
+}
+
+h1 a strong {
+	padding-right: 10px;
+	font-weight: 700px;
+}
+
+nav {
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.menu-pages > li {
+	display: inline-block;
+	text-transform: capitalize;
+}
+
+.menu-pages li > a {
+	font-size: 16px;
+	color: #000;
+	padding-right: 10px;
+	padding-left: 10px;
+	letter-spacing: 4px;
+}
+
+div.banner {
+	/*width: 100%;*/
+	height: 600px;
+	padding-top: 50px;
+	background-image: url(../images/banner.jpg);
+	/*background-image: url(https://via.placeholder.com/1250x600);*/
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.banner p {
+	margin: 22% 38%;
+	font-size: 45px;
+	font-family: sans-serif;
+	color: #fff;
+}
+
+.banner p span {
+	padding: 5px 15px;
+	background-color: #000000;
+	font-weight: bold;
+	opacity: 0.7;
+}
+
+main {
+	width: 96%;
+	margin: 0 auto;
+}
+
+/* ============================== Projects Section ================================ */
+
+.projects>.wrapper {
+	width: 100%;
+}
+
+h2 {
+	padding-top: 50px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+	font-size: 25px;
+	font-family: sans-serif;
+}
+
+.project_images {
+	width: 100%;
+	padding-top: 30px;
+}
+.project_images>li:nth-child(4) { margin-right: 0; }
+.project_images>li:last-child { margin-right: 0; }
+
+.project_images>li {
+	width: calc(24.41% - 5px);
+	padding-bottom: 15px;
+	margin-right: 1%;
+	display: inline-block;
+	position: relative;
+}
+
+.project_images figure img{
+	width: 100%;
+	height: 200px;
+}
+
+p.overlay {
+	padding: 10px 15px;
+	position: absolute;
+	top: 0;
+	color: #fff;
+	background-color: #000;
+}
+
+/* ============================== About Section ================================ */
+
+.about>.wrapper {
+	width: 100:;
+}
+
+.about p {
+	padding-top: 30px;
+	font-family: sans-serif;
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+.members {
+	width: 100%;
+	padding-top: 30px;
+}
+
+.members > li {
+	width: calc(24% - 5px);
+	margin-right: 1%;
+	display: inline-block;
+}
+
+.members figure img {
+	width: 100%;
+	height: 200px;
+}
+
+span.name {
+	padding-top: 20px;
+	display: block;
+	font-family: sans-serif;
+	font-size: 25px;
+	text-transform: capitalize;
+}
+span.role {
+	padding-top: 20px;
+	display: block;
+	font-family: sans-serif;
+	font-size: 14px;
+	color: #777;
+}
+
+.members li p {
+	width: 100%;
+	font-size: 15px;
+	padding-top: 20px;
+}
+
+.members li a {
+	display: inline-block;
+	width: calc(24% - 5px);
+	margin-top: 10px;
+	padding: 10px 40%;
+	border-radius: 1px;
+	color: #000;
+	background-color: #eee;
+}
+
+
+/* ============================== Contact Section ================================ */
+
+.contact > .wrapper {
+	width: 100%;
+}
+
+.contact p {
+	padding-top: 30px;
+	font-family: sans-serif;
+	font-size: 15px;
+}
+
+.contact form {
+	width: 100%;
+}
+
+form input[type=text],input[type=number],input[type=email] {
+	width: 100%;
+	margin: 10px 0;
+	padding: 10px 0;
+	padding-left: 10px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	font-size: 14px;
+}
+
+form input[type=submit] {
+	/*width: 15%;*/
+	margin-top: 20px;
+	padding: 10px 20px;
+	border: none;
+	color: #fff;
+	font-size: 14px;
+	background-color: #000;
+}
+
+footer {
+	width: 100%;
+	padding-top: 50px;
+}
+
+footer map iframe {
+	width: 100%;
+}
+
+footer span {
+	width: 100%;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	display: inline-block;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 14px;
+	text-align: center;
+	background-color: #000;
+}
+
+footer span a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+
+
+
+
+

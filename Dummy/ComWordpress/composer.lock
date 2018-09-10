@@ -1,0 +1,192 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "47e75302a1309eafd80ca4ca4e488067",
+    "content-hash": "8b72a91dfe1b2b9c6c2fc28821c0995b",
+    "packages": [
+        {
+            "name": "johnpbloch/wordpress",
+            "version": "4.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress.git",
+                "reference": "b15c463dc04c79483058a3da16865c356393408d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/b15c463dc04c79483058a3da16865c356393408d",
+                "reference": "b15c463dc04c79483058a3da16865c356393408d",
+                "shasum": ""
+            },
+            "require": {
+                "johnpbloch/wordpress-core": "4.9.0",
+                "johnpbloch/wordpress-core-installer": "^1.0",
+                "php": ">=5.3.2"
+            },
+            "type": "package",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "WordPress Community",
+                    "homepage": "http://wordpress.org/about/"
+                }
+            ],
+            "description": "WordPress is web software you can use to create a beautiful website or blog.",
+            "homepage": "http://wordpress.org/",
+            "keywords": [
+                "blog",
+                "cms",
+                "wordpress"
+            ],
+            "time": "2017-11-16 01:32:51"
+        },
+        {
+            "name": "johnpbloch/wordpress-core",
+            "version": "4.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress-core.git",
+                "reference": "bf2ed9c364d35bcabd15c4bb139c2581ea8513a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/bf2ed9c364d35bcabd15c4bb139c2581ea8513a9",
+                "reference": "bf2ed9c364d35bcabd15c4bb139c2581ea8513a9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "provide": {
+                "wordpress/core-implementation": "4.9.0"
+            },
+            "type": "wordpress-core",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "WordPress Community",
+                    "homepage": "http://wordpress.org/about/"
+                }
+            ],
+            "description": "WordPress is web software you can use to create a beautiful website or blog.",
+            "homepage": "http://wordpress.org/",
+            "keywords": [
+                "blog",
+                "cms",
+                "wordpress"
+            ],
+            "time": "2017-11-16 01:32:46"
+        },
+        {
+            "name": "johnpbloch/wordpress-core-installer",
+            "version": "1.0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnpbloch/wordpress-core-installer.git",
+                "reference": "7941acd71725710a789daabe0557429da63e7ac6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core-installer/zipball/7941acd71725710a789daabe0557429da63e7ac6",
+                "reference": "7941acd71725710a789daabe0557429da63e7ac6",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "conflict": {
+                "composer/installers": "<1.0.6"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "phpunit/phpunit": ">=4.8.35"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "johnpbloch\\Composer\\WordPressCorePlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "johnpbloch\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "John P. Bloch",
+                    "email": "me@johnpbloch.com"
+                }
+            ],
+            "description": "A custom installer to handle deploying WordPress with composer",
+            "keywords": [
+                "wordpress"
+            ],
+            "time": "2018-01-29 14:49:29"
+        },
+        {
+            "name": "lastguest/dynamic-string",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lastguest/DynamicString.git",
+                "reference": "2faff8c51c75d93d3f65113889a3e20432f3e57f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lastguest/DynamicString/zipball/2faff8c51c75d93d3f65113889a3e20432f3e57f",
+                "reference": "2faff8c51c75d93d3f65113889a3e20432f3e57f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stefano Azzolini",
+                    "email": "lastguest@gmail.com"
+                }
+            ],
+            "description": "Template based random string generator",
+            "homepage": "https://github.com/lastguest/DynamicString",
+            "keywords": [
+                "generator",
+                "grammar",
+                "random",
+                "template"
+            ],
+            "time": "2015-01-13 23:23:04"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}

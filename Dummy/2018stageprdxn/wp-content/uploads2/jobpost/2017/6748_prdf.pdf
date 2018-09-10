@@ -1,0 +1,22 @@
+Static Testing:  It can test and find defects without executing code. Static Testing is done during verification process. This testing includes reviewing of the documents (including source code) and static analysis. This is useful and cost effective way of testing.  For example: reviewing, walkthrough, inspection, etc.
+
+4)  Dynamic Testing:  In dynamic testing the software code is executed to demonstrate the result of running tests. It’s done during validation process. For example: unit testing, integration testing, system testing, etc.
+
+ 5)  Planning:  We need to plan as what we want to do. We control the test activities, we report on testing progress and the status of the software under test.
+
+6)  Preparation:  We need to choose what testing we will do, by selecting test conditions and designing test cases.
+
+7)  Evaluation:  During evaluation we must check the results and evaluate the software under test and the completion criteria, which helps us to decide whether we have finished testing and whether the software product has passed the tests.
+
+8)  Software products and related work products:  Along with the testing of code the testing of requirement and design specifications and also the related documents like operation, user and training material is equally important.
+
+
+RTM is requriment tracibility matrix. It ensures that each ans every requriment has atleast one testcase.
+
+RTM is requriment tracibility matrix. It ensures that each ans every requriment has atleast one testcase.
+
+RTM is requriment tracibility matrix. It ensures that each ans every requriment has atleast one testcase.
+
+RTM is requriment tracibility matrix. It ensures that each ans every requriment has atleast one testcase.
+
+RTM is requriment tracibility matrix. It ensures that each ans every requriment has atleast one testcase.

@@ -19,8 +19,8 @@ $('.filter').click( function(){
 
     $.post(ajaxurl,{'action':'filter_ajax_action','parameters':cat_parameters}, function(response){
         $('#filtered_content').empty();
+        console.log(response);
         $('#filtered_content').html(response);
-        // console.log(response);
     });
 });
 

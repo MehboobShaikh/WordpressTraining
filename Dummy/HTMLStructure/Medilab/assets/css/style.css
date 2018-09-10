@@ -1,0 +1,672 @@
+html * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Force scrollbar */
+html { overflow-y: scroll; }
+
+/* Align radios and text inputs with their label */
+
+input[type='radio'] { vertical-align: text-bottom; }
+
+/* Hand cursor on clickable input elements */
+label,
+input[type='button'],
+input[type='submit'],
+button {
+  cursor: pointer;
+}
+
+strong {
+  font-weight: bold;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+em { font-style: italic; }
+
+img {  
+  vertical-align: middle;
+}
+
+sub,
+sup {
+  vertical-align: baseline;
+  position: relative;
+  color: red;
+  font-size: 55%;
+  line-height: 0;
+}
+
+sup { top: -.7em; }
+
+sub { bottom: -.25em; }
+
+/* 1.2. Clear Fix
+   ========================================================================== */
+
+.cf:before,
+.cf:after {
+  display: table;
+  content: " ";
+}
+
+.cf:after { clear: both; }
+
+.cf { *zoom: 1; }
+
+*{ 
+  font-family: sans-serif; 
+   box-sizing: border-box; 
+}
+
+a {
+  display: inline-block;
+  color: white;
+  font-family: sans-serif;
+  text-decoration: none;  
+}
+
+/* ===============common styles============= */
+
+.wrapper {
+  max-width: 1400px;
+  width: 88.95%;
+  margin: 0 auto;
+}
+
+p {
+  color: #57727B;
+}
+.banner-desc, .case-desc, .about-desc { 
+  color: white; 
+  font-family: sans-serif;
+}
+/* ========header css ============*/
+
+header{
+  width: 100%;
+  padding: 22px 0 16px 0;
+  position: fixed;
+  z-index: 1;
+  background-color: #00707894;
+}
+
+header>.wrapper {
+  max-width: 1200px;
+  width: 85.6%;
+  margin: 0 auto;
+}
+
+h1 {
+  display: inline-block;
+  font-size : 34px; 
+  text-transform: capitalize;
+}
+
+h1 a:hover {
+  color: #88bdb8;
+}
+nav {
+  float: right;
+}
+
+.page-links>li {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.page-links a {
+  /*margin-left: 5px;*/
+  padding: 15px;
+}
+.active {
+  background-color: #4ba0a7;
+}
+.page-links a:hover {
+  background-color: #4ba0a7;
+}
+ /* ==============banner section-============= */
+  .banner-section {
+    height: 650px;
+    width: 100%;
+    padding-top: 160px;
+    position: relative;
+    background-image: url(http://192.168.1.158/vinithtml/hmtl%20css/medilab/assets/images/bigbanner.png);
+     /* background-repeat: no-repeat;  */
+    background-size: cover;   
+  }
+ .banner-section>.wrapper {
+  max-width: 1400px;
+  width: 41.67%;
+  margin: 0 auto;
+ }
+ 
+ h2 {
+  color: white;
+  font-family: sans-serif;
+  font-size: 58px; 
+  text-transform: capitalize;
+  text-align: center;
+ }
+ 
+ h3 {
+  margin-top: 28px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 28px;
+  font-weight: bolder;
+  text-align: center;
+  text-transform: uppercase;
+ }
+ 
+ .banner-section p{
+  margin-top: 17px;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+ }
+ 
+ .appointment-btn {
+    padding: 12px 12px;
+    border-radius: 5px;
+    margin: 7% 35% 0 35%;
+    background-color: #00ABA9;
+    font-size: 13px;
+    text-transform: capitalize;
+ }
+  
+ .appointment-btn:hover {
+    background-color: #88bdb8;
+ }
+ .scroll-icon{
+    width: 5%;
+    margin: 27% auto;
+    display: block;
+    position: absolute;
+    top: 40%;
+    right: 47%;
+    font-size: 25px;
+    text-align: center;
+  }
+ 
+  .scroll-icon:hover {
+    color: #88bdb8;
+  }
+/* =============our service section========== */
+
+  .our-service-section {
+    padding-top: 57px;
+    padding-bottom: 90px;
+  }
+
+  .our-service-section>.wrapper {
+    max-width: 1400px;
+    width: 86.78%;
+    margin: 0 auto;
+  }
+ 
+  .our-service {
+    width: 30.79%;
+    float: left;
+  }
+
+  h4{
+    margin-bottom: 14px;
+    font-size: 29px;
+    text-transform: uppercase;
+  }
+
+  .border {
+    width: 62px;
+    margin-bottom: 18px;
+    border: 1.5px solid #FFAC58;
+    display: inline-block;
+  }
+  /* our services right side section */
+
+  .services {
+    width: 68.48%;
+    margin: 0 34%;
+  }
+
+  .services li {
+    width: 47%;
+    margin-bottom: 23px;
+    margin-left: 20px;
+    display: inline-block;
+  }
+
+  .services i {
+    margin-bottom: 36px;
+    color: #00B6B3;
+    font-size: 36px;
+  }
+
+  .services h5 {
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  .services p { margin-top: 30px; }
+
+  /* ===================Emergency case section ============= */
+
+  .emergency-case-section > .wrapper {
+    max-width: 1400px;
+    width: 90.97%;
+    margin: 0 auto;
+  }
+  
+  .emergency-case li.case,li.table {
+    width: 32.89%;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    background-color: #00B6B3
+  }
+  .emergency-case li.case:nth-child(2) {
+    margin: 0 1px;
+  }
+  .emergency-case .case {
+    padding: 32px 0 23px 60px;
+  }
+
+  .emergency-case h5 {
+    margin-bottom: 28px;
+    font-size: 25px;
+    text-transform: capitalize;
+  }
+
+  .emergency-case p { font-size: 15px; }
+
+  .emergency-case a {
+    padding: 8px;
+    border : 2px solid white;
+    margin-top: 23px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  
+  .emergency-case a:hover {
+    background-color: #88bdb8;
+  }
+  .emergency-case .table {
+    vertical-align: middle;
+    /* padding: 36px 135px 36px 60px; */
+  }
+  
+  .tab-schedule {
+    width: 50%;
+    margin: 38px 0px 35px 60px;
+  }
+  .schedule {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+  }
+  .schedule li {
+    padding : 6px 5px 6px 0;
+    border-top: 1px solid white;
+    display: block;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+  
+  .time {
+    float: right;
+  }
+
+  /* ==============medilap ultimate dream=============== */
+  
+  .articles-section {
+   padding-top: 127px; 
+   padding-bottom: 119px;
+ }
+  .articles-section a { 
+    color: #00B6B3; 
+    margin-right: 38px;
+  }
+  .articles-section a:hover { color: #88bdb8; }
+  .ultimate-dream { 
+    width: 22.20%; 
+    float: left;
+  }
+  .ultimate-dream a { margin-top: 20px; }
+  .ultimate-dream a:first-letter { text-transform: capitalize; }
+
+  /* ------------------right side section---------------- */
+
+  .important li {
+    width: 49.42%;
+    margin: 0 auto 0 45px;
+    display: inline-block;
+  }
+  i.fas.fa-chevron-circle-right { font-size: 39px; }
+  
+  
+  h5.important-header { 
+  font-size: 24px; 
+  margin-bottom: 16px;
+  }
+
+  .right-imp {
+    width: 86%;
+    margin-bottom: 34px;
+    float: right;
+  }
+
+  /* ==================meet our doctors css=============== */
+
+  .meet-doctors-section {
+    padding-bottom: 75px;
+    clear: both;
+  }
+  
+  .doctors li {
+    width: 23%;
+    border: 1px solid #E6E6E6;
+    margin-right: 26px; 
+    display: inline-block;
+    text-transform: capitalize;
+  }
+  .image {
+    padding: 2px;
+  }
+
+  img[alt=doctor] {
+    width: 100%;
+  }
+  li.right { margin-right: 0; }
+  .social { margin: 20px 0; }
+  .social a { color: #007FAE; }
+
+  h5.doctor-name {
+    margin-top: 20px;
+    font-size: 24px;
+    margin-bottom: 22px;
+  }
+
+  .social li {
+    margin: 6px;
+    border: none;
+  }
+  .social a:hover { color: #88bdb8; }
+  .about-doctor { 
+    padding-left: 10px;
+ }
+
+ /* ===============patients saying css ============= */
+
+ .patients-saying {
+  padding-top: 52px;
+  padding-bottom: 58px;
+  background-color: #ECECED;
+ }
+
+ .patient-words li {
+  width: 31%;
+  display: inline-block;
+ }
+
+ .patient-words li:nth-child(2) {
+  margin: 0 34px;
+ }
+
+ .patient-words p {
+  padding: 20px;
+  box-shadow: 2px 3px 5px 3px #C5C5C6;
+  margin-bottom: 23px;
+  background-color: white;
+  font-size: 17px;
+ }
+
+ .patient-words img {
+  border-radius: 25px;
+  float: left;
+ } 
+
+ .patient-words h5 {
+  margin-left: 59px;
+  color: black;
+  font-size: 23px;
+  text-transform: capitalize;
+ }
+  
+ h5.name > span {
+  font-weight: bold;
+ }
+
+ .patient-words a { width: 28%; }
+ .patient-words a:hover { color : #88bdb8; }
+
+ /* ==================== few words about us============= */
+
+ 
+ .about-us-section {
+  padding-top: 60px;
+  padding-bottom: 157px;
+  background-color: black;
+ }
+  
+  .about-us-section .wrapper {
+    max-width: 1400px;
+    width : 58%;
+    margin : 0 auto;
+
+  }
+ .about-us-section h5 {
+    width: 36.02%;
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+
+  .few-words {
+    width: 50%;
+    float: right;
+    font-size: 17px;
+  }
+
+  .about-us-section a {
+    float: right;
+    color: #008D83;
+    text-transform: capitalize;
+    font-size: 17px;
+    font-style: italic;
+  }
+  
+  .author-name::before {
+    content: '';
+    width: 15px;
+    border: 0.5px solid #008D83;
+    margin-bottom: 5px;
+    margin-right: 2px;
+    display: inline-block; 
+  }
+  .author-name:hover {
+    color : #88bdb8;
+  }
+  /* ==========================contact us section============= */
+
+  .contact-us-section { 
+    padding: 53px 0; 
+    overflow: auto;
+  }
+  
+  .contact-us {
+    width: 22%;
+  }
+  .contact-info { 
+    display: inline-block; 
+    float: left;
+  }
+  .info-header {
+    font-size: 25px;
+    text-transform: capitalize;
+  }
+
+  .list { 
+    padding-left: 10px;
+    margin-top: 40px;
+    list-style: none; 
+  }
+  .list a,address {
+    color: #979797;
+  }
+  
+  .list i { font-size: 32px; }
+
+  address { 
+     margin-left: 10px; 
+    display: inline-block; 
+    text-transform: capitalize;
+  }
+  
+  .icon { margin-top: 34px; }
+
+  .icon i {
+    margin-right: 20px;
+  }
+
+  /* ---------------form div------------------ */
+
+  .query-form {
+    width: 65.51%;
+    float: right;
+  }
+  
+  .query-header {
+    font-size: 25px;
+    margin-bottom: 36px;
+  }
+
+  .form-control {
+    width: 739px;
+    height: 38px;
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  .form-msg-control {
+    width: 739px;
+    height: 104px;
+    padding-left: 10px;
+  }
+
+  .btnsubmit {
+    width: 136px;
+    height: 41px;
+    border-style: none;
+    margin-top: 14px;
+    background-color: #00B6B3;
+    color: white;
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+
+  /* ==================footer section====== */
+  footer {
+    clear: both;
+    background-color: #265E68
+  }
+  
+  .top-footer {
+    padding-top: 50px;
+    overflow: auto;
+    padding-bottom: 47px;
+    border-bottom: 1px solid #41717A;
+  }
+  
+  .top-footer h5 {
+    margin-bottom: 30px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-transform: capitalize;
+  }
+  .about-us-info {
+    width: 28.85%;
+    float: left;
+  }
+  
+  /* ----------quick links------------- */
+
+  .quick-links {
+    width: 13.94%;
+    margin: 0 56px;
+    float: left;
+  }
+
+  .links {
+    margin-left: 37px;
+    text-transform: capitalize;
+  }
+
+  .links li {
+    color: white;
+  }
+  /* -------follow-us-------------- */
+  .follow-us {
+    margin-right: 120px;
+    float: right;
+  }
+  
+  .follow-us li {
+    display: inline-block;
+  }
+
+  ul.social-links {
+    margin-left: 40px;
+  }
+
+  .facebook {
+    padding: 19px 22px 14px 23px;
+    background-color: #009DD2;
+  }
+
+  .google {
+    padding : 19px 17px 14px 17px;
+    background-color: #FB4545;
+  }
+  .linkedin {
+    padding : 19px 20px 14px 20px;
+    background-color: #2B4450;
+  }
+  .twitter {
+    padding: 19px 19px 14px 19px;
+    background-color: #009DD2; 
+  }
+  /* ============copyright css =========== */
+  .copyright {
+    padding: 36px 0;
+    clear: both;
+    color: white;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .copyright>.wrapper{
+    max-width: 1400px;
+    /*width: 27.91%;*/
+    margin: 0 auto;
+  }
+  
+  .copyright span{ font-family: sans-serif; }
+  .copyright a {
+    color: #00B6B3;
+  }

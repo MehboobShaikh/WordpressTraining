@@ -1,0 +1,664 @@
+/*==================================================================================
+Home Page Styling
+====================================================================================*/
+
+/*----------- Main Section Styling Starts from here --------------------*/
+
+.sjb-container {
+	width: 100%;
+	padding: 0;
+}
+
+.wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+.loaders {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	background-color: #f2f4f4;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.home {
+	.header_navigation-container {
+		#header_navigation-toggle {
+			padding: 0;
+			margin: 24px;
+		}
+	}
+
+	footer {
+		@include responsive(767) { margin-top: 0; }
+	}
+
+	.vjs-control-bar { display: none; }
+
+	.wrapper { width: 90%; }
+
+	.home_hero-section {
+		position: relative;
+		overflow: hidden;
+
+		.bgvideo {
+			background: url(../../images/Agile.jpg) center center no-repeat;
+	    background-size: cover;
+		}
+		.wp-video {
+			width: 100vw;
+			height: 100vh;
+		}
+		.mejs-container {
+			width: 100% !important;
+			height: 100vh !important;
+			position: relative;
+			.mejs-mediaelement {
+				position: static;
+				padding: 0;
+				video.wp-video-shortcode {
+					width: 100%;
+					max-width: initial;
+					height: 100%;
+					position: absolute;
+					top: 0;
+				}
+			}
+		}
+		.home_hero-content {
+			width: 72%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			text-align: center;
+			@include vendor-prefixes(transform, translate(-50%, -50%));
+			@include orientation-responsive(landscape,767) { top: 45%; }
+			@include responsive(320) { width: 80%; }
+
+		}
+		.home_hero-overlay  {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			z-index: 10;
+			h2 {
+				padding-bottom: 8px;
+				margin-bottom: 0;
+				color: $white;
+				font: 90px CallunaRegular;
+				line-height: 100px;
+				letter-spacing: initial;
+				text-transform: none;
+				text-align: center;
+				@include responsive(1024) {
+					font-size: 80px;
+					line-height: 83px;
+				}
+				@include responsive(767) {
+					font-size: 35px;
+					line-height: 30px;
+				}
+			}
+			h3,
+			p {
+				max-width: 500px;
+				width: 57%;
+				display: inline-block;
+				color: $white;
+				font: 30px/42px $font;
+				@include responsive(767) {
+					width: 300px;
+					position: absolute;
+				    left: 50%;
+				    transform: translateX(-50%);
+					font-size: 17px;
+					line-height: 24px;
+
+				}
+			}
+
+			.home_hero-seebelow {
+				width: 56px;
+				height: 56px;
+				border-radius: 50%;
+				display: block;
+				position: absolute;
+				left: 50%;
+				bottom: 7%;
+				cursor: pointer;
+				background: url(assets/images/sprite_dropdown_arrow.png) no-repeat 0 0;
+				background-size: 100%;
+				text-indent: -9999px;
+				@include vendor-prefixes(transform, translateX(-50%));
+
+				&:hover{
+					background: url(assets/images/sprite_dropdown_arrow.png) no-repeat 0 -65px;
+					background-size: 100%;
+					@include responsive(1024) {
+						background: url(assets/images/sprite_dropdown_arrow.png) no-repeat 0 0;
+						background-size: 100%;
+					}
+				}
+			}
+		}
+
+	// Video Controls Starts here
+	.mejs-controls { display: none !important; }
+}
+
+.home_content {
+	padding-top: 45px;
+	background: #f2f4f4;
+
+	@media only screen and (max-width: 767px) {
+		padding-top: 30px !important;
+	}
+
+	// blocks isotopes
+	.home_content-work-casestudy {
+		display: flex;
+		flex-wrap: wrap;
+		&>div:nth-child(3n+2) {
+			margin: 0 2.4% 45px;
+		}
+		.casestudy-block {
+			.work-case-overlay {
+				.cta {
+					@include responsive(1290){
+						width: 48%;
+					}
+					@include responsive(1160) { width: 50%; }
+					@include responsive(1100) { width: 54%; }
+				}
+			}
+		}
+		.internal-projects {
+			background-color: #191919;
+			.internal-projects-logo { padding: 72px; }
+		}
+	}
+
+	@include responsive(1024) {
+		.home_content-work-casestudy {
+			&>div:nth-child(3n+2) {
+				margin: 0;
+				margin-bottom: 30px;
+			}
+
+			&>div:nth-child(2n+2) {
+				margin-left: 4%;
+				margin-right: 0;
+				margin-bottom: 30px;
+			}
+			
+			&>div:nth-child(2n+3) {
+				margin-left: 4%;
+				@include responsive(1023) { margin-left: 0; }
+			}
+
+			&>div {
+				margin-bottom: 30px;
+				p { font-size: 24px; }
+			}
+			.internal-projects {
+				margin-left: 4%;
+				margin-right: 0;
+			}
+		}
+	}
+
+	@include responsive(768) {
+		.home_content-work-casestudy {
+
+			&>div:nth-child(2n+2) {
+				margin-left: 0;
+				margin-right: 0;
+				margin-bottom: 30px;
+			}
+			.internal-projects {
+				margin-left: 0;
+			}
+		}
+	}
+
+	.home_content-work-casestudy:last-child {
+		padding-top: 45px !important;
+
+		@media only screen and (max-width: 767px) {
+			padding-top: 30px !important;
+		}
+	}
+}
+
+//flex slider
+.home_testimonial-slider {
+	position: relative;
+	@include responsive(768) {
+		border: 1px solid #ddd;
+		background: $white;
+	}
+	.flex-viewport {
+		border: 1px solid #ddd;
+		position: static !important;
+		background: $white;
+		@include responsive(768) { border: none; }
+
+		.slides li {
+			height: 380px;
+			@include responsive(1185) { height: 300px; }
+			@include responsive(1024) { padding: 0 0 0.9% 0; }
+			@include responsive(768) {
+				height: auto;
+				padding: 0.9% 0 0 0;
+				border-bottom: none;
+			}
+			@include responsive(560) { padding: 2% 0 0 0; }
+		}
+
+		.testimonials__image,
+		.home_slider--content {
+			display: inline-block;
+			vertical-align: middle;
+			@include responsive(1024) { display: block; }
+		}
+		.testimonials__image {
+			width: 34.2%;
+			height: 100%;
+			border-right: 1px solid #ccc;
+			position: relative;
+			@include responsive(1024) {
+				width: 100%;
+				border-right: none;
+			}
+			&:before {
+				position: absolute;
+				display: inline-block;
+				border-top: 36px solid transparent;
+				border-left: 36px solid #ccc;
+				border-bottom: 36px solid transparent;
+				border-left-color: #ccc;
+				right: -37px;
+				top: 50%;
+				content: '';
+				margin-top: -36px;
+				@include responsive(1024) { display: none; }
+			}
+			&:after {
+				position: absolute;
+				display: inline-block;
+				border-top: 36px solid transparent;
+				border-left: 36px solid $white;
+				border-bottom: 36px solid transparent;
+				right: -36px;
+				top: 50%;
+				content: '';
+				margin-top: -36px;
+				@include responsive(1024) { display: none; }
+			}
+			img {
+				width: 70%;
+				height: auto;
+				position: absolute;
+				display: table;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				@include responsive(1024) { width: 26%; }
+				@include responsive(480) { width: 50%; }
+			}
+		}
+		.home_slider--content {
+			width: 64.8%;
+			@include responsive(1024) {
+				width: 100%;
+			}
+			@include responsive(768) { padding: 90px 0; }
+			@include responsive(560) { padding: 90px 0 0 0; }
+			.testimonial__description {
+				width: 73%;
+				margin: 0 auto;
+				color: $fcolor;
+				font: 18px/28px $calluna-round;
+				@include responsive(1024) { font: 15px/22px $calluna-round; }
+				@include responsive(768) {
+					font-size: 14px;
+				}
+			}
+			span {
+				width: 13%;
+				padding: 0.5px;
+				margin: 20px auto;
+				display: block;
+				background-color: #d3d3d3;
+				text-align: center;
+			}
+			p {
+				color: $fcolor;
+				font: 15px $bold-font;
+				@include responsive(1024) { font-size: 11px; }
+			}
+		}
+	}
+	.flex-direction-nav {
+		list-style-type: none;
+		@include responsive(768) { display: none; }
+		.flex-prev,
+		.flex-next {
+			transform: translateY(2%);
+		}
+		.flex-nav-prev {
+			.flex-prev {
+				margin-left: 24px;
+			}
+		}
+		.flex-nav-next {
+			.flex-next {
+				margin-right: 24px;
+			}
+		}
+	}
+	.flex-control-paging {
+		display: none;
+		@include responsive(768) {
+			padding: 20px 0 10%;
+			display: block;
+			position: static;
+		}
+	}
+}
+
+// Work Section styling starts from here
+.casestudy-block,
+.work-block {
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+	width: 31.7%;
+	margin-bottom: 45px;
+	display: inline-block;
+	overflow: hidden;
+	@include responsive(1024) { width: 30.6%; }
+	@include responsive(1023) { width: 48%; }
+	@include responsive(768) { width: 100%; }
+}
+
+// Work Section Title
+.work-case-overlay {
+	background: linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+
+	div {
+		margin: 45% auto 0;
+		@include responsive(768) { margin: 30% auto 0; }
+	}
+
+	.work_case_overlay-title {
+		width: auto;
+		padding: 5px 10px 7px 11px;
+		margin: 30px auto 0;
+		display: inline-block;
+		position: relative;
+		color: $white;
+		@include fonts(600,14px,$bold-font);
+		opacity: 1;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		@include vendor-prefixes(transition, all 0.2s ease);
+
+		&:before,
+		&:after {
+			width: 50px;
+			position: absolute;
+			content: "";
+			top: 50%;
+		}
+
+		&:before { left: -70px; }
+		&:after { right: -70px;	}
+	}
+}
+
+
+
+.casestudy-block {
+	.work_case_overlay-title {
+		background-color: #2196F3;
+		&:before,
+		&:after { border-bottom: 1px solid #2196F3; }
+	}
+}
+
+.work-block {
+	.work_case_overlay-title {		
+		background-color: #2196F3;
+		&:before,
+		&:after { border-bottom: 1px solid #2196F3; }
+	}
+}
+
+.casestudy-block:hover,
+.work-block:hover {
+	.work_case_overlay-title {
+		opacity: 0;
+		@include responsive(1024) { opacity: 1; }
+	}
+}
+
+// scroll pane
+.home_facebook-feedblock {
+.scroll-pane {
+	height: 243px;
+	@include responsive(1024) { width: 97%!important; }
+}
+
+.jspPane {
+	width: 80%!important;
+	padding-top: 0 !important;
+}
+
+// facebook section styling
+
+.custom-scroll img { 
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.jspVerticalBar {
+	width: 4px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 16px;
+	background: transparent;
+}
+
+.jspContainer { width: 100%!important; }
+
+.jspDrag {
+	position: relative;
+	top: 0;
+	background-color: #ced5e5;
+	left: -3px;
+	border-radius: 5px;
+	width: 10px;
+  cursor: pointer;
+}
+
+.jspTrack {
+	border-radius: 5px;
+	background: #bababa;
+}
+}
+
+// Footer Work Section starts here
+
+.home_facebook-feedblock {
+	width: 31.33%;
+	height: 385px;
+	margin: 56px 2.4% 0 0;
+	position: relative;
+	background-color: #3b5998;
+	cursor: pointer;
+	overflow: hidden;
+	vertical-align: top;
+
+	@include responsive(1024) { width: 30.6%; }
+	@include responsive(1023) { width: 48% }
+
+	.fb-logo {
+		width: 13px;
+		height: 26px;
+		margin: 20px 0 20px 28px;
+		display: block;
+		background: url(assets/images/Sprite.png) no-repeat -35px -131px;
+	}
+
+	@include responsive(960) {
+		margin: 0 auto;
+		float: none;
+	}
+	@include responsive(768) { width: 100%; }
+	a {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0%;
+		color: $white;
+		text-decoration: none;
+		font: 19px/30px $font;
+		text-transform: uppercase;
+		@include vendor-prefixes(word-break , break-word);
+		@include vendor-prefixes(white-space, pre-wrap );
+
+		img { padding: 0 30px; }
+
+		p {
+			padding: 0 15px 0 30px;
+			margin: 20px 0 13px;
+		  color: $white;
+		  font: 600 19px/30px 'Open Sans', sans-serif;
+		  text-transform: uppercase;
+		  word-wrap: break-word;
+		  white-space: pre-wrap;
+
+		  &:last-of-type { margin: 0; }
+
+			span {
+			  text-decoration: none;
+			  text-transform: uppercase;
+			  word-break: break-word;
+			  white-space: pre-wrap;
+			}
+		}
+
+		.mCustomScrollbar { height: calc(100% - 35%); }
+		.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ background-color: $white !important; }
+		.mCSB_scrollTools .mCSB_draggerRail{ background-color: #bababa !important; }
+		.mCSB_scrollTools { right: 10px !important; }
+		.custom-scroll  .mCSB_scrollTools .mCSB_draggerContainer { right: -3px; }
+		.mCustomScrollBox .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar { width: 8px; }
+		.mCustomScrollBox .mCSB_scrollTools .mCSB_draggerRail { width: 4px; }
+	}
+}
+}
+
+
+//Start of Medium Post Styling
+
+.home_medium_feedblock {
+	background: $lightgrey;
+	.wrapper {
+		padding: 20px;
+		@include responsive(1023) { padding: 20px 0; }
+		.recent {
+			margin: 30px 0 0 18px;
+			float: left;
+			@include responsive(1023) { 
+				margin-bottom: 20px;
+				float: none;
+			}
+			@include responsive(767) {
+				margin: 13px 0 20px 0;
+				text-align: center;
+			}
+
+			.recent_medium,
+			.recent_post {
+				display: block;
+				font: bold 34px/38px $bolder-font;
+				text-transform: uppercase;
+				@include responsive(1023) { display: inline-block; }
+				@include responsive(767) { 
+					display: inline-block;
+					font-size: 25px;
+					line-height: 30px;
+				}
+			}
+		}
+
+		.medium_post {
+			float: right;
+			@include responsive(1100) { width: 80%; }
+			@include responsive(1023) { 
+				width: 100%;
+				float: none;
+			}
+			.rss-aggregator {
+				list-style-type: none;
+				.feed-item {
+					padding: 20px;
+					margin-bottom: 20px;
+					@include responsive(1023) { margin-bottom: 5px; }
+					&:last-child { margin-bottom: 0; }
+					a {
+						margin-bottom: 10px;
+						display: block;
+						color: $black;
+						font: bold 18px/23px $bold-font;
+						text-decoration: none;
+						@include responsive(767) { 
+							font-size: 14px;
+							line-height: 20px;	
+						}
+					}
+				}
+
+				.medium-hover {
+					background-color: $lightblue;
+					a,
+					.feed-date,
+					.feed-author {
+						color: $white;
+					}
+				}
+			}
+
+			.wprss-feed-meta {
+				.feed-source {
+					display: none;
+				}
+
+				.feed-date,
+				.feed-author  {
+					display: inline-block;
+					vertical-align: middle;
+					color: $fcolor;
+					font: 13px/15px $font;
+				}
+				.feed-author { padding-left: 3px; }
+			}
+		}
+
+		.nav-links { display: none; }
+	}
+}
