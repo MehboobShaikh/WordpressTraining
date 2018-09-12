@@ -82,7 +82,6 @@ $(function(){
   
 
   $(window).resize(function() {
-<<<<<<< HEAD
     var chkDisplay = $('nav > a').css(['display']);
     // console.log(chkDisplay);
     var className = $('nav > ul')[0].className;
@@ -94,34 +93,4 @@ $(function(){
   });
 
 
-=======
-    var menu = document.getElementById('menu-pages');
-    if($(window).width() > 700){
-      $('ul.menu-pages').css('display','block');
-      menu.className = 'menu-pages';
-    }else if( ($(window).width() <= 700 ) && menu.className == 'menu-pages' ){
-      $('ul.menu-pages').css('display','none');
-      console.log("Hi SMS"+ menu.className);
-      menu.className = 'menu-pages';
-    }
-  });
-      $('nav > a').on('click',function() {
-        var menu = document.getElementById('menu-pages');
-        if(menu.className == 'menu-pages'){
-          menu.className += ' responsive-menu';
-          $('ul.responsive-menu').slideDown(600);
-        } else {
-          $('ul.responsive-menu').slideUp(500,function(){
-            menu.className = 'menu-pages';
-          });
-        }
-
-        $('.responsive-menu > li').on('click',function() {
-          var menu = document.getElementById('menu-pages');
-          $('ul.responsive-menu').slideUp(100,function(){
-            menu.className = 'menu-pages';
-          });
-        });
-      });
->>>>>>> 4bf44c50f67e528b1ba9a09bb904dacb6d6e37d6
 });
