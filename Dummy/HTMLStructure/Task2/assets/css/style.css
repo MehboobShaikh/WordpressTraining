@@ -167,7 +167,11 @@ nav.primary-nav > a {
 /* 
 ul.responsive-menu {
   width: 100%;
+<<<<<<< HEAD
   display: block !important;
+=======
+  /*display: block !important;*/
+>>>>>>> 4bf44c50f67e528b1ba9a09bb904dacb6d6e37d6
   animation: 2s hamburger;
 }
 @keyframes hamburger{
