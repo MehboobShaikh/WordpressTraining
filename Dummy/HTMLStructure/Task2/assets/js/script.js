@@ -3,14 +3,15 @@ $(function(){
   // $('body').slideDown(1000);
   $("a").on('click', function(event) {
     	// console.log(event.target.alt);
+      // event.preventDefault();
     if (this.hash !== "") {
       event.preventDefault();
       var hash = this.hash;
-      $('html').animate({
-        scrollTop: $(hash).offset().top
-      }, 600,function(){
-        window.location.hash = hash;
-      });
+      $('html, body').animate({
+        scrollTop: ($(hash).offset().top - 74)
+      }, 600);
+      window.location.hash = hash;
+      // return false;
     } 
   });
 
@@ -81,7 +82,7 @@ $(function(){
       });
   
 
-  $(window).resize(function() {
+/*  $(window).resize(function() {
     var chkDisplay = $('nav > a').css(['display']);
     // console.log(chkDisplay);
     var className = $('nav > ul')[0].className;
@@ -89,6 +90,20 @@ $(function(){
       $('nav > ul').css('display','none');
     }else{
       $('nav > ul').css('display','block');
+    }
+  });*/
+
+  $(window).resize(function() {
+    var chkDisplay = $('nav > a').css(['display']);
+    // console.log(chkDisplay);
+    var className = $('nav.primary-nav ul')[0].className;
+    if(chkDisplay['display'] == 'block' && className == 'menu-pages'){
+      $('nav.primary-nav ul').css('display','none');
+    }else if(chkDisplay['display'] == 'none' && $('nav.primary-nav ul').hasClass('responsive-menu')){
+      $('nav.primary-nav ul').removeClass("responsive-menu"); 
+      $('nav.primary-nav ul').css('display','block');
+    }else{
+      $('nav.primary-nav ul').css('display','block');
     }
   });
 
