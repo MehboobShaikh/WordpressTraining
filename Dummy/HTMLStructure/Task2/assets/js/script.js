@@ -1,3 +1,10 @@
+$(window).on('load',function() {
+  // console.log($(window.location.hash).offset().top);
+  window.scroll($(window.location.hash).offset().top);
+  // console.log("SMS");
+  // Handler for .load() called.
+});
+
 $(function(){
   // $('body').hide();
   // $('body').slideDown(1000);

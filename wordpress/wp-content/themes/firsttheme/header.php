@@ -16,7 +16,11 @@
 		<div class="site-search">
 			<?php get_search_form(); ?>
 		</div>
-		<h1><a class="site-name" href="<?php echo home_url(); ?>"> <?php bloginfo('name'); ?></a></h1>
+		<?php if(get_theme_mod('firsttheme_site_header_logo_setting')): ?>
+			<h1><a class="site-name" href="<?php echo home_url(); ?>"><figure class="site-logo"><img src="<?php echo get_theme_mod('firsttheme_site_header_logo_setting'); ?>" alt="Site Logo"></figure></a></h1>
+			<?php else: ?>
+			<h1><a class="site-name" href="<?php echo home_url(); ?>"> <?php bloginfo('name'); ?></a></h1>
+		<?php endif; ?>
 		<h5 class="site-description"><?php bloginfo('description') ?></h5>
 	</header>	<!-- Site Header -->
 

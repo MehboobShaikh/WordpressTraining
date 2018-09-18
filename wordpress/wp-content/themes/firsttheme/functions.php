@@ -932,8 +932,38 @@ if( function_exists('acf_add_options_page') ) {
 
 
 
+// ====================================== Customize Site Logo ========================================
 
+function firstheme_customize_site_logo($wp_customize){
+	// Header Logo
+	/*$wp_customize->add_section('firsttheme_site_logo_section',array(
+		'title'				=>	__('Site Logos','firsttheme'),
+		'description'	=>	'Edit your Site Logo'
+	));*/
 
+	$wp_customize->add_setting('firsttheme_site_header_logo_setting',array(
+		'default'	=>	'https://via.placeholder.com/150x50'
+	));
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'firsttheme_site_header_logo_setting',array(
+		'label'			=>	__('Site Header Logo','firsttheme'),
+		'section'		=>	'title_tagline',
+		'setting'		=>	'firsttheme_site_header_logo_setting'
+	)));
+
+	// Footer Logo
+	$wp_customize->add_setting('firsttheme_site_footer_logo_setting',array(
+		'default'	=>	'https://via.placeholder.com/50x50'
+	));
+
+	$wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'firsttheme_site_footer_logo_setting',array(
+		'label'			=>	__('Site Footer Logo','firsttheme'),
+		'section'		=>	'title_tagline',
+		'setting'		=>	'firsttheme_site_footer_logo_setting'
+	)));
+
+}
+add_action('customize_register','firstheme_customize_site_logo');
 
 
 
