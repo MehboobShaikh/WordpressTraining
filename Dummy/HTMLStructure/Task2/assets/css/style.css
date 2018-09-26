@@ -216,9 +216,10 @@ div.banner {
 
 .banner section {
   width: 50%;
-  margin-top: 20%;
   margin-left: 25%;
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .banner h2 {
@@ -844,7 +845,7 @@ header {
       transform: translateY(-100%);
     }
     to {
-      transform: translateY(0);
+      transform: translateY(-50);
     }
 }
 section.banner-info {
@@ -1042,7 +1043,9 @@ ul.transition-emergency {
   .banner section {
     width: 90%;
     margin: 0 5%;
-    margin-top: 25%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 

@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Auto Login by Mehboob",
+    "description": "This Extension Helps Developer / User for AutoLogin.",
+    "version": "1.0",
+    "permissions": [
+        "tabs"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+              "http://localhost/WP/wordpress/wp-login.php?redirect_to=http%3A%2F%2Flocalhost%2FWP%2Fwordpress%2Fwp-admin%2F&reauth=1",
+              "http://localhost/WP/wordpress/wp-login.php"
+            ],
+            "js": ["content.js"]
+        }
+    ]
+}

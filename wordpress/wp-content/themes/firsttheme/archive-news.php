@@ -17,6 +17,7 @@
 	        <article class="post post-template">
 
 				<div class="post-template-post-title">
+					<?php var_dump($post->post_name) ?>
 					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 

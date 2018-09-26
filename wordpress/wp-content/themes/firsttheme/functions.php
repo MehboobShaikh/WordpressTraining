@@ -968,4 +968,12 @@ add_action('customize_register','firstheme_customize_site_logo');
 
 
 
-?>
+
+
+
+
+
+
+
+
+
