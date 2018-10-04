@@ -17,13 +17,11 @@
 </head>
 <body>
 
-	<header>
+	<header class="responsive-header">
 		<div class="wrapper">
-			<h1>
+			<h1 class="header--logo">
 				<a href="" title="Thomas Marine">
-					<div class="header--logo">
-						<img src="assets/images/thomas-marine-logo.png" alt="Thomas Marine Logo">
-					</div>
+					<img src="assets/images/thomas-marine-logo.png" alt="Thomas Marine Logo">
 				</a>
 			</h1>
 			<nav class="main-nav cf">
@@ -36,25 +34,30 @@
 					</li>
 				</ul>
 				<ul class="header__menu-pages">
-					<li><a href="#" title="About">About</a></li>
-					<li><a href="#" title="Services">Services</a></li>
-					<li><a href="#" title="Makes">Makes</a></li>
-					<li><a href="#" title="Boat Type">Boat Type</a></li>
-					<li><a href="#" title="Events">Events</a></li>
-					<li><a href="#" title="Cotact Us">Cotact Us</a></li>
+					<li><a class="header__menu-pages--title" href="#" title="About">About</a></li>
+					<li><a class="header__menu-pages--title" href="#" title="Services">Services</a></li>
+					<li><a class="header__menu-pages--title" href="#" title="Makes">Makes</a></li>
+					<li><a class="header__menu-pages--title" href="#" title="Boat Type">Boat Type</a></li>
+					<li><a class="header__menu-pages--title" href="#" title="Events">Events</a></li>
+					<li><a class="header__menu-pages--title active-menu" href="#" title="Cotact Us">Cotact Us</a></li>
 					<li>
-						<input type="text" name="search" placeholder="FR">
-						<i class="fa fa-search" aria-hidden="true"></i>
+						<form method="GET">
+							<input type="text" name="search_keyword" placeholder="FR">
+							<button class="btn btn--transparent" type="submit" name="search_header_submit" value="search_header_submit">
+							<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
+						</form>
 					</li>
 				</ul>
 			</nav>
+				<a href="javascript:void(0);" class="icon hamburger"><i class="fa fa-bars"></i></a>
 		</div>
 	</header>
 
 
 	<main>
 		<div class="banner">
-			<h2 class="banner__heading">WE'RE 100 %</h2>
+			<h2 class="banner__heading banner__heading">WE'RE 100 %</h2>
 			<span class="banner__sub-heading">All About Boats</span>
 			<figure class="banner__image">
 				<img src="assets/images/home-hero-boat.png" alt="Boat">
@@ -67,10 +70,10 @@
 		<section class="search">
 			<div class="wrapper">
 				<h3 class="search__heading">The Biggest Inventory in the Provience of Quebec</h3>
-				<form method="GET" post="" class="search__form">
+				<form method="GET" class="search__form">
 					<div class="search__input">
-						<label for="condition" class="search-category">Condition</label>
-						<select name="condition">
+						<label id="condition" class="search-category">Condition</label>
+						<select name="condition"id="condition">
 							<option>Select</option>
 							<option>Condition A</option>
 							<option>Condition B</option>
@@ -79,8 +82,8 @@
 					</div>
 					
 					<div class="search__input">
-						<label for="makes" class="search-category">Makes</label>
-						<select name="makes">
+						<label id="makes" class="search-category">Makes</label>
+						<select name="makes"id="makes">
 							<option>Select</option>
 							<option>Makes A</option>
 							<option>Makes B</option>
@@ -89,8 +92,8 @@
 					</div>
 					
 					<div class="search__input">
-						<label for="type" class="search-category">Type</label>
-						<select name="type">
+						<label id="type" class="search-category">Type</label>
+						<select name="type"id="type">
 							<option>Select</option>
 							<option>Type A</option>
 							<option>Type B</option>
@@ -99,7 +102,10 @@
 					</div>
 
 					<div class="search__input">
-						<input type="submit" name="find_boat" value="Search">
+						<!-- <input type="submit" name="find_boat" value="Search"> -->
+						<button class="btn" type="submit" name="find_boat" value="find_boat">
+						<i class="fa fa-search" aria-hidden="true"></i>Search
+						</button>
 					</div>
 				</form>
 			</div>
@@ -158,21 +164,37 @@
 			  <div class="slider slider-for-specials">
 			    <div class="specials__slider-img">
 			    	<div class="slider__image-container"><img src="assets/images/slider2_1.jpg" alt=""></div>
+			    	<div class="slider__boat-promotion">
+			    		<i class="fa fa-bookmark-o" aria-hidden="true"></i>
+			    		<span class="promotion-price"><ins>$20,000</ins></span><span class="old-price"><del>$22,995</del></span>
+			    	</div>
 			    	<span class="slider__boat--name">Bayliner 160 Bowrider 2017</span>
 			    	<span class="slider__boat--length">length 16' 2''</span>
 			    </div>
 			    <div class="specials__slider-img">
 			    	<div class="slider__image-container"><img src="assets/images/slider2_2.jpg" alt=""></div>
+			    	<div class="slider__boat-promotion">
+			    		<i class="fa fa-bookmark-o" aria-hidden="true"></i>
+			    		<span class="promotion-price"><ins>$20,000</ins></span><span class="old-price"><del>$22,995</del></span>
+			    	</div>
 			    	<span class="slider__boat--name">Bayliner 175 BR 2016</span>
 			    	<span class="slider__boat--length">length 23'</span>
 			    </div>
 			    <div class="specials__slider-img">
 			    	<div class="slider__image-container"><img src="assets/images/slider2_3.jpg" alt=""></div>
+			    	<div class="slider__boat-promotion">
+			    		<i class="fa fa-bookmark-o" aria-hidden="true"></i>
+			    		<span class="promotion-price"><ins>$20,000</ins></span><span class="old-price"><del>$22,995</del></span>
+			    	</div>
 			    	<span class="slider__boat--name">Bayliner 215 DB 2016</span>
 			    	<span class="slider__boat--length">length 22' 4''</span>
 			    </div>
 			    <div class="specials__slider-img">
 			    	<div class="slider__image-container"><img src="assets/images/slider2_4.jpg" alt=""></div>
+			    	<div class="slider__boat-promotion">
+			    		<i class="fa fa-bookmark-o" aria-hidden="true"></i>
+			    		<span class="promotion-price"><ins>$20,000</ins></span><span class="old-price"><del>$22,995</del></span>
+			    	</div>
 			    	<span class="slider__boat--name">Bayliner XR7 2016</span>
 			    	<span class="slider__boat--length">length 51' 10''</span>
 			    </div>
