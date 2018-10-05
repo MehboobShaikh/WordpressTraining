@@ -367,10 +367,19 @@ img.slick-prev {
 img.slick-next , img.slick-prev {
   height: 25px;
 }
-.featured__slider-img, .specials__slider-img, .thumb {
+.featured__slider-img, .specials__slider-img {
   padding: 0 15px;
 }
 
+/* Client Slider */
+
+.client {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+.client__slider-img {
+  padding: 0 20px;
+}
 
 /* Family Story */
 
@@ -614,6 +623,10 @@ input[type=email]::-ms-input-placeholder { /* Microsoft Edge */
   }
   .message-box__info {
     font-size: 16px;
+  }
+  /* Client Slider */
+  .client {
+    margin-top: 50px;
   }
 }
 
