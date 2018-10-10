@@ -23,7 +23,7 @@
     <button id="right">Right</button>
 
     <div class="gallery">
-      <img src="images/laptop-mobile_small.jpg" width="100%">
+      <!-- <img src="images/laptop-mobile_small.jpg" width="100%"> -->
     </div>
 
     <ul id="list">
@@ -60,6 +60,43 @@
       <input type="submit" value="Submit">
     </form>
 
+    <div class="trigger">Trigger</div>
+    <div class="result"></div>
+    <div class="log"></div>
+
   </div>
+  <script>
+    $( document ).ajaxStart(function() {
+      $( ".log" ).text( "Triggered ajaxStart handler." );
+    });/*
+    $( document ).ajaxComplete(function() {
+      $( ".log" ).text( "Triggered ajaxComplete handler." );
+    });*/
+
+    $( ".trigger" ).on('click',function() {
+      // $( ".result" ).load( "ajax/test.html" );
+      $( ".result" ).load( "test.php" );
+    });/*
+    $( document ).ajaxSend(function() {
+      $( ".log" ).text( "Triggered ajaxSend handler." );
+    });*/
+
+    $( document ).ajaxSend(function( event, jqxhr, settings ) {
+      if ( settings.url == "test.php" ) {
+        data: {x : 10 }
+        console.log(/*"My Send Event " +*/ event);
+        console.log(/*"Send jqxhr " + */jqxhr);
+        $( ".log" ).text( "Triggered ajaxSend handler." );
+      }
+    });
+    $(document).ajaxSuccess(function(e, r ,q) {
+      console.log(r);
+      console.log(q);
+      $( ".log" ).text( "Triggered ajaxSuccess handler." + e.currentTarget +"\n"+ Object.keys(e) );
+    });
+    // $( ".trigger" ).on( "click", function() {
+    //   $( ".result" ).load( "ajax/test.html" );
+    // });
+  </script>
 </body>
 </html>
