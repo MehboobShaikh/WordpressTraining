@@ -125,8 +125,10 @@ dl.gallery-item {
 }
 
 .site-nav ul li {
+	width: 18%;
 	margin: 0;
-	padding: 0;
+	margin-right: 5px;
+	margin-bottom: 2px;
 	overflow: hidden;
 	list-style: none;
 	float: left;
@@ -152,11 +154,11 @@ dl.gallery-item {
 nav div ul li a:link,
 nav div ul li a:visited {
 	display: block;
-	padding: 10px 18px;
+	padding: 10px 10px;
 	border: 1px solid #BBB;
 }
 nav div ul li a {
-	margin-right: 5px;
+	font-size: 0.9rem;
 }
 nav div {
 	margin-top: 2px;

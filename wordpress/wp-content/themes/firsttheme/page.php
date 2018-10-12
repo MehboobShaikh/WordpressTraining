@@ -49,6 +49,7 @@
 
 	<iframe src="https://calendar.google.com/calendar/embed?src=mehboobs%40prdxn.com&ctz=Asia%2FCalcutta" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
+	<?php //var_dump(get_field_object('developer_name', 'theme_settings_1')); ?>
 	<?php get_footer();
 
 ?>

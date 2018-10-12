@@ -30,6 +30,7 @@ FILE NAME 		=> 	Hyphen( - )
 	function firsttheme_resources(){
 		// Google font file 
 		wp_enqueue_style('font-style',get_template_directory_uri().'/font/font-style.css');
+		wp_enqueue_style('font-awesome','//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 		wp_enqueue_style('firsttheme-style',get_template_directory_uri().'/style.css');
 		
 		// wp_enqueue_style('movie',get_template_directory_uri().'/movie.css');
@@ -103,6 +104,7 @@ FILE NAME 		=> 	Hyphen( - )
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
     add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('custommmm-size', 100, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
 	 // ====================================== WIDGET LOCATION =================================
 
@@ -929,6 +931,35 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 
+add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
+
+function my_wp_nav_menu_objects( $items, $args ) {
+	
+		var_dump(($args));
+		var_dump(($items));
+	// loop
+	foreach( $items as &$item ) {
+		
+		// vars
+		// $icon = get_field('menu_icon', $item);
+		// var_dump($args);
+		// var_dump(wp_get_nav_menu_object($args->menu));
+		// var_dump(($item));
+		
+		$item->attr_title = $item->title;
+		
+		if(get_field('menu_icon', $item) && $args->menu == 'main-menu'){
+			$item->title = '<i class="fa fa-'.get_field('menu_icon', $item).'"></i> '.$item->title;
+		}
+		// var_dump($item);
+		
+	}
+	
+	
+	// return
+	return $items;
+	
+}
 
 
 

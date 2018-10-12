@@ -17,11 +17,35 @@ $('.filter').click( function(){
 
     // console.log($(this).val());
 
-    $.post(ajaxurl,{'action':'filter_ajax_action','parameters':cat_parameters}, function(response){
+    // $.post Method
+    /*$.post(ajaxurl,{'action':'filter_ajax_action','parameters':cat_parameters}, function(response){
         $('#filtered_content').empty();
         console.log(response);
         $('#filtered_content').html(response);
+    });*/
+
+    // $.ajax Method
+    $.ajax({
+        method: "POST",
+        url: ajaxurl,
+        data: {
+            action: 'filter_ajax_action',
+            parameters: cat_parameters
+        },
+        beforeSend: function(data){
+            console.log("Before Sending Ajax" + Object.keys(data));
+            $('#filtered_content').empty();
+            $('#filtered_content').html('<h1 style="color:red">Loading Please Wait</h1>').delay( 5000 );
+        },
+        success: function(res){
+            console.log("After Success");
+            // setTimeout(function(){
+                $('#filtered_content').empty();
+                $('#filtered_content').html(res);
+            // }, 2000);
+        }
     });
+
 });
 
 </script>

@@ -50,6 +50,18 @@ function welcome_css() {
 
 add_action( 'admin_head', 'welcome_css' );
 
+function avatar_css(){
+	echo "
+	<style type='text/css'>
+	#wpadminbar a img, #wp-admin-bar-user-info .avatar {
+		border-radius: 50% !important;
+	}
+	</style>
+	";
+}
+add_action( 'wp_enqueue_scripts', 'avatar_css' );
+add_action( 'admin_enqueue_scripts', 'avatar_css' );
+
 //======================================= EDIT Howdy in ADMIN BAR ========================================
 
 	function change_howdy_message($text) {

@@ -35,7 +35,14 @@
 
 				<div class="page-post-content">
 					<?php the_field('description'); ?>
+					<img src="<?php echo get_field('testing_subfield')['sizes']['custommmm-size']?>" width="<?php echo get_field('testing_subfield')['sizes']['large-width']."px" ?>" height="<?php echo get_field('testing_subfield')['sizes']['large-height']."px" ?>">
 					<?php 
+
+					// var_dump(get_field_object('just_testing'));
+					// var_dump(get_post_custom());
+					var_dump(get_field_object('testing_subfield')['conditional_logic']);
+					var_dump(get_field_object('testing_subfield'));
+
 						// using image ID
 						/*$image = get_field('image');
 						$size = 'thumbnail';
