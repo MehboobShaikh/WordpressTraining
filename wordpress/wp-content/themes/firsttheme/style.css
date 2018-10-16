@@ -658,3 +658,76 @@ div.school-images img {
 	margin: auto;
 }
 
+
+
+/* REST API EXAMPLE */
+.restapi-fields {
+	width: 100%;
+}
+.restapi-fields input, textarea {
+	width: 80%;
+	margin: 10px auto;
+	padding: 10px 10px;
+	display: block;
+}
+.restapi-fields button {
+	width: 20%;
+	margin: 10px auto;
+	padding: 10px;
+	display: block;
+}
+
+
+
+/* ==== Preloader ==== */
+
+.preloader {
+	width: 35px;
+	height: 35px;
+}
+#preloader_info {
+	width: 100%;
+	text-align: center;
+}
+.preloader,
+.preloader i {;
+	margin: auto;
+}
+.preloader i {
+	box-sizing: border-box;
+	display: block;
+	border: 2px solid blue;
+	border-radius: 50%;
+	
+	animation: 1s spin linear infinite;
+}
+.preloader i:nth-of-type(1) {
+	border-top-color: #085820;
+	animation-duration: 2.4s;
+}
+.preloader i:nth-of-type(2) {
+	border-top-color: #138535;
+	animation-duration: 2s;
+}
+.preloader i:nth-of-type(3) {
+	border-top-color: #6BD089;
+	animation-duration: 1.6s;
+}
+.preloader i:nth-of-type(4) {
+	border-top-color: #98E0AD;
+	animation-duration: 1.2s;
+}
+.preloader i:nth-of-type(5) {
+	border-top-color: #C8EFD4;
+	animation-duration: .8s;
+}
+
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

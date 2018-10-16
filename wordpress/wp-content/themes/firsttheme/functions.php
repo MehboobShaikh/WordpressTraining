@@ -935,8 +935,8 @@ add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
 
 function my_wp_nav_menu_objects( $items, $args ) {
 	
-		var_dump(($args));
-		var_dump(($items));
+		// var_dump(($args));
+		// var_dump(($items));
 	// loop
 	foreach( $items as &$item ) {
 		
@@ -1000,9 +1000,152 @@ add_action('customize_register','firstheme_customize_site_logo');
 
 
 
+// ====================================== REST API EXAMPLE ========================================
+
+function firsttheme_restapi_resources(){
+	wp_enqueue_script('rest_js',get_template_directory_uri().'/js/rest_eg.js',NULL,1.0,true);
+	wp_localize_script('rest_js', 'myData', array(
+		'nonce' => wp_create_nonce('wp_rest'),
+		'siteURL' => get_site_url(),
+		'ajaxurl' => admin_url('admin-ajax.php')
+	));
+}
+add_action('wp_enqueue_scripts','firsttheme_restapi_resources');
+
+
+  /**
+  * Add REST API support to an already registered post type News.
+  */
+  add_action( 'init', 'my_custom_post_type_rest_support', 25 );
+  function my_custom_post_type_rest_support() {
+  	global $wp_post_types;
+  
+  	//be sure to set this to the name of your post type!
+  	$post_type_name = 'news';
+  	if( isset( $wp_post_types[ $post_type_name ] ) ) {
+  		$wp_post_types[$post_type_name]->show_in_rest = true;
+  		$wp_post_types[$post_type_name]->rest_base = $post_type_name;
+  		$wp_post_types[$post_type_name]->rest_controller_class = 'WP_REST_Posts_Controller';
+  	}
+  
+  }
 
 
 
+
+/**
+ * Register a result post type, with REST API support
+ *
+ * Based on example at: http://codex.wordpress.org/Function_Reference/register_post_type
+ */
+
+function firsttheme_register_post_types() {
+
+	/**
+	 * Post Type: Result.
+	 */
+
+	$labels = array(
+		"name" => __( "Results", "firsttheme" ),
+		"all_items" => __( "All Results", "firsttheme" ),
+		// "new_item" => __( "New Result", "firsttheme" ),
+		"add_new" => __( "Add New Result", "firsttheme" ),
+		"singular_name" => __( "Result", "firsttheme" ),
+		"plural_name" => __( "Results", "firsttheme" ),
+		"archives" => __( "Results Archive", "firsttheme" ),
+	);
+
+	$args = array(
+		"label" => __( "Result", "firsttheme" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"has_archive" => true,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "result", "with_front" => true ),
+		"query_var" => true,
+  		'show_in_rest'       => true,
+  		'rest_base'          => 'result',
+  		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		// "supports" => array( "title", "thumbnail" ),
+	);
+
+	register_post_type( "result", $args );
+}
+add_action( 'init', 'firsttheme_register_post_types' );
+
+
+/* Hide UI of Result Post Type from user */
+function firsttheme_remove_menu_items() {
+    if( !current_user_can( 'administrator' ) ):
+        remove_menu_page( 'edit.php?post_type=result' );
+    endif;
+}
+add_action( 'admin_menu', 'firsttheme_remove_menu_items' );
+
+
+/* Ajax for checking post Exist or not */
+
+add_action('wp_ajax_checkPost','firsttheme_check_post_exist_or_not');
+// add_action('wp_ajax_nopriv_checkPost','firsttheme_check_post_exist_or_not');
+
+function firsttheme_check_post_exist_or_not(){
+	require 'checkForPost.php';
+}
+
+
+
+
+/* ======== Load More Posts on Scroll ========*/
+
+function firsttheme_my_load_more_scripts() {
+
+	$args = array(
+		'post_type'=>'post',
+		'posts_per_page'=>3,
+	);
+	$wp_myblog_query = new WP_Query($args);
+
+	wp_register_script( 'my_loadmore', get_stylesheet_directory_uri() . '/js/myloadmore.js', array('jquery') );
+	wp_localize_script( 'my_loadmore', 'firsttheme_loadmore_params', array(
+		'ajaxurl' => admin_url('admin-ajax.php'),
+		'posts' => json_encode( $wp_myblog_query->query_vars ),
+		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+		'max_page' => $wp_query->max_num_pages
+	) );
+ 
+ 	// wp_enqueue_script( 'my_loadmore' );
+}
+ 
+add_action( 'wp_enqueue_scripts', 'firsttheme_my_load_more_scripts' );
+
+
+/* === Ajax ===*/
+
+function firsttheme_loadmore_ajax_handler(){
+	$args = json_decode( stripslashes( $_POST['query'] ), true );
+	$args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+	$args['post_status'] = 'publish';
+	query_posts( $args );
+	// var_dump($args);
+
+	if( have_posts() ) :
+		while( have_posts() ): the_post();
+			// echo get_the_title();
+			get_template_part( 'content', get_post_format() );
+		endwhile;
+	endif;
+	die();
+}
+ 
+ 
+ 
+add_action('wp_ajax_loadmore', 'firsttheme_loadmore_ajax_handler');
+add_action('wp_ajax_nopriv_loadmore', 'firsttheme_loadmore_ajax_handler');
 
 
 
