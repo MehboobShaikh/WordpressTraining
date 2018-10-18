@@ -931,6 +931,8 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 
+/* ====== Nav Menu Filter =====*/
+
 add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
 
 function my_wp_nav_menu_objects( $items, $args ) {
@@ -956,7 +958,6 @@ function my_wp_nav_menu_objects( $items, $args ) {
 	}
 	
 	
-	// return
 	return $items;
 	
 }
@@ -1003,12 +1004,17 @@ add_action('customize_register','firstheme_customize_site_logo');
 // ====================================== REST API EXAMPLE ========================================
 
 function firsttheme_restapi_resources(){
-	wp_enqueue_script('rest_js',get_template_directory_uri().'/js/rest_eg.js',NULL,1.0,true);
-	wp_localize_script('rest_js', 'myData', array(
-		'nonce' => wp_create_nonce('wp_rest'),
-		'siteURL' => get_site_url(),
-		'ajaxurl' => admin_url('admin-ajax.php')
-	));
+	// global $pagename;
+	// var_dump($pagename);
+	// $slug = basename(get_permalink());
+	if(is_page('rest-api-example')){
+		wp_enqueue_script('rest_js',get_template_directory_uri().'/js/rest_eg.js',NULL,1.0,true);
+		wp_localize_script('rest_js', 'myData', array(
+			'nonce' => wp_create_nonce('wp_rest'),
+			'siteURL' => get_site_url(),
+			'ajaxurl' => admin_url('admin-ajax.php')
+		));
+	}
 }
 add_action('wp_enqueue_scripts','firsttheme_restapi_resources');
 
