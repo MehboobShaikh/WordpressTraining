@@ -1,0 +1,81 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: October 16, 2018 10:11 am
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.2.48
+WORDPRESS:	4.9.8
+PHP INFO:	7.1.22-1+ubuntu16.04.1+deb.sury.org+1 | SAPI: apache2handler
+SERVER:		Apache/2.4.18 (Ubuntu) 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 2048M (128M default) 
+MEMORY STACK: 6MB 
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   MYSQLDUMP
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported 
+FILTERED: [] 
+RESPONSE: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+ 
+TABLES: total:34 | filtered:0 | create:34 
+SQL CREATED: 20181016_myblog_4589eb7449852a127518_20181016101102_database.sql 
+SQL FILE SIZE: 1.15MB (1200710) 
+SQL FILE TIME: 2018-10-16 10:11:41 
+SQL RUNTIME: 1.15 sec. 
+
+******************************************************************************** 
+ARCHIVE (ZIP): 
+******************************************************************************** 
+ARCHIVE DIR:  /var/www/html/WP/wordpress 
+ARCHIVE FILE: 20181016_myblog_4589eb7449852a127518_20181016101102_archive.zip 
+FILTERS: *OFF* 
+DIRS:
+	not set 
+FILES:
+	not set 
+EXTS:  not set 
+---------------------------------------- 
+COMPRESSING 
+SIZE:	143.84MB 
+STATS:	Dirs 1,664 | Files 9,185 
+SQL ADDED: 20181016_myblog_4589eb7449852a127518_20181016101102_database.sql 
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 10849
+    [filename] => /var/www/html/WP/wordpress/wp-snapshots/tmp/20181016_myblog_4589eb7449852a127518_20181016101102_archive.zip
+    [comment] => 
+)
+ 
+COMPRESSION RESULT: '1' 
+COMPRESSED SIZE: 54.06MB 
+ARCHIVE RUNTIME: 65.08 sec. 
+MEMORY STACK: 8MB 
+
+******************************************************************************** 
+MAKE INSTALLER: 
+******************************************************************************** 
+Build Start 
+Build Finished 
+Preparing for use 
+PACK SIZE:  
+Template parsed with new data 
+Complete [/var/www/html/WP/wordpress/wp-snapshots/tmp/20181016_myblog_4589eb7449852a127518_20181016101102_installer.php] 
+Added to archive 
+
+******************************************************************************** 
+INTEGRITY CHECKS: 
+******************************************************************************** 
+SQL File: 1.15MB 
+Installer File: 474.17KB 
+Archive File: 54.06MB  
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 69.61 sec.
+PEAK PHP MEMORY USED: 8MB
+DONE PROCESSING => 20181016_myblog October 16, 2018 10:12 am
+ 
