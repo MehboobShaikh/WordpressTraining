@@ -1156,4 +1156,31 @@ add_action('wp_ajax_nopriv_loadmore', 'firsttheme_loadmore_ajax_handler');
 
 
 
+/* ADD Custom button on WYSIWIG EDITOR USING TINYMCE ADVANCE PLUGIN */
 
+function gavickpro_add_tinymce_plugin($plugin_array) {
+    $plugin_array['gavickpro_tc_button'] = get_template_directory_uri(). '/js/button.js'; // CHANGE THE BUTTON SCRIPT HERE
+    return $plugin_array;
+}
+
+function gavickpro_register_my_tc_button($buttons) {
+   array_push($buttons, "gavickpro_tc_button","gavickpro_fontsize_button");
+   return $buttons;
+}
+
+add_filter("mce_external_plugins", "gavickpro_add_tinymce_plugin");
+add_filter('mce_buttons', 'gavickpro_register_my_tc_button');
+
+add_action('admin_head', 'my_custom_fonts');
+
+function my_custom_fonts() {
+  echo "<style>
+    i.gavickpro-own-icon {
+    	background: url(".get_template_directory_uri()."/images/A.png) no-repeat center/cover;
+    }
+
+    i.gavickpro-fontsize-icon {
+    	background: url(".get_template_directory_uri()."/images/A-A.png) no-repeat center/cover;
+    }
+  </style>";
+}
