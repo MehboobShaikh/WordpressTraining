@@ -721,6 +721,7 @@ add_action('wp_footer','add_my_js_for_slick_slider');
 	GUI PART
 ===============
 */
+// BY AUTHOR
 
 //defining the filter that will be used so we can select posts by 'author'
 function create_dropdown_for_author_list_in_admin(){
@@ -731,7 +732,7 @@ function create_dropdown_for_author_list_in_admin(){
 
         //get a listing of all users that are 'author'
         $user_args = array(
-            'show_option_all'   => 'All Users',
+            'show_option_all'   => 'Filter Posts by Users',
             'orderby'           => 'display_name',
             'order'             => 'ASC',
             'name'              => 'aurthor_admin_filter',
@@ -794,6 +795,7 @@ add_action('pre_get_posts','filter_dropdown_for_author_list_in_admin');
 	GUI PART
 ===============
 */
+// BY NEWS CATEGORY
 
 //defining the filter that will be used so we can select posts by News Categories
 function create_dropdown_for_news_category_in_admin(){
@@ -804,7 +806,7 @@ function create_dropdown_for_news_category_in_admin(){
 
         //get a listing of all news categories
         $news_args = array(
-            'show_option_all'   => 'All News',
+            'show_option_all'   => 'All News Category',
             'orderby'						=> 'Name',
             'order'             => 'ASC',
             'name'              => 'news_admin_filter',
@@ -859,6 +861,136 @@ function add_news_filter_to_posts($query){
     }   
 }
 add_action('pre_get_posts','add_news_filter_to_posts');
+
+
+
+/*CUSTOM-POST-TYPE
+===============
+  GUI PART
+===============
+*/
+// BY NEWS CHANNEL
+// MY LOGIC
+function create_dropdown_for_news_channel_in_admin(){
+
+    //execute only on the 'post' content type given below i.e. News
+    global $post_type;
+    if($post_type == 'news'){
+      $news_channel_array = array();
+        $channel_args = array('post_type'=>$post_type);
+        $channel_query = new WP_Query($channel_args);
+        while($channel_query->have_posts()){
+          $channel_query->the_post();
+          if(get_field('news_channel', get_the_ID())){
+            array_push($news_channel_array, get_field('news_channel', get_the_ID()));
+          }
+        } wp_reset_postdata();
+        $news_channel_array = array_unique($news_channel_array);
+        //display the News Channels as a drop down
+        echo '<select name="news_channel_admin_filter" id="news_channel_admin_filter">';
+        echo '<option value="0">All News Channel</option>';
+        foreach($news_channel_array as $news_channel){
+          echo '<option value="'.$news_channel.'">'.$news_channel.'</option>';
+        }
+        echo '</select>';
+    }
+
+}
+add_action('restrict_manage_posts','create_dropdown_for_news_channel_in_admin');
+
+
+
+/*CUSTOM-POST-TYPE
+=====================
+  FILTERING PART
+=====================
+*/
+
+// restrict the posts by the chosen news channel
+function add_news_channel_filter_to_posts($query){
+
+    global $post_type, $pagenow;
+
+    //if we are currently on the edit screen of the post type news
+    if($pagenow == 'edit.php' && $post_type == 'news'){
+        if(isset($_GET['news_channel_admin_filter'])){
+            $news_channel = sanitize_text_field($_GET['news_channel_admin_filter']);
+            echo '<script>jQuery("#news_channel_admin_filter").val("'.$news_channel.'").attr("selected",true)</script>';
+            if($news_channel != "0"){
+              $query->query_vars['meta_value'] = $news_channel;
+            }
+        }
+    }   
+}
+add_filter('parse_query','add_news_channel_filter_to_posts');
+
+
+
+
+
+
+/*CUSTOM-POST-TYPE { MOVIES }
+===============
+  GUI PART
+===============
+*/
+// BY MOVIE RATTING
+// MY LOGIC
+function create_dropdown_for_movie_rating_in_admin(){
+
+    //execute only on the 'post' content type given below i.e. Movies
+    global $post_type;
+
+    if($post_type == 'movies'){
+      $rating_array = array();
+        $movie_rating_args = array('post_type'=>$post_type);
+        $movie_rating_query = new WP_Query($movie_rating_args);
+        while($movie_rating_query->have_posts()){
+          $movie_rating_query->the_post();
+          if(get_field('movie_rating', get_the_ID())){
+            array_push($rating_array, get_field('movie_rating', get_the_ID()));
+          }
+        } wp_reset_postdata();
+        //display the Rattings as a drop down
+        $rating_array = array_unique($rating_array);
+        echo '<select name="movie_rating_admin_filter" id="movie_rating_admin_filter">';
+        echo '<option value="0">All Rattings</option>';
+        foreach($rating_array as $rating){
+          echo '<option value="'.$rating.'">'.$rating.' Star Movies</option>';
+        }
+        echo '</select>';
+    }
+
+}
+add_action('restrict_manage_posts','create_dropdown_for_movie_rating_in_admin');
+
+
+
+/*CUSTOM-POST-TYPE
+=====================
+  FILTERING PART
+=====================
+*/
+
+// restrict the posts by the chosen news channel
+function add_movie_rating_filter_to_posts($query){
+
+    global $post_type, $pagenow;
+
+    //if we are currently on the edit screen of the post type news
+    if($pagenow == 'edit.php' && $post_type == 'movies'){
+        if(isset($_GET['movie_rating_admin_filter'])){
+            $movie_rating = sanitize_text_field($_GET['movie_rating_admin_filter']);
+            echo '<script>jQuery("#movie_rating_admin_filter").val("'.$movie_rating.'").attr("selected",true)</script>';
+            if($movie_rating != "0"){
+              $query->query_vars['meta_key'] = 'movie_rating';
+              $query->query_vars['meta_value'] = $movie_rating;
+            }
+        }
+    }   
+}
+add_filter('parse_query','add_movie_rating_filter_to_posts');
+
 
 
 
@@ -1183,4 +1315,352 @@ function my_custom_fonts() {
     	background: url(".get_template_directory_uri()."/images/A-A.png) no-repeat center/cover;
     }
   </style>";
+}
+
+
+
+
+// Add the custom columns to the news post type:
+add_filter( 'manage_news_posts_columns', 'set_custom_edit_news_columns' );
+function set_custom_edit_news_columns($columns) {
+  // var_dump(array_keys($columns));
+  // var_dump($columns);
+    // unset( $columns['author'] );
+    $columns['news_channel'] = __( 'News Channel', 'firsttheme' );
+
+    return $columns;
+}
+
+add_action( 'manage_news_posts_custom_column' , 'custom_news_column', 10, 2 );
+function custom_news_column( $column, $post_id ) {
+  // var_dump($column);
+  // var_dump($post_id);
+    switch ( $column ) {
+
+        case 'news_channel' :
+          echo '<a href="'.get_the_permalink($post_id).'" title="'.get_the_title( $post_id ).'">'.get_field( "news_channel", $post_id ).'</a>';
+          break;
+    }
+}
+
+add_filter( 'manage_edit-news_sortable_columns', 'my_sortable_news_column' );
+function my_sortable_news_column( $columns ) {
+    $columns['news_channel'] = 'news_channel'; 
+    $columns['taxonomy-news-category'] = 'news_category_title'; 
+    return $columns;
+}
+
+
+add_action( 'pre_get_posts', 'newschannel_posts_orderby' );
+function newschannel_posts_orderby( $query ) {
+  if( ! is_admin() ) {
+    return;
+  }
+  // var_dump($query);
+  $orderby = $query->get( 'orderby');
+  if ( 'news_channel' == $orderby ) {
+    $query->set( 'meta_key', 'news_channel' );
+    $query->set( 'orderby', 'meta_value' );
+    // $query->set( 'order', 'DESC' );
+  }
+  if( 'news_category_title' == $orderby) {
+    // var_dump($query);
+    $query->set( 'orderby', 'news-category' );
+  }
+}
+
+
+/**
+ * Custom admin login header logo
+ */
+function custom_login_logo() {
+    echo '<style type="text/css">'.'h1 a { background-image:url('.get_bloginfo( 'template_directory' ).'/img/profile.jpeg) !important; }'.'</style>';
+}
+add_action( 'login_head', 'custom_login_logo' );
+
+
+
+/**
+ * Custom admin login header link
+ */
+function custom_login_url() {
+    return home_url( '/' );
+}
+add_filter( 'login_headerurl', 'custom_login_url' );
+
+/**
+ * Custom admin login header link alt text
+ */
+function custom_login_title() {
+    return get_option( 'blogname' );
+}
+add_filter( 'login_headertitle', 'custom_login_title' );
+
+
+/* ===== HIDE COMMENT COLUMN FROM DASHBOARD ===== */
+
+
+function my_manage_columns( $columns ) {
+  unset($columns['comments']);
+  return $columns;
+}
+
+function my_column_init() {
+  add_filter( 'manage_posts_columns' , 'my_manage_columns' );
+}
+add_action( 'admin_init' , 'my_column_init' );
+
+
+
+
+/* ===== Convert NEWS_CATEGORY CHECKBOX to RADIO =====*/
+
+function replace_newscategory_checkbox_with_radio(){
+  echo '<script>jQuery("#news-categorychecklist input,#categorychecklist input, #movies-categorychecklist input").each(function(){this.type="radio";});</script>';
+}
+add_action('admin_footer','replace_newscategory_checkbox_with_radio');
+
+
+
+
+/* ========================================= BREADCRUMBS ============================================ */
+
+// Breadcrumbs
+function custom_breadcrumbs() {
+       
+    // Settings
+    $separator          = '&gt;&gt;';
+    $breadcrums_id      = 'breadcrumbs';
+    $breadcrums_class   = 'breadcrumbs';
+    $home_title         = 'Homepage';
+      
+    // If you have any custom post types with custom taxonomies, put the taxonomy name below
+       
+    // Get the query & post information
+    global $post,$wp_query;
+    $custom_taxonomy_obj = get_object_taxonomies($post);
+    // $custom_taxonomy = $custom_taxonomy[0]; 
+    // var_dump($custom_taxonomy_obj);
+    foreach($custom_taxonomy_obj as $tax){
+      if(get_the_terms($post,$tax)){
+        $custom_taxonomy = $tax;
+      }
+    }
+    // var_dump(get_the_terms($post,'news-category'));
+    // var_dump(get_object_taxonomies($post_type));
+       
+    // Do not display on the homepage
+    if ( !is_front_page() ) {
+       
+        // Build the breadcrums
+        echo '<ul id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
+           
+        // Home page
+        echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+        echo '<li class="separator separator-home"> ' . $separator . ' </li>';
+           
+        if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
+            // var_dump(get_the_archive_title());
+            echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . get_the_archive_title() . '</strong></li>';
+              
+        } else if ( is_archive() && is_tax() && !is_category() && !is_tag() ) {
+              
+            // If post is a custom post type
+            $post_type = get_post_type();
+              
+            // If it is a custom post type display name and link
+            if($post_type != 'post') {
+                  
+                $post_type_object = get_post_type_object($post_type);
+                $post_type_archive = get_post_type_archive_link($post_type);
+              
+                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+              
+            }
+              
+            $custom_tax_name = get_queried_object()->name;
+            echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . $custom_tax_name . '</strong></li>';
+              
+        } else if ( is_single() ) {
+              
+            // If post is a custom post type
+            $post_type = get_post_type();
+              
+            // If it is a custom post type display name and link
+            if($post_type != 'post') {
+                  
+                $post_type_object = get_post_type_object($post_type);
+                $post_type_archive = get_post_type_archive_link($post_type);
+              
+                echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+              
+            }
+              
+            // Get post category info
+            $category = get_the_category();
+             
+            if(!empty($category)) {
+              
+                // Get last category post is in
+                $last_category = end(array_values($category));
+                  
+                // Get parent any categories and create array
+                $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
+                $cat_parents = explode(',',$get_cat_parents);
+                  
+                // Loop through parent categories and store in variable $cat_display
+                $cat_display = '';
+                foreach($cat_parents as $parents) {
+                    $cat_display .= '<li class="item-cat">'.$parents.'</li>';
+                    $cat_display .= '<li class="separator"> ' . $separator . ' </li>';
+                }
+             
+            }
+              
+            // If it's a custom post type within a custom taxonomy
+            $taxonomy_exists = taxonomy_exists($custom_taxonomy);
+            if(empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
+                   
+                $taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
+                $cat_id         = $taxonomy_terms[0]->term_id;
+                $cat_nicename   = $taxonomy_terms[0]->slug;
+                $cat_link       = get_term_link($taxonomy_terms[0]->term_id, $custom_taxonomy);
+                $cat_name       = $taxonomy_terms[0]->name;
+               
+            }
+              
+            // Check if the post is in a category
+            if(!empty($last_category)) {
+                echo $cat_display;
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+                  
+            // Else if post is in a custom taxonomy
+            } else if(!empty($cat_id)) {
+                  
+                echo '<li class="item-cat item-cat-' . $cat_id . ' item-cat-' . $cat_nicename . '"><a class="bread-cat bread-cat-' . $cat_id . ' bread-cat-' . $cat_nicename . '" href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a></li>';
+                echo '<li class="separator"> ' . $separator . ' </li>';
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+              
+            } else {
+                  
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
+                  
+            }
+              
+        } else if ( is_category() ) {
+               
+            // Category page
+            echo '<li class="item-current item-cat"><strong class="bread-current bread-cat">' . single_cat_title('', false) . '</strong></li>';
+               
+        } else if ( is_page() ) {
+               
+            // Standard page
+            if( $post->post_parent ){
+                   
+                // If child page, get parents 
+                $anc = get_post_ancestors( $post->ID );
+                   
+                // Get parents in the right order
+                $anc = array_reverse($anc);
+                   
+                // Parent page loop
+                if ( !isset( $parents ) ) $parents = null;
+                foreach ( $anc as $ancestor ) {
+                    $parents .= '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+                    $parents .= '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
+                }
+                   
+                // Display parent pages
+                echo $parents;
+                   
+                // Current page
+                echo '<li class="item-current item-' . $post->ID . '"><strong title="' . get_the_title() . '"> ' . get_the_title() . '</strong></li>';
+                   
+            } else {
+                   
+                // Just display current page if not parents
+                echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '"> ' . get_the_title() . '</strong></li>';
+                   
+            }
+               
+        } else if ( is_tag() ) {
+               
+            // Tag page
+               
+            // Get tag information
+            $term_id        = get_query_var('tag_id');
+            $taxonomy       = 'post_tag';
+            $args           = 'include=' . $term_id;
+            $terms          = get_terms( $taxonomy, $args );
+            $get_term_id    = $terms[0]->term_id;
+            $get_term_slug  = $terms[0]->slug;
+            $get_term_name  = $terms[0]->name;
+               
+            // Display the tag name
+            echo '<li class="item-current item-tag-' . $get_term_id . ' item-tag-' . $get_term_slug . '"><strong class="bread-current bread-tag-' . $get_term_id . ' bread-tag-' . $get_term_slug . '">' . $get_term_name . '</strong></li>';
+           
+        } elseif ( is_day() ) {
+               
+            // Day archive
+               
+            // Year link
+            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
+               
+            // Month link
+            echo '<li class="item-month item-month-' . get_the_time('m') . '"><a class="bread-month bread-month-' . get_the_time('m') . '" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('m') . '"> ' . $separator . ' </li>';
+               
+            // Day display
+            echo '<li class="item-current item-' . get_the_time('j') . '"><strong class="bread-current bread-' . get_the_time('j') . '"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</strong></li>';
+               
+        } else if ( is_month() ) {
+               
+            // Month Archive
+               
+            // Year link
+            echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
+            echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
+               
+            // Month display
+            echo '<li class="item-month item-month-' . get_the_time('m') . '"><strong class="bread-month bread-month-' . get_the_time('m') . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</strong></li>';
+               
+        } else if ( is_year() ) {
+               
+            // Display year archive
+            echo '<li class="item-current item-current-' . get_the_time('Y') . '"><strong class="bread-current bread-current-' . get_the_time('Y') . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</strong></li>';
+               
+        } else if ( is_author() ) {
+               
+            // Auhor archive
+               
+            // Get the author information
+            global $author;
+            $userdata = get_userdata( $author );
+               
+            // Display author name
+            echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</strong></li>';
+           
+        } else if ( get_query_var('paged') ) {
+               
+            // Paginated archives
+            echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
+               
+        } else if ( is_search() ) {
+           
+            // Search results page
+            echo '<li class="search-item item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for : ' . get_search_query() . '</strong></li>';
+           
+        } elseif ( is_404() ) {
+               
+            // 404 page
+            echo '<li>' . 'Error 404 Page Not Found' . '</li>';
+        }
+       
+        echo '</ul>';
+           
+    }
+       
 }
