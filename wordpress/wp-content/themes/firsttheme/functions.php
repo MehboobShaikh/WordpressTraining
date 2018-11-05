@@ -1334,11 +1334,12 @@ function set_custom_edit_news_columns($columns) {
 add_action( 'manage_news_posts_custom_column' , 'custom_news_column', 10, 2 );
 function custom_news_column( $column, $post_id ) {
   // var_dump($column);
-  // var_dump($post_id);
+  // var_dump(get_field('news_channel',$post_id));
     switch ( $column ) {
 
         case 'news_channel' :
-          echo '<a href="'.get_the_permalink($post_id).'" title="'.get_the_title( $post_id ).'">'.get_field( "news_channel", $post_id ).'</a>';
+          echo '<a href="edit.php?post_type=news&news_channel_admin_filter='.get_field('news_channel',$post_id).'" title="'.get_field('news_channel', $post_id).'">'.get_field( "news_channel", $post_id ).'</a>';
+          //localhost/WP/wordpress/wp-admin/edit.php?post_type=news&news_channel_admin_filter=ZEE+News
           break;
     }
 }
