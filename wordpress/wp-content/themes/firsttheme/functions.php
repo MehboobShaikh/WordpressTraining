@@ -1665,3 +1665,57 @@ function custom_breadcrumbs() {
     }
        
 }
+
+
+
+
+
+
+
+/* ========== Share Button For Posts ========== */
+
+function firsttheme_social_sharing_buttons($content) {
+  global $post;
+  if(is_singular() || is_home()){
+  
+    // Get current page URL $pageURL is nothing but PAGE / POST that to be shared. 
+    $pageURL = urlencode(get_permalink());
+ 
+    // Get current page title
+    $pageTitle = htmlspecialchars(urlencode(html_entity_decode(get_the_title(), ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8');
+    // $pageTitle = str_replace( ' ', '%20', get_the_title());
+    
+    // Get Post Thumbnail for pinterest
+    $pageThumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+ 
+    // Construct sharing URL without using any script
+    $twitterURL = 'https://twitter.com/intent/tweet?text='.$pageTitle.'&amp;url='.$pageURL.'&amp;via=mehboob_siraj';
+    $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$pageURL;
+    $googleURL = 'https://plus.google.com/share?url='.$pageURL;
+    $bufferURL = 'https://bufferapp.com/add?url='.$pageURL.'&amp;text='.$pageTitle;
+    $whatsappURL = 'whatsapp://send?text='.$pageTitle . ' ' . $pageURL;
+    $linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url='.$pageURL.'&amp;title='.$pageTitle;
+    $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$pageURL.'&amp;media='.$pageumbnail[0].'&amp;description='.$pageTitle;
+ 
+    // Add sharing button at the end of post / page content
+    $content .= '<div class="social-share">';
+    $content .= '<h5>SHARE ON</h5> <a class="link twitter" href="'. $twitterURL .'" target="_blank">Twitter</a>';
+    $content .= '<a class="link facebook" href="'.$facebookURL.'" target="_blank">Facebook</a>';
+    $content .= '<a class="link whatsapp" href="'.$whatsappURL.'" target="_blank">WhatsApp</a>';
+    $content .= '<a class="link googleplus" href="'.$googleURL.'" target="_blank">Google+</a>';
+    $content .= '<a class="link buffer" href="'.$bufferURL.'" target="_blank">Buffer</a>';
+    $content .= '<a class="link linkedin" href="'.$linkedInURL.'" target="_blank">LinkedIn</a>';
+    $content .= '<a class="link pinterest" href="'.$pinterestURL.'" data-pin-custom="true" target="_blank">Pin It</a>';
+    $content .= '</div>';
+    
+    return $content;
+  }else{
+    // if not a post/page then don't include sharing button
+    return $content;
+  }
+};
+add_filter( 'the_content', 'firsttheme_social_sharing_buttons');
+
+
+
+
